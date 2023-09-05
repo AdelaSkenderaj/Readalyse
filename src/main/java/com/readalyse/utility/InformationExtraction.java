@@ -32,7 +32,6 @@ public class InformationExtraction {
   private final BookshelfRepository bookshelfRepository;
   private final LanguageRepository languageRepository;
   private final PersonRepository personRepository;
-  private final ResourceRepository resourceRepository;
   private final SubjectRepository subjectRepository;
 
   Logger logger = Logger.getLogger(InformationExtraction.class.getName());
@@ -43,7 +42,7 @@ public class InformationExtraction {
   public void extractInformation(File dirPath) {
     try {
       // This block configure the logger with handler and formatter
-      fileHandler = new FileHandler("C:/Users/Dela/log/MyLogFile.log");
+      fileHandler = new FileHandler("C:/Users/Dela/log/MyLogFile3.log");
       logger.addHandler(fileHandler);
       SimpleFormatter formatter = new SimpleFormatter();
       fileHandler.setFormatter(formatter);
@@ -68,9 +67,15 @@ public class InformationExtraction {
   }
 
   public BookEntity getBook(String path) {
-    //        String filePath = "C:/Users/Dela/test/pg" + path + ".rdf";
-    Model model = ModelFactory.createDefaultModel(); // create an empty model
-    model.read(path);
+    String filePath = "C:/Users/Dela/test/pg" + path + ".rdf";
+    Model model = ModelFactory.createDefaultModel();
+    ;
+    try {
+      model.read(filePath);
+    } catch (Exception e) {
+      e.printStackTrace();
+      return null;
+    }
     BookEntity book = getBaseBookInformation(model);
     List<BookshelfEntity> bookshelves = getBookshelves(model);
     List<LanguageEntity> languages = getLanguages(model);
@@ -118,7 +123,6 @@ public class InformationExtraction {
                   .description(formatValue(description))
                   .downloads(Long.valueOf(formatValue(downloads)))
                   .build();
-          book = bookRepository.save(book);
         }
       }
     }

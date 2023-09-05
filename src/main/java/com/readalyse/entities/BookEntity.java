@@ -19,6 +19,9 @@ public class BookEntity {
   private String description;
   private Long downloads;
 
+  @OneToOne(cascade = CascadeType.MERGE)
+  private ReadabilityScoresEntity readabilityScores;
+
   @ManyToMany
   @JoinTable(
       name = "BOOK_AGENT",

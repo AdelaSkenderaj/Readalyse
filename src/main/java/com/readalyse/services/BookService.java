@@ -3,7 +3,7 @@ package com.readalyse.services;
 import static com.readalyse.utility.Constants.PROJECT_GUTENBERG_MARKERS_PATTERN;
 
 import com.readalyse.entities.BookEntity;
-import com.readalyse.entities.ReadabilityScores;
+import com.readalyse.entities.ReadabilityScoresEntity;
 import com.readalyse.entities.ResourceEntity;
 import com.readalyse.repositories.BookRepository;
 import com.readalyse.utility.BookData;
@@ -74,14 +74,15 @@ public class BookService {
 
   public BookData analyse(String text) {
     BookData data = new BookData(text);
-    ReadabilityScores readabilityScores =
-        ReadabilityScores.builder()
+    ReadabilityScoresEntity readabilityScores =
+        ReadabilityScoresEntity.builder()
             .fleschKincaidGradeLevel(calculateFleschKincaidGradeLevel(data))
             .fleschReadingEase(calculateFleschReadingEase(data))
             .colemanLiauIndex(colemanLiauIndex(data))
             .smogIndex(smogIndex(data))
             .automatedReadabilityIndex(calculateAutomatedReabilityIndex(data))
             .forcastIndex(forcast(data))
+            .powersSumnerKearl(powersSumnerKearl(data))
             .lixIndex(lixFormula(data))
             .rixIndex(rixFormula(data))
             .build();
@@ -102,8 +103,8 @@ public class BookService {
   }
 
   public Double colemanLiauIndex(BookData data) {
-    return ((0.0588 * data.getLetters() / data.getWords())
-        - (0.296 * data.getSentences() / data.getWords()));
+    return ((0.0588 * 100 * data.getLetters() / data.getWords())
+        - (0.296 * 100 * data.getSentences() / data.getWords()));
   }
 
   public Double smogIndex(BookData data) {
@@ -121,11 +122,11 @@ public class BookService {
     return (20 - ((double) data.getSingleSyllableWords() / 1500));
   }
 
-  /* public Double powersSumnerKearl(BookData data) {
+  public Double powersSumnerKearl(BookData data) {
     return (0.0778 * ((double) data.getWords() / data.getSentences())
         + 0.0455 * data.getNrSyllables()
         + 2.7971);
-  }*/
+  }
 
   public Double lixFormula(BookData data) {
     return ((data.getLongWords() * 100 / data.getWords())

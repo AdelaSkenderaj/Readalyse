@@ -13,7 +13,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class ReadabilityScores {
+public class ReadabilityScoresEntity {
 
   @Id private Long bookId;
 
@@ -23,7 +23,7 @@ public class ReadabilityScores {
   private Double smogIndex;
   private Double automatedReadabilityIndex;
   private Double forcastIndex;
-  //  private Double powersSumnerKearl;
+  private Double powersSumnerKearl;
   private Double lixIndex;
   private Double rixIndex;
 }

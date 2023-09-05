@@ -19,20 +19,18 @@ import org.xml.sax.SAXException;
 @RequiredArgsConstructor
 public class FileRetrieval {
 
-  private static String basePath = "C:/Users/Dela/tmp";
+  private static String basePath = "C:/Users/Dela/test";
+
   private static String RDF_FILES = basePath + "/rdf-files.tar.bz2";
+
   private static String RDF_URL = "https://gutenberg.org/cache/epub/feeds/rdf-files.tar.bz2";
 
   public void getRdfData() throws IOException, ParserConfigurationException, SAXException {
-
-    // GET RDF DATA FROM PROJECT GUTENBERG IF THE FILES DO NOT EXIST
-    // TODO DELETE THE FOLDER AFTER USE
-    if (!Files.exists(Paths.get(RDF_FILES))) {
-      URL url = new URL(RDF_URL);
-      url.openConnection();
-      Files.copy(url.openStream(), Paths.get(RDF_FILES));
-      extractFiles();
-    }
+    URL url = new URL(RDF_URL);
+    url.openConnection();
+    Files.copy(url.openStream(), Paths.get(RDF_FILES));
+    extractFiles();
+    deleteZipFile();
   }
 
   private void extractFiles() {
@@ -80,18 +78,31 @@ public class FileRetrieval {
     TarArchiveEntry tarArchiveEntry = null;
 
     while ((tarArchiveEntry = tarArchiveInputStream.getNextTarEntry()) != null) {
-      File outputFile = new File(destFile + File.separator + tarArchiveEntry.getName());
+      File outputFile =
+          new File(
+              destFile
+                  + File.separator
+                  + tarArchiveEntry
+                      .getName()
+                      .substring(tarArchiveEntry.getName().lastIndexOf('/') + 1));
       if (tarArchiveEntry.isDirectory()) {
-        if (!outputFile.exists()) {
-          outputFile.mkdirs();
-        }
       } else {
-        outputFile.getParentFile().mkdirs();
         FileOutputStream fileOutputStream = new FileOutputStream(outputFile);
         IOUtils.copy(tarArchiveInputStream, fileOutputStream);
         fileOutputStream.close();
       }
     }
     tarArchiveInputStream.close();
+  }
+
+  private void deleteZipFile() {
+    File zipFile = new File(RDF_FILES);
+    File tarFile = new File(RDF_FILES.substring(0, RDF_FILES.lastIndexOf('.')));
+    if (zipFile.exists()) {
+      zipFile.delete();
+    }
+    if (tarFile.exists()) {
+      tarFile.delete();
+    }
   }
 }

@@ -49,6 +49,19 @@ CREATE TABLE AGENT_TYPE (
     primary key (ID)
 );
 
+CREATE TABLE READABILITY_SCORES (
+    BOOK_ID bigint not null,
+    FLESCH_KINCAID_GRADE_LEVEL float,
+    FLESCH_READING_EASE float,
+    COLEMAN_LIAU_INDEX float,
+    SMOG_INDEX float,
+    AUTOMATED_READABILITY_INDEX float,
+    FORCAST_INDEX float,
+    LIX_INDEX float,
+    RIX_INDEX float,
+    primary key (BOOK_ID)
+);
+
 CREATE TABLE AGENT (
     ID bigint not null auto_increment,
     PERSON bigint not null,

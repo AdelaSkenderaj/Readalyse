@@ -4,7 +4,6 @@ import com.readalyse.entities.BookEntity;
 import com.readalyse.repositories.BookRepository;
 import com.readalyse.services.BookService;
 import com.readalyse.utility.FileRetrieval;
-import com.readalyse.utility.FileRetrieval2;
 import com.readalyse.utility.InformationExtraction;
 import java.io.File;
 import java.io.IOException;
@@ -22,11 +21,9 @@ public class StartController {
 
   private final InformationExtraction informationExtraction;
 
-  private final FileRetrieval fileRetrieval;
-
   private final BookRepository bookRepository;
 
-  private final FileRetrieval2 fileRetrieval2;
+  private final FileRetrieval fileRetrieval;
 
   private static String basePath = "C:/Users/Dela/test";
   private final BookService bookService;
@@ -36,14 +33,14 @@ public class StartController {
     informationExtraction.extractInformation(new File(basePath));
   }
 
-  @GetMapping("/retrieveData")
+  /* @GetMapping("/retrieveData")
   public void startAnalysis() throws IOException, ParserConfigurationException, SAXException {
     fileRetrieval.getRdfData();
-  }
+  }*/
 
   @GetMapping("/retrieveData2")
   public void retrieveFiles() throws IOException, ParserConfigurationException, SAXException {
-    fileRetrieval2.getRdfData();
+    fileRetrieval.getRdfData();
   }
 
   @GetMapping("/books")
