@@ -83,7 +83,18 @@
 			<type>pom</type>
 			<version>4.4.0</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.opennlp</groupId>
+			<artifactId>opennlp-tools</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>eu.crydee</groupId>
+			<artifactId>syllable-counter</artifactId>
+			<version>4.1.0</version>
+		</dependency>
 	</dependencies>
+
 
 	<build>
 		<plugins>

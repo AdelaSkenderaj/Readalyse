@@ -15,5 +15,5 @@ public class Constants {
           + "PREFIX marcrel: <http://id.loc.gov/vocabulary/relators/>";
 
   public static final String PROJECT_GUTENBERG_MARKERS_PATTERN =
-      "\\*{3}\\sSTART OF THE PROJECT GUTENBERG EBOOK [^*]+ \\*{3}(.*?)\\*{3}\\sEND OF THE PROJECT GUTENBERG EBOOK [^*]+ \\*{3}";
+      "(?s)\\*{3}\\s*START OF THE PROJECT GUTENBERG EBOOK[^*]+\\*{3}(.*?)\\*{3}\\s*END OF THE PROJECT GUTENBERG EBOOK[^*]+\\*{3}";
 }
