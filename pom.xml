@@ -17,6 +17,7 @@
     <modules>
         <module>readalyse-backend</module>
         <module>readalyse-background-workers</module>
+        <module>domain</module>
     </modules>
 
 </project>
