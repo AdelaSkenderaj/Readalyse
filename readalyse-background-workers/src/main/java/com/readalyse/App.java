@@ -1,5 +1,7 @@
 package com.readalyse;
 
+import com.readalyse.job.AnalyseAllFiles;
+import com.readalyse.util.FileRetrieval;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
 
@@ -15,21 +17,9 @@ public class App
         // Start the scheduler
         scheduler.start();
 
-        // Define parameters for Job 1
-        JobDataMap allTimeData = new JobDataMap();
-        allTimeData.put("basePath", "C:/Users/Dela/background-workers/all-time-data");
-        allTimeData.put("rdfFilesPath", "C:/Users/Dela/background-workers/all-time-data/rdf-files.tar.bz2");
-        allTimeData.put("rdfUrl", "https://gutenberg.org/cache/epub/feeds/rdf-files.tar.bz2");
-
-        // Define parameters for Job 2
-        JobDataMap jobDataMap2 = new JobDataMap();
-        jobDataMap2.put("basePath", "C:/Users/Dela/background-workers/daily-data");
-        jobDataMap2.put("parameter2", 456);
-
         // Define Job 1
-        JobDetail allTimeFileRetrieval = JobBuilder.newJob(FileRetrieval.class)
-                .withIdentity("allTimeFileRetrieval", "group1")
-                .usingJobData(allTimeData)
+        JobDetail allTimeFileRetrieval = JobBuilder.newJob(AnalyseAllFiles.class)
+                .withIdentity("allTimeFileAnalysis", "group1")
                 .build();
 
         /*// Define Job 2
@@ -40,7 +30,7 @@ public class App
 
         // Define triggers for both jobs (e.g., run every 10 seconds)
         Trigger triggerAllTimeFileRetrieval = TriggerBuilder.newTrigger()
-                .withIdentity("triggerAllTimeFileRetrieval", "group1")
+                .withIdentity("triggerAllTimeFileAnalysis", "group1")
                 .startNow()
                 .build();
 

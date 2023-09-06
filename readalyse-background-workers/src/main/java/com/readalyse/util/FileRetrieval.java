@@ -1,4 +1,4 @@
-package com.readalyse;
+package com.readalyse.util;
 
 import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
 import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
@@ -20,7 +20,7 @@ import java.nio.file.Paths;
 import java.time.ZonedDateTime;
 import java.util.logging.Logger;
 
-public class FileRetrieval implements Job {
+public class FileRetrieval {
 
     private String BASE_PATH;
 
@@ -28,33 +28,14 @@ public class FileRetrieval implements Job {
 
     private String RDF_URL;
 
-    Logger logger = Logger.getLogger(FileRetrieval.class.getName());
-
-
-    @Override
-    public void execute(JobExecutionContext context) throws JobExecutionException {
-        // Access parameters from the JobDataMap
-        JobDataMap dataMap = context.getJobDetail().getJobDataMap();
-        this.BASE_PATH = dataMap.getString("basePath");
-        this.RDF_FILES = dataMap.getString("rdfFilesPath");
-        this.RDF_URL = dataMap.getString("rdfUrl");
-
-        logger.info("Starting file retrieval " + ZonedDateTime.now());
-
-        try {
-            getRdfData();
-            logger.info("Ending file retrieval " + ZonedDateTime.now());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (ParserConfigurationException e) {
-            throw new RuntimeException(e);
-        } catch (SAXException e) {
-            throw new RuntimeException(e);
-        }
+    public FileRetrieval(String basePath, String rdfFiles, String rdfUrl) {
+        this.BASE_PATH = basePath;
+        this.RDF_FILES = rdfFiles;
+        this.RDF_URL = rdfUrl;
     }
 
 
-    private void getRdfData() throws IOException, ParserConfigurationException, SAXException {
+    public void getRdfData() throws IOException, ParserConfigurationException, SAXException {
         URL url = new URL(RDF_URL);
         url.openConnection();
         Files.copy(url.openStream(), Paths.get(RDF_FILES));
