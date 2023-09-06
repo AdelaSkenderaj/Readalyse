@@ -1,0 +1,17 @@
+get:
+  tags:
+    - Book
+  description: Get all books
+  operationId: findAll
+  responses:
+    "200":
+      description: Successful operation.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              books:
+                type: array
+                items:
+                  $ref: '../components/schemas/Book.yaml'
