@@ -1,6 +1,6 @@
 package com.readalyse.controllers;
 
-import com.readalyse.entities.BookEntity;
+import com.readalyse.domain.entity.BookEntity;
 import com.readalyse.repositories.BookRepository;
 import com.readalyse.services.BookService;
 import com.readalyse.utility.FileRetrieval;

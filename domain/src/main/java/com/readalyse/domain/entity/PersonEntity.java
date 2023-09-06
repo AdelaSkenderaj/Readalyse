@@ -1,4 +1,5 @@
 package com.readalyse.domain.entity;
+
 import jakarta.persistence.*;
 import lombok.*;
 

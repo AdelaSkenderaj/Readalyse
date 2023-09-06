@@ -2,7 +2,7 @@ package com.readalyse.utility;
 
 import static com.readalyse.utility.Constants.TERMS;
 
-import com.readalyse.entities.*;
+import com.readalyse.domain.entity.*;
 import com.readalyse.repositories.*;
 import java.io.File;
 import java.io.IOException;

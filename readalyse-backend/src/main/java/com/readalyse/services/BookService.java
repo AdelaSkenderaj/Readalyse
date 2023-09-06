@@ -2,9 +2,9 @@ package com.readalyse.services;
 
 import static com.readalyse.utility.Constants.PROJECT_GUTENBERG_MARKERS_PATTERN;
 
-import com.readalyse.entities.BookEntity;
-import com.readalyse.entities.ReadabilityScoresEntity;
-import com.readalyse.entities.ResourceEntity;
+import com.readalyse.domain.entity.BookEntity;
+import com.readalyse.domain.entity.ReadabilityScoresEntity;
+import com.readalyse.domain.entity.ResourceEntity;
 import com.readalyse.repositories.BookRepository;
 import com.readalyse.utility.BookData;
 import java.nio.charset.StandardCharsets;

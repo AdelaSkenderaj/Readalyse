@@ -87,6 +87,11 @@
 			<artifactId>syllable-counter</artifactId>
 			<version>4.1.0</version>
 		</dependency>
+		<dependency>
+			<groupId>com.readalyse</groupId>
+			<artifactId>domain</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 

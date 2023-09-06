@@ -1,6 +1,6 @@
 package com.readalyse.repositories;
 
-import com.readalyse.entities.ResourceEntity;
+import com.readalyse.domain.entity.ResourceEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

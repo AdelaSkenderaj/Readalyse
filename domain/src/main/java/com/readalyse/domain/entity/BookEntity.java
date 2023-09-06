@@ -1,9 +1,8 @@
 package com.readalyse.domain.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
-
 import java.util.List;
+import lombok.*;
 
 @Table(name = "BOOK")
 @Entity
@@ -15,8 +14,7 @@ import java.util.List;
 @ToString
 public class BookEntity {
 
-  @Id
-  private Long id;
+  @Id private Long id;
   private String title;
   private String description;
   private Long downloads;

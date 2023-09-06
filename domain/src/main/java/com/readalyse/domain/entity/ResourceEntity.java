@@ -1,8 +1,9 @@
 package com.readalyse.domain.entity;
 
-import java.time.LocalDateTime;
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 import lombok.*;
+
 @Table(name = "RESOURCE")
 @Entity
 @Builder
