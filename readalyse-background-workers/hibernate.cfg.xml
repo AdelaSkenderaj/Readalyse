@@ -1,0 +1,15 @@
+<!-- hibernate.cfg.xml -->
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database connection settings -->
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mariadb://localhost:3306/test</property>
+        <property name="hibernate.connection.username">readalyse</property>
+        <property name="hibernate.connection.password">readalyse</property>
+
+        <!-- Other Hibernate settings -->
+
+        <!-- Mapping files -->
+        <!-- Add your entity class mappings here -->
+    </session-factory>
+</hibernate-configuration>
