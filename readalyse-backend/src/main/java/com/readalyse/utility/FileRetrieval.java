@@ -4,28 +4,34 @@ import java.io.*;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import javax.xml.parsers.ParserConfigurationException;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
 import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
 import org.apache.commons.compress.compressors.CompressorException;
 import org.apache.commons.compress.compressors.CompressorInputStream;
 import org.apache.commons.compress.compressors.CompressorStreamFactory;
-import org.apache.commons.io.IOUtils;
+import org.apache.commons.compress.utils.IOUtils;
 import org.springframework.stereotype.Service;
-import org.xml.sax.SAXException;
 
 @Service
 @RequiredArgsConstructor
 public class FileRetrieval {
 
-  private static String basePath = "C:/Users/Dela/test";
+  private String BASE_PATH;
 
-  private static String RDF_FILES = basePath + "/rdf-files.tar.bz2";
+  private String RDF_FILES;
 
-  private static String RDF_URL = "https://gutenberg.org/cache/epub/feeds/rdf-files.tar.bz2";
+  private String RDF_URL;
 
-  public void getRdfData() throws IOException, ParserConfigurationException, SAXException {
+  public void initFileRetrieval(String basePath, String rdfFiles, String rdfUrl)
+      throws IOException {
+    this.BASE_PATH = basePath;
+    this.RDF_FILES = rdfFiles;
+    this.RDF_URL = rdfUrl;
+    this.getRdfData();
+  }
+
+  public void getRdfData() throws IOException {
     URL url = new URL(RDF_URL);
     url.openConnection();
     Files.copy(url.openStream(), Paths.get(RDF_FILES));
@@ -36,10 +42,10 @@ public class FileRetrieval {
   private void extractFiles() {
     try {
       File inputFile = new File(RDF_FILES);
-      String outputFile = getFileName(inputFile, basePath);
+      String outputFile = getFileName(inputFile, BASE_PATH);
       File tarFile = new File(outputFile);
       tarFile = deCompressGZipFile(inputFile, tarFile);
-      File destFile = new File(basePath);
+      File destFile = new File(BASE_PATH);
       if (!destFile.exists()) {
         destFile.mkdir();
       }

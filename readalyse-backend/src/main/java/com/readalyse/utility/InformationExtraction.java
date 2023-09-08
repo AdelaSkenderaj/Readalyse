@@ -41,7 +41,7 @@ public class InformationExtraction {
 
   public void extractInformation(File dirPath) {
     try {
-      // This block configure the logger with handler and formatter
+      // This block configures the logger with handler and formatter
       fileHandler = new FileHandler("C:/Users/Dela/log/MyLogFile3.log");
       logger.addHandler(fileHandler);
       SimpleFormatter formatter = new SimpleFormatter();
@@ -67,11 +67,10 @@ public class InformationExtraction {
   }
 
   public BookEntity getBook(String path) {
-    String filePath = "C:/Users/Dela/test/pg" + path + ".rdf";
+    //    String filePath = "C:/Users/Dela/test/pg" + path + ".rdf";
     Model model = ModelFactory.createDefaultModel();
-    ;
     try {
-      model.read(filePath);
+      model.read(path);
     } catch (Exception e) {
       e.printStackTrace();
       return null;

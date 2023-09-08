@@ -62,6 +62,11 @@ CREATE TABLE READABILITY_SCORES (
     primary key (BOOK_ID)
 );
 
+CREATE TABLE JOB_EXECUTION_HISTORY (
+    JOB_ID varchar(255) not null,
+    primary key (JOB_ID)
+);
+
 CREATE TABLE AGENT (
     ID bigint not null auto_increment,
     PERSON bigint not null,
