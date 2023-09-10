@@ -50,6 +50,8 @@ public class StartController {
 
   @GetMapping("/book/{bookId}")
   public BookEntity getBook1(@PathVariable Long bookId) {
+    informationExtraction.getBook(String.valueOf(bookId));
+    informationExtraction.getBook(String.valueOf(1L));
     return informationExtraction.getBook(String.valueOf(bookId));
   }
 

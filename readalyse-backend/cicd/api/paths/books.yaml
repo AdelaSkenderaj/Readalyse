@@ -14,4 +14,4 @@ get:
               books:
                 type: array
                 items:
-                  $ref: '../components/schemas/Book.yaml'
+                  $ref: '../components/schemas/BookApi.yaml'

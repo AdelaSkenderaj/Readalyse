@@ -59,7 +59,8 @@ CREATE TABLE READABILITY_SCORES (
     FORCAST_INDEX float,
     LIX_INDEX float,
     RIX_INDEX float,
-    primary key (BOOK_ID)
+    primary key (BOOK_ID),
+    constraint FK_READABILITY_SCORES_BOOK foreign key (BOOK_ID) references BOOK(ID)
 );
 
 CREATE TABLE JOB_EXECUTION_HISTORY (

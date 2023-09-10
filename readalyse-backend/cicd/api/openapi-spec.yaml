@@ -13,5 +13,5 @@ paths:
 
 components:
   schemas:
-    Book:
-      $ref: './components/schemas/Book.yaml'
+    BookApi:
+      $ref: './components/schemas/BookApi.yaml'

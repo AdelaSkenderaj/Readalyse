@@ -1,8 +1,6 @@
 package com.readalyse.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Table(name = "JOB_EXECUTION_HISTORY")
@@ -15,5 +13,7 @@ import lombok.*;
 @ToString
 public class JobExecutionHistory {
 
-  @Id private String jobId;
+  @Id
+  @Column(name = "JOB_ID")
+  private String jobId;
 }

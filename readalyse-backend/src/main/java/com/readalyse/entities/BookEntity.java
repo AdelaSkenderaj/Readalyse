@@ -11,7 +11,6 @@ import lombok.*;
 @AllArgsConstructor
 @Getter
 @Setter
-@ToString
 public class BookEntity {
 
   @Id private Long id;
@@ -19,24 +18,25 @@ public class BookEntity {
   private String description;
   private Long downloads;
 
-  @OneToOne(cascade = CascadeType.MERGE)
+  @OneToOne(cascade = CascadeType.MERGE, mappedBy = "book")
+  @PrimaryKeyJoinColumn
   private ReadabilityScoresEntity readabilityScores;
 
-  @ManyToMany
+  @ManyToMany(cascade = CascadeType.MERGE)
   @JoinTable(
       name = "BOOK_AGENT",
       joinColumns = @JoinColumn(name = "BOOK"),
       inverseJoinColumns = @JoinColumn(name = "AGENT"))
   private List<AgentEntity> agents;
 
-  @ManyToMany
+  @ManyToMany(cascade = CascadeType.MERGE)
   @JoinTable(
       name = "BOOK_BOOKSHELF",
       joinColumns = @JoinColumn(name = "BOOK"),
       inverseJoinColumns = @JoinColumn(name = "BOOKSHELF"))
   private List<BookshelfEntity> bookshelves;
 
-  @ManyToMany
+  @ManyToMany(cascade = CascadeType.MERGE)
   @JoinTable(
       name = "BOOK_LANGUAGE",
       joinColumns = @JoinColumn(name = "BOOK"),
@@ -50,7 +50,7 @@ public class BookEntity {
       inverseJoinColumns = @JoinColumn(name = "RESOURCE"))
   private List<ResourceEntity> resources;
 
-  @ManyToMany
+  @ManyToMany(cascade = CascadeType.MERGE)
   @JoinTable(
       name = "BOOK_SUBJECT",
       joinColumns = @JoinColumn(name = "BOOK"),

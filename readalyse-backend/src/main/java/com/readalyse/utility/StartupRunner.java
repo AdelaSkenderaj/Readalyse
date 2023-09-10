@@ -19,6 +19,7 @@ public class StartupRunner implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
+    System.out.println("startup runner started");
     String jobName = "OneTimeDatabaseInsertJob";
     JobExecutionHistory jobExecutionHistory =
         jobExecutionHistoryRepository.findById(jobName).orElse(null);
@@ -27,9 +28,11 @@ public class StartupRunner implements CommandLineRunner {
           "C:/Users/Dela/background-workers/all-time-data",
           "C:/Users/Dela/background-workers/all-time-data/rdf-files.tar.bz2",
           "https://gutenberg.org/cache/epub/feeds/rdf-files.tar.bz2");
-      informationExtraction.extractInformation(new File(basePath));
+      informationExtraction.extractInformation(
+          new File("C:/Users/Dela/background-workers/all-time-data"));
       JobExecutionHistory job = new JobExecutionHistory(jobName);
       jobExecutionHistoryRepository.save(job);
     }
+    System.out.println("startup runner finished");
   }
 }

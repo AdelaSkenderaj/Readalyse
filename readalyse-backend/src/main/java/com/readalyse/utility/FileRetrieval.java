@@ -4,6 +4,8 @@ import java.io.*;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Objects;
+
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
 import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
@@ -32,11 +34,13 @@ public class FileRetrieval {
   }
 
   public void getRdfData() throws IOException {
-    URL url = new URL(RDF_URL);
-    url.openConnection();
-    Files.copy(url.openStream(), Paths.get(RDF_FILES));
-    extractFiles();
-    deleteZipFile();
+    if (Objects.requireNonNull(new File(BASE_PATH).listFiles()).length <= 0) {
+      URL url = new URL(RDF_URL);
+      url.openConnection();
+      Files.copy(url.openStream(), Paths.get(RDF_FILES));
+      extractFiles();
+      deleteZipFile();
+    }
   }
 
   private void extractFiles() {
