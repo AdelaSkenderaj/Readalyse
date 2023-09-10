@@ -16,7 +16,6 @@
 
     <modules>
         <module>readalyse-backend</module>
-        <module>readalyse-background-workers</module>
     </modules>
 
 </project>
