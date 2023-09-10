@@ -1,6 +1,7 @@
 package com.readalyse.controllers;
 
 import com.readalyse.entities.BookEntity;
+import com.readalyse.entities.ReadabilityScoresEntity;
 import com.readalyse.repositories.BookRepository;
 import com.readalyse.services.BookService;
 import com.readalyse.utility.FileRetrieval;
@@ -48,15 +49,18 @@ public class StartController {
     return bookRepository.findAll();
   }
 
-  @GetMapping("/book/{bookId}")
+ /* @GetMapping("/book/{bookId}")
   public BookEntity getBook1(@PathVariable Long bookId) {
-    informationExtraction.getBook(String.valueOf(bookId));
-    informationExtraction.getBook(String.valueOf(1L));
     return informationExtraction.getBook(String.valueOf(bookId));
-  }
+  }*/
 
   @GetMapping("/book/{bookId}/textbook")
   public String getText(@PathVariable Long bookId) {
     return bookService.getText(bookId);
+  }
+
+  @GetMapping("/book/{bookId}/scores")
+  public ReadabilityScoresEntity getScores(@PathVariable Long bookId) {
+    return bookService.getScores(bookId);
   }
 }

@@ -3,6 +3,7 @@ package com.readalyse.utility;
 import com.readalyse.entities.*;
 import com.readalyse.mappers.*;
 import com.readalyse.repositories.*;
+import com.readalyse.services.BookService;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -36,7 +37,9 @@ public class InformationExtraction {
   private final ResourceMapper resourceMapper;
 
   private final AgentMapper agentMapper;
+  private final BookService bookService;
 
+  private final AnalyzeText analyzeText;
   Logger logger = Logger.getLogger(InformationExtraction.class.getName());
   FileHandler fileHandler;
 
@@ -56,21 +59,21 @@ public class InformationExtraction {
     } catch (SecurityException | IOException e) {
       e.printStackTrace();
     }
-      File[] filesList = dirPath.listFiles();
+    File[] filesList = dirPath.listFiles();
     for (File file : filesList) {
       logger.info("********************** START OF BOOK ***********************");
       Long start = System.currentTimeMillis();
       BookEntity book = getBook(file.getPath());
       Long end = System.currentTimeMillis();
-//      if (book != null) {
-          logger.info("Book " + book.getId() + " took " + (end - start));
-//      }
+      //      if (book != null) {
+      logger.info("Book " + book.getId() + " took " + (end - start));
+      //      }
       logger.info("\n\n\n**********************END OF BOOK *************************\n\n\n");
     }
   }
 
   public BookEntity getBook(String path) {
-//        String filePath = "C:/Users/Dela/test/pg" + path + ".rdf";
+    //        String filePath = "C:/Users/Dela/test/pg" + path + ".rdf";
     Model model = ModelFactory.createDefaultModel();
     try {
       model.read(path);
@@ -89,6 +92,9 @@ public class InformationExtraction {
     book.setSubjects(subjects);
     book.setResources(resources);
     book.setAgents(agents);
+    String text = bookService.getText(book);
+    ReadabilityScoresEntity readabilityScores = analyzeText.calculateScores(text);
+    book.setReadabilityScores(readabilityScores);
     return bookRepository.save(book);
   }
 
@@ -188,7 +194,7 @@ public class InformationExtraction {
                   AgentTypeEntity agentType =
                       agentTypeRepository
                           .findByName(agent.getType().getName())
-                              .orElseGet(() -> agentTypeRepository.save(agent.getType()));
+                          .orElseGet(() -> agentTypeRepository.save(agent.getType()));
                   agent.setPerson(person);
                   agent.setType(agentType);
                   Optional<AgentEntity> existingAgent =

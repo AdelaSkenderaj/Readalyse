@@ -31,7 +31,7 @@ public class BookData {
   private void analyzeText(String text) {
     try (InputStream modelIn =
         new FileInputStream(
-            "src/main/resources/sentence_detection/en-sent.bin")) { // Provide the path to the
+            "readalyse-backend/src/main/resources/sentence_detection/en-sent.bin")) { // Provide the path to the
       SentenceModel model = new SentenceModel(modelIn);
       SentenceDetectorME sentenceDetector = new SentenceDetectorME(model);
 

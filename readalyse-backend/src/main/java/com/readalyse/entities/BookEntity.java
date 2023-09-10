@@ -18,7 +18,7 @@ public class BookEntity {
   private String description;
   private Long downloads;
 
-  @OneToOne(cascade = CascadeType.MERGE, mappedBy = "book")
+  @OneToOne(cascade = CascadeType.MERGE)
   @PrimaryKeyJoinColumn
   private ReadabilityScoresEntity readabilityScores;
 
