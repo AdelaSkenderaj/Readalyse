@@ -15,3 +15,5 @@ components:
   schemas:
     BookApi:
       $ref: './components/schemas/BookApi.yaml'
+    BookList:
+      $ref: './components/schemas/BookList.yaml'

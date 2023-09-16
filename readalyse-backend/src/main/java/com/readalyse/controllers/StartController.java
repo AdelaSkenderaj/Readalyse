@@ -9,8 +9,12 @@ import com.readalyse.utility.InformationExtraction;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.xml.parsers.ParserConfigurationException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -46,10 +50,10 @@ public class StartController {
 
   @GetMapping("/books")
   public List<BookEntity> findAll() {
-    return bookRepository.findAll();
+    return bookRepository.findAll(Pageable.ofSize(200)).getContent();
   }
 
- /* @GetMapping("/book/{bookId}")
+  /* @GetMapping("/book/{bookId}")
   public BookEntity getBook1(@PathVariable Long bookId) {
     return informationExtraction.getBook(String.valueOf(bookId));
   }*/

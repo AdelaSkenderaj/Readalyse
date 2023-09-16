@@ -1,0 +1,42 @@
+<div class="p-4">
+
+  <div class="container-fluid mb-4 rounded-4" style="background-color: white">
+    <div class="col p-2">
+      <div class="row row-cols-6 justify-content-between">
+        <h3 class="fs-5 py-2 fw-semibold" style="width: max-content">Recommended</h3>
+        <button class="border-0 rounded fw-semibold align-self-center me-3" style="background-color: #E6EFFE; color: #578AFE; width: max-content; height: max-content" routerLink="recommended">See All <fa-icon [icon]="arrowRightIcon"></fa-icon></button>
+      </div>
+     <app-book-list [bookList]="bookList.slice(0,5)"></app-book-list>
+    </div>
+  </div>
+
+  <div class="container-fluid mb-4 rounded-4" style="background-color: white">
+    <div class="col p-2">
+      <div class="row row-cols-6 justify-content-between">
+        <h3 class="fs-5 py-2 fw-semibold" style="width: max-content">New additions</h3>
+        <button class="border-0 rounded fw-semibold align-self-center me-3" style="background-color: #E6EFFE; color: #578AFE; width: max-content; height: max-content" routerLink="new">See All <fa-icon [icon]="arrowRightIcon"></fa-icon></button>
+      </div>
+      <app-book-list [bookList]="bookList.slice(0,5)"></app-book-list>
+    </div>
+  </div>
+
+  <div class="container-fluid mb-4 rounded-4" style="background-color: white">
+    <div class="col p-2">
+      <div class="row row-cols-6 justify-content-between">
+        <h3 class="fs-5 py-2 fw-semibold" style="width: max-content">Recommended</h3>
+        <button class="border-0 rounded fw-semibold align-self-center me-3" style="background-color: #E6EFFE; color: #578AFE; width: max-content; height: max-content" routerLink="recommended">See All <fa-icon [icon]="arrowRightIcon"></fa-icon></button>
+      </div>
+      <app-book-list [bookList]="bookList.slice(0,5)"></app-book-list>
+    </div>
+  </div>
+
+  <div class="container-fluid mb-4 rounded-4" style="background-color: white">
+    <div class="col p-2">
+      <div class="row row-cols-6 justify-content-between">
+        <h3 class="fs-5 py-2 fw-semibold" style="width: max-content">Recommended</h3>
+        <button class="border-0 rounded fw-semibold align-self-center me-3" style="background-color: #E6EFFE; color: #578AFE; width: max-content; height: max-content" routerLink="recommended">See All <fa-icon [icon]="arrowRightIcon"></fa-icon></button>
+      </div>
+      <app-book-list [bookList]="bookList.slice(0,5)"></app-book-list>
+    </div>
+  </div>
+</div>

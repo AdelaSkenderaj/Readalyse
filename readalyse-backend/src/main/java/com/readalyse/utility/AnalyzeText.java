@@ -6,10 +6,10 @@ import com.readalyse.entities.ReadabilityScoresEntity;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
-@RequiredArgsConstructor
+@Component
 public class AnalyzeText {
   Pattern regex = Pattern.compile(PROJECT_GUTENBERG_MARKERS_PATTERN, Pattern.MULTILINE);
 
@@ -51,7 +51,9 @@ public class AnalyzeText {
   }
 
   private Double colemanLiauIndex(BookData data) {
-    return (0.0588 * ((data.getLetters() / (double) data.getWords()) * 100) - 0.296 * ((data.getSentences() / (double) data.getWords()) * 100) - 15.8);
+    return (0.0588 * ((data.getLetters() / (double) data.getWords()) * 100)
+        - 0.296 * ((data.getSentences() / (double) data.getWords()) * 100)
+        - 15.8);
   }
 
   private Double smogIndex(BookData data) {

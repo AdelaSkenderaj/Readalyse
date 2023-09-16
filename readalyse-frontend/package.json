@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "generate:api": "openapi-generator-cli generate -i ./config/api/openapi.yaml -g typescript-angular -o src/app/data-access/api"
+    "generate:api": "openapi-generator-cli generate -i ./cicd/api/openapi-spec.yaml -g typescript-angular -o src/app/data-access/api"
   },
   "private": true,
   "dependencies": {
@@ -19,7 +19,12 @@
     "@angular/platform-browser": "^14.0.0",
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
+    "@fortawesome/angular-fontawesome": "^0.11.1",
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@fortawesome/free-solid-svg-icons": "^6.4.2",
+    "@ng-bootstrap/ng-bootstrap": "^13.1.1",
     "@openapitools/openapi-generator-cli": "^2.7.0",
+    "bootstrap": "^5.3.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

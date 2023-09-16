@@ -1,0 +1,117 @@
+<!--<div class="container-fluid">
+<div class="row">
+  &lt;!&ndash; Side Navigation &ndash;&gt;
+  <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+    <div class="position-sticky">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <button class="btn btn-dark toggle-btn" (click)="toggleSidenav()">
+            <i class="fa fa-bars"></i>
+          </button>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link row" routerLink="/discover">
+            <i class="fa fa-home"></i>
+            <span *ngIf="isSidenavOpen">Discover</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link row" href="/category">
+            <i class="fa fa-info-circle"></i>
+            <span *ngIf="isSidenavOpen">Category</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link row" href="#">
+            <i class="fa fa-cogs"></i>
+            <span *ngIf="isSidenavOpen">Services</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link row" href="#">
+            <i class="fa fa-image"></i>
+            <span *ngIf="isSidenavOpen">Portfolio</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link row" href="#">
+            <i class="fa fa-envelope"></i>
+            <span *ngIf="isSidenavOpen">Contact</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+  </div>-->
+<div class="container-fluid vh-100">
+  <div class="row">
+    <nav class="col-md-3 col-lg-2 d-md-block vh-100 sidebar">
+      <div class="my-5 d-flex flex-row">
+        <fa-icon style="color: #000055" size="2x" [icon]="homeIcon"></fa-icon>
+        <p class="px-2 fs-3 fw-bold"> Readalyse </p>
+      </div>
+      <!-- Sidebar content goes here -->
+      <ul class="nav flex-column m-4">
+        <li class="nav-item p-2" routerLink="discover" role="button">
+          <div class="d-flex flex-row">
+            <fa-icon style="color: #000055" size="xl" [icon]="homeIcon"></fa-icon>
+            <p class="px-2 fs-6 fw-semibold"> Discover </p>
+          </div>
+        </li>
+        <!--<li class="nav-item p-2">
+          <div class="d-flex flex-row" routerLink="category" role="button">
+            <fa-icon style="color: #000055" size="xl" [icon]="categoryIcon"></fa-icon>
+            <p class="px-2 fs-6 fw-semibold"> Category </p>
+          </div>
+        </li>-->
+        <li class="nav-item p-2">
+          <div class="d-flex flex-row">
+            <fa-icon style="color: #000055" size="xl" [icon]="libraryIcon"></fa-icon>
+            <p class="px-2 fs-6 fw-semibold"> My Library </p>
+          </div>
+        </li>
+        <li class="nav-item p-2">
+          <div class="d-flex flex-row">
+            <fa-icon style="color: #000055" size="xl" [icon]="downloadIcon"></fa-icon>
+            <p class="px-2 fs-6 fw-semibold"> Download </p>
+          </div>
+        </li>
+        <li class="nav-item p-2">
+          <div class="d-flex flex-row">
+            <fa-icon style="color: #000055" size="xl" [icon]="favoriteIcon"></fa-icon>
+            <p class="px-2 fs-6 fw-semibold"> Favourite </p>
+          </div>
+        </li>
+        <br>
+        <hr>
+        <li class="nav-item p-2">
+          <div class="d-flex flex-row">
+            <fa-icon style="color: #000055" size="xl" [icon]="settingsIcon"></fa-icon>
+            <p class="px-2 fs-6 fw-semibold"> Settings </p>
+          </div>
+        </li>
+
+        <li class="nav-item p-2">
+          <div class="d-flex flex-row">
+            <fa-icon style="color: #000055" size="xl" [icon]="logoutIcon"></fa-icon>
+            <p class="px-2 fs-6 fw-semibold"> Logout </p>
+          </div>
+        </li>
+        <!-- Add more sidebar items as needed -->
+      </ul>
+    </nav>
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 p-0" style="background-color: #E6E9EF">
+      <nav class="pt-4" style="height: 80px; background: white">
+        <div class="ms-4 rounded bg-light py-2 px-3" style="width: 50%"><fa-icon [icon]="searchIcon"></fa-icon> <input type="search" class="bg-light border-0 ms-2" placeholder="Search your favorite books" style="width: 90%; background-color: #E6E9EF"></div>
+      </nav>
+
+    <!-- Component content from routing outlet will be displayed here -->
+      <div class="">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+  </div>
+</div>
+

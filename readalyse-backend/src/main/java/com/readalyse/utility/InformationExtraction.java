@@ -65,9 +65,10 @@ public class InformationExtraction {
       Long start = System.currentTimeMillis();
       BookEntity book = getBook(file.getPath());
       Long end = System.currentTimeMillis();
-      //      if (book != null) {
-      logger.info("Book " + book.getId() + " took " + (end - start));
-      //      }
+      if (book != null) {
+          bookService.saveScores(book);
+          logger.info("Book " + book.getId() + " took " + (end - start));
+      }
       logger.info("\n\n\n**********************END OF BOOK *************************\n\n\n");
     }
   }
@@ -92,9 +93,9 @@ public class InformationExtraction {
     book.setSubjects(subjects);
     book.setResources(resources);
     book.setAgents(agents);
-    String text = bookService.getText(book);
+    /*String text = bookService.getText(book);
     ReadabilityScoresEntity readabilityScores = analyzeText.calculateScores(text);
-    book.setReadabilityScores(readabilityScores);
+    book.setReadabilityScores(readabilityScores);*/
     return bookRepository.save(book);
   }
 

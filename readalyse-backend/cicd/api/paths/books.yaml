@@ -9,9 +9,4 @@ get:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              books:
-                type: array
-                items:
-                  $ref: '../components/schemas/BookApi.yaml'
+            $ref: '../components/schemas/BookList.yaml'

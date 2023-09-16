@@ -1,0 +1,19 @@
+openapi: 3.0.0
+info:
+  title: Readalyse API
+  description: Readalyse API
+  version: 0.0.1
+servers:
+  - url: http://localhost:8080/api
+    description: Generated server url
+
+paths:
+  /books:
+    $ref: './paths/books.yaml'
+
+components:
+  schemas:
+    BookApi:
+      $ref: './components/schemas/BookApi.yaml'
+    BookList:
+      $ref: './components/schemas/BookList.yaml'
