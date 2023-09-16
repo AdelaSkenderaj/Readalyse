@@ -10,10 +10,28 @@ servers:
 paths:
   /books:
     $ref: './paths/books.yaml'
-
+  /discover/recommended:
+    $ref: './paths/recommended.yaml'
 components:
   schemas:
-    BookApi:
-      $ref: './components/schemas/BookApi.yaml'
+    AgentType:
+      $ref: './components/schemas/AgentType.yaml'
+    Agent:
+      $ref: './components/schemas/Agent.yaml'
+    Bookshelf:
+      $ref: './components/schemas/Bookshelf.yaml'
+    Language:
+      $ref: './components/schemas/Language.yaml'
+    Person:
+      $ref: './components/schemas/Person.yaml'
+    Resource:
+      $ref: './components/schemas/Resource.yaml'
+    Subject:
+      $ref: './components/schemas/Subject.yaml'
+    Book:
+      $ref: './components/schemas/Book.yaml'
     BookList:
       $ref: './components/schemas/BookList.yaml'
+    Pagination:
+      $ref: './components/schemas/Pagination.yaml'
+

@@ -9,12 +9,10 @@ import com.readalyse.utility.InformationExtraction;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.Collectors;
 import javax.xml.parsers.ParserConfigurationException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -44,13 +42,14 @@ public class StartController {
   }*/
 
   @GetMapping("/retrieveData2")
-  public void retrieveFiles() throws IOException, ParserConfigurationException, SAXException {
+  public void retrieveFiles() throws IOException {
     fileRetrieval.getRdfData();
   }
 
   @GetMapping("/books")
   public List<BookEntity> findAll() {
-    return bookRepository.findAll(Pageable.ofSize(200)).getContent();
+    Page<BookEntity> books = bookRepository.findAll(PageRequest.of(0, 100));
+    return books.getContent();
   }
 
   /* @GetMapping("/book/{bookId}")

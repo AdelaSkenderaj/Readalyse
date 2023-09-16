@@ -66,8 +66,8 @@ public class InformationExtraction {
       BookEntity book = getBook(file.getPath());
       Long end = System.currentTimeMillis();
       if (book != null) {
-          bookService.saveScores(book);
-          logger.info("Book " + book.getId() + " took " + (end - start));
+        bookService.saveScores(book);
+        logger.info("Book " + book.getId() + " took " + (end - start));
       }
       logger.info("\n\n\n**********************END OF BOOK *************************\n\n\n");
     }
@@ -93,9 +93,6 @@ public class InformationExtraction {
     book.setSubjects(subjects);
     book.setResources(resources);
     book.setAgents(agents);
-    /*String text = bookService.getText(book);
-    ReadabilityScoresEntity readabilityScores = analyzeText.calculateScores(text);
-    book.setReadabilityScores(readabilityScores);*/
     return bookRepository.save(book);
   }
 
@@ -123,7 +120,7 @@ public class InformationExtraction {
 
                   return existingBookshelf.get(); // Return the existing bookshelf
                 })
-            .collect(Collectors.toList());
+            .toList();
     Long end = System.currentTimeMillis();
     logger.info("Get bookshelves " + " took " + (end - start));
     return bookshelfEntities;
@@ -144,7 +141,7 @@ public class InformationExtraction {
                   }
                   return existingLanguage.get();
                 })
-            .collect(Collectors.toList());
+            .toList();
     Long end = System.currentTimeMillis();
     logger.info("Get languages " + " took " + (end - start));
     return languages;
@@ -165,7 +162,7 @@ public class InformationExtraction {
                   }
                   return existingSubject.get();
                 })
-            .collect(Collectors.toList());
+            .toList();
 
     Long end = System.currentTimeMillis();
     logger.info("Get subjects  " + " took " + (end - start));
@@ -205,7 +202,7 @@ public class InformationExtraction {
                   }
                   return existingAgent.get();
                 })
-            .collect(Collectors.toList());
+            .toList();
     Long end = System.currentTimeMillis();
     logger.info("Get agents " + " took " + (end - start));
     return agents;

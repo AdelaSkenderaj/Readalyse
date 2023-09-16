@@ -5,9 +5,7 @@ import static com.readalyse.utility.Constants.PROJECT_GUTENBERG_MARKERS_PATTERN;
 import com.readalyse.entities.ReadabilityScoresEntity;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 @Component
 public class AnalyzeText {
@@ -78,7 +76,7 @@ public class AnalyzeText {
   }
 
   private Double lixFormula(BookData data) {
-    return ((data.getLongWords() * 100 / data.getWords())
+    return (((double)data.getLongWords() * 100 / data.getWords())
         + ((double) data.getWords() / data.getSentences()));
   }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {BookApi} from "../data-access/api";
+import {Book, DiscoverService} from "../data-access/api";
 import {faChevronRight} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
@@ -10,48 +10,29 @@ import {faChevronRight} from "@fortawesome/free-solid-svg-icons";
 export class DiscoverComponent implements OnInit {
 
   arrowRightIcon = faChevronRight;
+  recommendedList: Book[] | undefined;
+  newList: Book[] | undefined;
 
+  trendingList: Book[] | undefined;
 
-  bookList: BookApi[];
-  constructor() {
-    this.bookList = [
-      {
-      id: 1,
-      title: "Title",
-      description: "Description",
-      downloads: "123"
-      },
-      {
-        id: 2,
-        title: "Title 2",
-        description: "Description 2",
-        downloads: "123"
-      },
-      {
-        id: 3,
-        title: "Title 3",
-        description: "Description 3",
-        downloads: "123"
-      },
-      {
-        id: 4,
-        title: "Title 4",
-        description: "Description 4",
-        downloads: "123"
-      },
-      {
-        id: 5,
-        title: "Title 5",
-        description: "Description 5",
-        downloads: "123"
-      },
-      {
-        id: 6,
-        title: "Title 6",
-        description: "Description 6",
-        downloads: "123"
-      },
-    ]
+  highestRatedList: Book[] | undefined;
+
+  constructor(private discoverService: DiscoverService) {
+    this.discoverService.getRecommendedBooks({page: 0, size: 5}).subscribe((response) => {
+    this.recommendedList = response.books;
+    })
+
+    this.discoverService.getRecommendedBooks({page: 20, size: 5}).subscribe((response) => {
+      this.newList = response.books;
+    })
+
+    this.discoverService.getRecommendedBooks({page: 687, size: 5}).subscribe((response) => {
+      this.trendingList = response.books;
+    })
+
+    this.discoverService.getRecommendedBooks({page: 1984, size: 5}).subscribe((response) => {
+      this.highestRatedList = response.books;
+    })
   }
 
   ngOnInit(): void {

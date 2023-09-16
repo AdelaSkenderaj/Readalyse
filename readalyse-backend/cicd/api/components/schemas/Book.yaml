@@ -1,0 +1,32 @@
+type: object
+properties:
+  id:
+    type: integer
+    format: int64
+  title:
+    type: string
+  description:
+    type: string
+  downloads:
+    type: string
+  agents:
+    type: array
+    items:
+      $ref: '../schemas/Agent.yaml'
+  bookshelves:
+    type: array
+    items:
+      $ref: '../schemas/Bookshelf.yaml'
+  languages:
+    type: array
+    items:
+      $ref: '../schemas/Language.yaml'
+  resources:
+    type: array
+    items:
+      $ref: '../schemas/Resource.yaml'
+  subjects:
+    type: array
+    items:
+      $ref: '../schemas/Subject.yaml'
+description: Book model.

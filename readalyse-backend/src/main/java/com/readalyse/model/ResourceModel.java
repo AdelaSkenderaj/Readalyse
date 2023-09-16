@@ -6,7 +6,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class Resource {
+public class ResourceModel {
   private Long id;
   private String url;
   private Long size;

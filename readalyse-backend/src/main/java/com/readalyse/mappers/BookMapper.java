@@ -2,6 +2,8 @@ package com.readalyse.mappers;
 
 import com.readalyse.entities.BookEntity;
 import com.readalyse.model.Book;
+import com.readalyse.model.BookModel;
+import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -14,5 +16,7 @@ public interface BookMapper {
   @Mapping(target = "languages", ignore = true)
   @Mapping(target = "resources", ignore = true)
   @Mapping(target = "subjects", ignore = true)
-  BookEntity modelToEntity(Book book);
+  BookEntity modelToEntity(BookModel book);
+
+  List<Book> entitiesToModels(List<BookEntity> bookEntityList);
 }

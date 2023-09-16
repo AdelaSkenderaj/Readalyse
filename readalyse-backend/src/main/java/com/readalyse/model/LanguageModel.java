@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class Bookshelf {
+public class LanguageModel {
   private Long id;
-  private String name;
+  private String language;
 }

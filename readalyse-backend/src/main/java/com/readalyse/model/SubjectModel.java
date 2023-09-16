@@ -5,11 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class Person {
+public class SubjectModel {
   private Long id;
   private String name;
-  private String alias;
-  private Long birthdate;
-  private Long deathdate;
-  private String webpage;
 }

@@ -9,10 +9,12 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { BookApi } from './bookApi';
+import { Pagination } from './pagination';
+import { Book } from './book';
 
 
 export interface BookList { 
-    books?: Array<BookApi>;
+    books?: Array<Book>;
+    pagination?: Pagination;
 }
 

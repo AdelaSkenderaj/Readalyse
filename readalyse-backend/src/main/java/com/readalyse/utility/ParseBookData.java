@@ -6,15 +6,15 @@ import org.apache.jena.rdf.model.Model;
 
 public interface ParseBookData {
 
-  Book getBaseBookInformation(Model model);
+  BookModel getBaseBookInformation(Model model);
 
-  List<Bookshelf> getBookshelves(Model model);
+  List<BookshelfModel> getBookshelves(Model model);
 
-  List<Language> getLanguages(Model model);
+  List<LanguageModel> getLanguages(Model model);
 
-  List<Subject> getSubjects(Model model);
+  List<SubjectModel> getSubjects(Model model);
 
-  List<Resource> getResources(Model model);
+  List<ResourceModel> getResources(Model model);
 
-  List<Agent> getAgents(Model model);
+  List<AgentModel> getAgents(Model model);
 }

@@ -5,7 +5,8 @@ import lombok.Data;
 
 @Data
 @Builder
-public class AgentType {
+public class AgentModel {
   private Long id;
-  private String name;
+  private PersonModel person;
+  private AgentTypeModel type;
 }

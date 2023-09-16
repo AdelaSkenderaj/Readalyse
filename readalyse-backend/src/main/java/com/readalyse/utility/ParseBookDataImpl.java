@@ -15,8 +15,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class ParseBookDataImpl implements ParseBookData {
   @Override
-  public Book getBaseBookInformation(Model model) {
-    Book book = null;
+  public BookModel getBaseBookInformation(Model model) {
+    BookModel book = null;
     Query query = QueryFactory.create(BOOK_INFORMATION_QUERY);
     try (QueryExecution qexec = QueryExecutionFactory.create(query, model)) {
       ResultSet result = qexec.execSelect();
@@ -28,7 +28,7 @@ public class ParseBookDataImpl implements ParseBookData {
         org.apache.jena.rdf.model.Resource ebook = soln.getResource("ebook");
 
         book =
-            Book.builder()
+            BookModel.builder()
                 .id(Long.valueOf(formatValue(ebook)))
                 .title(formatValue(title))
                 .description(formatValue(description))
@@ -40,8 +40,8 @@ public class ParseBookDataImpl implements ParseBookData {
   }
 
   @Override
-  public List<Bookshelf> getBookshelves(Model model) {
-    List<Bookshelf> bookshelves = new ArrayList<>();
+  public List<BookshelfModel> getBookshelves(Model model) {
+    List<BookshelfModel> bookshelves = new ArrayList<>();
     Query query = QueryFactory.create(BOOKSHELVES_QUERY);
     try (QueryExecution qexec = QueryExecutionFactory.create(query, model)) {
       ResultSet result = qexec.execSelect();
@@ -49,7 +49,7 @@ public class ParseBookDataImpl implements ParseBookData {
         QuerySolution soln = result.nextSolution();
         Literal name = soln.getLiteral("value");
 
-        Bookshelf bookshelf = Bookshelf.builder().name(formatValue(name)).build();
+        BookshelfModel bookshelf = BookshelfModel.builder().name(formatValue(name)).build();
         bookshelves.add(bookshelf);
       }
     }
@@ -57,8 +57,8 @@ public class ParseBookDataImpl implements ParseBookData {
   }
 
   @Override
-  public List<Language> getLanguages(Model model) {
-    List<Language> languages = new ArrayList<>();
+  public List<LanguageModel> getLanguages(Model model) {
+    List<LanguageModel> languages = new ArrayList<>();
     Query query = QueryFactory.create(LANGUAGES_QUERY);
     try (QueryExecution qexec = QueryExecutionFactory.create(query, model)) {
       ResultSet result = qexec.execSelect();
@@ -66,7 +66,7 @@ public class ParseBookDataImpl implements ParseBookData {
         QuerySolution soln = result.nextSolution();
         Literal value = soln.getLiteral("value");
 
-        Language language = Language.builder().language(formatValue(value)).build();
+        LanguageModel language = LanguageModel.builder().language(formatValue(value)).build();
         languages.add(language);
       }
     }
@@ -74,8 +74,8 @@ public class ParseBookDataImpl implements ParseBookData {
   }
 
   @Override
-  public List<Subject> getSubjects(Model model) {
-    List<Subject> subjects = new ArrayList<>();
+  public List<SubjectModel> getSubjects(Model model) {
+    List<SubjectModel> subjects = new ArrayList<>();
     Query query = QueryFactory.create(SUBJECTS_QUERY);
     try (QueryExecution qexec = QueryExecutionFactory.create(query, model)) {
       ResultSet result = qexec.execSelect();
@@ -83,7 +83,7 @@ public class ParseBookDataImpl implements ParseBookData {
         QuerySolution soln = result.nextSolution();
         Literal value = soln.getLiteral("value");
 
-        Subject subject = Subject.builder().name(formatValue(value)).build();
+        SubjectModel subject = SubjectModel.builder().name(formatValue(value)).build();
         subjects.add(subject);
       }
     }
@@ -91,8 +91,8 @@ public class ParseBookDataImpl implements ParseBookData {
   }
 
   @Override
-  public List<Resource> getResources(Model model) {
-    List<Resource> resources = new ArrayList<>();
+  public List<ResourceModel> getResources(Model model) {
+    List<ResourceModel> resources = new ArrayList<>();
     Query query = QueryFactory.create(RESOURCES_QUERY);
     try (QueryExecution qexec = QueryExecutionFactory.create(query, model)) {
       ResultSet result = qexec.execSelect();
@@ -105,8 +105,8 @@ public class ParseBookDataImpl implements ParseBookData {
 
         String type = Optional.ofNullable(value).map(Literal::toString).orElse(null);
 
-        Resource resource =
-            Resource.builder()
+        ResourceModel resource =
+            ResourceModel.builder()
                 .url(
                     Optional.ofNullable(file)
                         .map(org.apache.jena.rdf.model.Resource::toString)
@@ -125,8 +125,8 @@ public class ParseBookDataImpl implements ParseBookData {
   }
 
   @Override
-  public List<Agent> getAgents(Model model) {
-    List<Agent> agents = new ArrayList<>();
+  public List<AgentModel> getAgents(Model model) {
+    List<AgentModel> agents = new ArrayList<>();
     Query query = QueryFactory.create(AGENT_QUERY);
     try (QueryExecution qexec = QueryExecutionFactory.create(query, model)) {
       ResultSet result = qexec.execSelect();
@@ -143,9 +143,9 @@ public class ParseBookDataImpl implements ParseBookData {
         Long birthdateValue = birthdate != null ? Long.parseLong(formatValue(birthdate)) : null;
         Long deathdateValue = deathdate != null ? Long.parseLong(formatValue(deathdate)) : null;
 
-        AgentType agentType = AgentType.builder().name(formatValue(predicate)).build();
-        Person person =
-            Person.builder()
+        AgentTypeModel agentType = AgentTypeModel.builder().name(formatValue(predicate)).build();
+        PersonModel person =
+            PersonModel.builder()
                 .id(Long.valueOf(formatValue(id)))
                 .name(formatValue(name))
                 .alias(formatValue(alias))
@@ -156,7 +156,7 @@ public class ParseBookDataImpl implements ParseBookData {
                         .map(org.apache.jena.rdf.model.Resource::toString)
                         .orElse(null))
                 .build();
-        Agent agent = Agent.builder().person(person).type(agentType).build();
+        AgentModel agent = AgentModel.builder().person(person).type(agentType).build();
         agents.add(agent);
       }
     }

@@ -3,10 +3,12 @@ properties:
   id:
     type: integer
     format: int64
-  title:
+  url:
     type: string
-  description:
+  size:
+    type: integer
+    format: int64
+  modified:
     type: string
-  downloads:
+  type:
     type: string
-description: Book model.

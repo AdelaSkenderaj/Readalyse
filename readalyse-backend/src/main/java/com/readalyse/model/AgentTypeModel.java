@@ -5,9 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class Book {
+public class AgentTypeModel {
   private Long id;
-  private String title;
-  private String description;
-  private Long downloads;
+  private String name;
 }
