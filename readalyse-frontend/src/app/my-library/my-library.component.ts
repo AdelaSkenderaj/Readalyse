@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Book, DiscoverService} from "../data-access/api";
+import {Book, LibraryService} from "../data-access/api";
 
 @Component({
   selector: 'app-my-library',
@@ -12,17 +12,17 @@ export class MyLibraryComponent implements OnInit {
   finished: Book[] | undefined;
   favorites: Book[] | undefined;
 
-  constructor(private discoverService: DiscoverService) {
-    this.discoverService.getRecommendedBooks({page: 7, size: 5}).subscribe((response) => {
+  constructor(private libraryService: LibraryService) {
+    this.libraryService.getCurrentlyReadingBooksForUser({page: 7, size: 5}).subscribe((response) => {
       this.currentlyReading = response.books;
     })
-    this.discoverService.getRecommendedBooks({page: 700, size: 5}).subscribe((response) => {
+    this.libraryService.getWantToReadBooksForUser({page: 700, size: 5}).subscribe((response) => {
       this.wantToRead = response.books;
     })
-    this.discoverService.getRecommendedBooks({page: 1637, size: 5}).subscribe((response) => {
+    this.libraryService.getFinishedReadingBooksForUser({page: 1637, size: 5}).subscribe((response) => {
       this.finished = response.books;
     })
-    this.discoverService.getRecommendedBooks({page: 13827, size: 5}).subscribe((response) => {
+    this.libraryService.getFavoriteBooksForUser({page: 13827, size: 5}).subscribe((response) => {
       this.favorites = response.books;
     })
   }

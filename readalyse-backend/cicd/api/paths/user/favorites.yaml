@@ -1,0 +1,17 @@
+post:
+  tags:
+    - Library
+  description: Get Favorite Books of a user
+  operationId: getFavoriteBooksForUser
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/Pagination.yaml'
+  responses:
+    "200":
+      description: Successful operation.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Book/BookList.yaml'

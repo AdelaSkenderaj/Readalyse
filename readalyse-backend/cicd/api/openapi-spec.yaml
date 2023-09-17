@@ -21,6 +21,14 @@ paths:
     $ref: './paths/discover/highest-rated.yaml'
   /review/{reviewId}:
     $ref: './paths/review/review.yaml'
+  /library/currently-reading:
+    $ref: './paths/user/currently-reading.yaml'
+  /library/want-to-read:
+    $ref: './paths/user/want-to-read.yaml'
+  /library/favorites:
+    $ref: './paths/user/favorites.yaml'
+  /library/finished-reading:
+    $ref: './paths/user/finished.yaml'
 components:
   schemas:
     BookList:

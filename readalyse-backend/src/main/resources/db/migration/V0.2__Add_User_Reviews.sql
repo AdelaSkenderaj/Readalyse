@@ -18,3 +18,18 @@ CREATE TABLE REVIEW (
     primary key (ID),
     constraint FK_REVIEW_USER foreign key (USER_ID) references USER(ID),
 );
+
+CREATE TABLE READING_STATUS (
+    USER_ID bigint not null,
+    BOOK_ID bigint not null,
+    STATUS varchar(255) not null,
+    constraint FK_READING_STATUS_USER_BOOK foreign key (USER_ID) references USER(ID),
+    constraint FK_READING_STATUS_BOOK_USER foreign key (BOOK_ID) references BOOK(ID),
+);
+
+CREATE TABLE FAVORITE_BOOKS (
+    USER_ID bigint not null,
+    BOOK_ID bigint not null,
+    constraint FK_FAVORITE_BOOKS_USER_BOOK foreign key (USER_ID) references USER(ID),
+    constraint FK_FAVORITE_BOOKS_BOOK_USER foreign key (BOOK_ID) references BOOK(ID),
+);

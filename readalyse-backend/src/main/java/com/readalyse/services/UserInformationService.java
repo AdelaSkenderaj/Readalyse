@@ -12,13 +12,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class DiscoverService {
+public class UserInformationService {
 
   private final BookRepository bookRepository;
   private final BookMapper bookMapper;
 
-  // TODO Change logic for each discover method
-  public BookList getRecommendedBooks(Pagination pageRequest) {
+  public BookList getCurrentlyReadingBooksForUser(Pagination pageRequest) {
     Page<BookEntity> books =
         bookRepository.findAll(PageRequest.of(pageRequest.getPage(), pageRequest.getSize()));
     Pagination pagination =
@@ -32,7 +31,7 @@ public class DiscoverService {
         .pagination(pagination);
   }
 
-  public BookList getNewBooks(Pagination pageRequest) {
+  public BookList getFavoriteBooksForUser(Pagination pageRequest) {
     Page<BookEntity> books =
         bookRepository.findAll(PageRequest.of(pageRequest.getPage(), pageRequest.getSize()));
     Pagination pagination =
@@ -46,7 +45,7 @@ public class DiscoverService {
         .pagination(pagination);
   }
 
-  public BookList getTrendingBooks(Pagination pageRequest) {
+  public BookList getWantToReadBooksForUser(Pagination pageRequest) {
     Page<BookEntity> books =
         bookRepository.findAll(PageRequest.of(pageRequest.getPage(), pageRequest.getSize()));
     Pagination pagination =
@@ -60,7 +59,7 @@ public class DiscoverService {
         .pagination(pagination);
   }
 
-  public BookList getHighestRatedBooks(Pagination pageRequest) {
+  public BookList getFinishedReadingBooksForUser(Pagination pageRequest) {
     Page<BookEntity> books =
         bookRepository.findAll(PageRequest.of(pageRequest.getPage(), pageRequest.getSize()));
     Pagination pagination =

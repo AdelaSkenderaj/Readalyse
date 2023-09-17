@@ -1,0 +1,17 @@
+post:
+  tags:
+    - Library
+  description: Get Finished Reading Books For User
+  operationId: getFinishedReadingBooksForUser
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/Pagination.yaml'
+  responses:
+    "200":
+      description: Successful operation.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Book/BookList.yaml'

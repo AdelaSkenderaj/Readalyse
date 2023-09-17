@@ -1,0 +1,17 @@
+post:
+  tags:
+    - Library
+  description: Get Want To Read Books For User
+  operationId: getWantToReadBooksForUser
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/Pagination.yaml'
+  responses:
+    "200":
+      description: Successful operation.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Book/BookList.yaml'

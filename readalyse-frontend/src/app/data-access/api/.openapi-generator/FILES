@@ -5,6 +5,7 @@ api/agent.service.ts
 api/api.ts
 api/book.service.ts
 api/discover.service.ts
+api/library.service.ts
 api/review.service.ts
 configuration.ts
 encoder.ts
