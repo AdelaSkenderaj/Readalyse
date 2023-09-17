@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import {NavigationComponent} from "./navigation/navigation.component";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {HttpClientModule} from "@angular/common/http";
+import { AnalyseComponent } from './analyse/analyse.component';
 
 @NgModule({
   declarations: [

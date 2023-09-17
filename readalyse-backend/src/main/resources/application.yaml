@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: ${DB_JDBC_URL:jdbc:mariadb://localhost:3306/test}
+    url: ${DB_JDBC_URL:jdbc:mariadb://localhost:3306/readalyse}
     username: ${DB_USERNAME:readalyse}
     password: ${DB_PASSWORD:readalyse}
     driver-class-name: org.mariadb.jdbc.Driver
@@ -12,8 +12,8 @@ spring:
     baseline-on-migrate: true
     baseline-version: 0
     table: flyway_schema_history
-    default-schema: test
-    enabled: false
+    default-schema: readalyse
+    enabled: true
 
 cors:
   allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:4200}

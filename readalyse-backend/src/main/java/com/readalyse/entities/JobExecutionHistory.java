@@ -11,7 +11,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class JobExecutionHistory extends AuditedEntity{
+public class JobExecutionHistory extends AuditedEntity {
 
   @Id
   @Column(name = "JOB_ID")

@@ -1,0 +1,17 @@
+post:
+  tags:
+    - Authentication
+  description: Login
+  operationId: login
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/authentication/AuthenticationRequest.yaml'
+  responses:
+    "200":
+      description: Successful operation.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/authentication/AuthenticationResponse.yaml'

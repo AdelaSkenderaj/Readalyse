@@ -9,6 +9,8 @@ servers:
 paths:
   /books:
     $ref: './paths/books.yaml'
+  /books/{bookId}:
+    $ref: './paths/book.yaml'
   /agents:
     $ref: './paths/agents.yaml'
   /discover/recommended:
@@ -29,6 +31,10 @@ paths:
     $ref: './paths/user/favorites.yaml'
   /library/finished-reading:
     $ref: './paths/user/finished.yaml'
+  /auth/register:
+    $ref: './paths/authentication/register.yaml'
+  /auth/login:
+    $ref: './paths/authentication/login.yaml'
 components:
   schemas:
     BookList:

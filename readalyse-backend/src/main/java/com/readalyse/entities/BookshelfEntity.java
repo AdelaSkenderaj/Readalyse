@@ -11,7 +11,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class BookshelfEntity extends AuditedEntity{
+public class BookshelfEntity extends AuditedEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

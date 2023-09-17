@@ -3,18 +3,24 @@ CREATE TABLE BOOK (
     TITLE longtext,
     DESCRIPTION longtext,
     DOWNLOADS bigint,
+    INSERT_TIME datetime not null,
+    UPDATE_TIME datetime not null,
     primary key (ID)
 );
 
 CREATE TABLE BOOKSHELF (
     ID bigint not null auto_increment,
     NAME varchar(255),
+    INSERT_TIME datetime not null,
+    UPDATE_TIME datetime not null,
     primary key (ID)
 );
 
 CREATE TABLE LANGUAGE (
     ID bigint not null auto_increment,
     LANGUAGE varchar(255),
+    INSERT_TIME datetime not null,
+    UPDATE_TIME datetime not null,
     primary key (ID)
 );
 
@@ -25,6 +31,8 @@ CREATE TABLE PERSON (
     BIRTHDATE bigint,
     DEATHDATE bigint,
     WEBPAGE varchar(255),
+    INSERT_TIME datetime not null,
+    UPDATE_TIME datetime not null,
     primary key (ID)
 );
 
@@ -34,18 +42,24 @@ CREATE TABLE RESOURCE (
     SIZE bigint,
     MODIFIED timestamp,
     TYPE varchar(255),
+    INSERT_TIME datetime not null,
+    UPDATE_TIME datetime not null,
     primary key (ID)
 );
 
 CREATE TABLE SUBJECT (
     ID bigint not null auto_increment,
     NAME varchar(255),
+    INSERT_TIME datetime not null,
+    UPDATE_TIME datetime not null,
     primary key (ID)
 );
 
 CREATE TABLE AGENT_TYPE (
     ID bigint not null auto_increment,
     NAME varchar(255),
+    INSERT_TIME datetime not null,
+    UPDATE_TIME datetime not null,
     primary key (ID)
 );
 
@@ -59,12 +73,16 @@ CREATE TABLE READABILITY_SCORES (
     FORCAST_INDEX float,
     LIX_INDEX float,
     RIX_INDEX float,
+    INSERT_TIME datetime not null,
+    UPDATE_TIME datetime not null,
     primary key (BOOK_ID),
     constraint FK_READABILITY_SCORES_BOOK foreign key (BOOK_ID) references BOOK(ID)
 );
 
 CREATE TABLE JOB_EXECUTION_HISTORY (
     JOB_ID varchar(255) not null,
+    INSERT_TIME datetime not null,
+    UPDATE_TIME datetime not null,
     primary key (JOB_ID)
 );
 
@@ -72,6 +90,8 @@ CREATE TABLE AGENT (
     ID bigint not null auto_increment,
     PERSON bigint not null,
     TYPE bigint not null,
+    INSERT_TIME datetime not null,
+    UPDATE_TIME datetime not null,
     primary key (ID),
     constraint FK_AGENT_PERSON foreign key (PERSON) references PERSON(ID),
     constraint FK_AGENT_TYPE foreign key (TYPE) references AGENT_TYPE(ID)

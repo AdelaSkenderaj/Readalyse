@@ -13,7 +13,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class PersonEntity extends AuditedEntity{
+public class PersonEntity extends AuditedEntity {
 
   @Id private Long id;
   private String name;

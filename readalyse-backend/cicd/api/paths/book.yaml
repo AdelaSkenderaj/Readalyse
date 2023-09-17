@@ -1,0 +1,19 @@
+get:
+  tags:
+    - Book
+  description: Get book by Id
+  operationId: getBookById
+  parameters:
+    - name: bookId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    "200":
+      description: Successful operation.
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/Book/Book.yaml'

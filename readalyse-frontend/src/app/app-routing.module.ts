@@ -32,6 +32,13 @@ const routes: Routes = [
           import('./my-library/my-library.module').then(
             (m) => m.MyLibraryModule
           )
+      },
+      {
+        path: 'analyse',
+        loadChildren: () =>
+          import('./analyse/analyse.module').then(
+            (m) => m.AnalyseModule
+          )
       }
     ]
   },
