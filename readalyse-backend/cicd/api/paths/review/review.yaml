@@ -1,0 +1,51 @@
+get:
+  tags:
+    - Review
+  description: Get one review
+  operationId: getReviewById
+  parameters:
+    - name: reviewId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    "200":
+      description: Successful operation.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Review/Review.yaml'
+post:
+  tags:
+    - Review
+  description: Post a review
+  operationId: createReview
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/Review/Review.yaml'
+  responses:
+    "200":
+      description: Successful operation.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Review/Review.yaml'
+delete:
+  tags:
+    - Review
+  description: Delete a review
+  operationId: deleteReview
+  parameters:
+    - name: reviewId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    "200":
+      description: Successful operation.

@@ -6,32 +6,56 @@ info:
 servers:
   - url: http://localhost:8080/api
     description: Generated server url
-
 paths:
   /books:
     $ref: './paths/books.yaml'
+  /agents:
+    $ref: './paths/agents.yaml'
   /discover/recommended:
-    $ref: './paths/recommended.yaml'
+    $ref: './paths/discover/recommended.yaml'
+  /discover/new-additions:
+    $ref: './paths/discover/new-additions.yaml'
+  /discover/trending:
+    $ref: './paths/discover/trending.yaml'
+  /discover/highest-rated:
+    $ref: './paths/discover/highest-rated.yaml'
+  /review/{reviewId}:
+    $ref: './paths/review/review.yaml'
 components:
   schemas:
-    AgentType:
-      $ref: './components/schemas/AgentType.yaml'
-    Agent:
-      $ref: './components/schemas/Agent.yaml'
-    Bookshelf:
-      $ref: './components/schemas/Bookshelf.yaml'
-    Language:
-      $ref: './components/schemas/Language.yaml'
-    Person:
-      $ref: './components/schemas/Person.yaml'
-    Resource:
-      $ref: './components/schemas/Resource.yaml'
-    Subject:
-      $ref: './components/schemas/Subject.yaml'
-    Book:
-      $ref: './components/schemas/Book.yaml'
     BookList:
-      $ref: './components/schemas/BookList.yaml'
+      $ref: './components/schemas/Book/BookList.yaml'
+    Book:
+      $ref: './components/schemas/Book/Book.yaml'
+    AgentType:
+      $ref: './components/schemas/AgentType/AgentType.yaml'
+    AgentList:
+      $ref: './components/schemas/Agent/AgentList.yaml'
+    Agent:
+      $ref: './components/schemas/Agent/Agent.yaml'
+    BookshelfList:
+      $ref: './components/schemas/Bookshelf/BookshelfList.yaml'
+    Bookshelf:
+      $ref: './components/schemas/Bookshelf/Bookshelf.yaml'
+    LanguageList:
+      $ref: './components/schemas/Language/LanguageList.yaml'
+    Language:
+      $ref: './components/schemas/Language/Language.yaml'
+    Person:
+      $ref: './components/schemas/Person/Person.yaml'
+    ResourceList:
+      $ref: './components/schemas/Resource/ResourceList.yaml'
+    Resource:
+      $ref: './components/schemas/Resource/Resource.yaml'
+    SubjectList:
+      $ref: './components/schemas/Subject/SubjectList.yaml'
+    Subject:
+      $ref: './components/schemas/Subject/Subject.yaml'
     Pagination:
       $ref: './components/schemas/Pagination.yaml'
-
+    ReviewList:
+      $ref: './components/schemas/Review/ReviewList.yaml'
+    Review:
+      $ref: './components/schemas/Review/Review.yaml'
+    User:
+      $ref: './components/schemas/User.yaml'

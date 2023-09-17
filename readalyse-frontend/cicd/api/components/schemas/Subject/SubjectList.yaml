@@ -1,0 +1,8 @@
+type: object
+properties:
+  subjects:
+    type: array
+    items:
+      $ref: 'Subject.yaml'
+  pagination:
+    $ref: '../Pagination.yaml'

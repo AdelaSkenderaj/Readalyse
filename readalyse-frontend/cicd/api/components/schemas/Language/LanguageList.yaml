@@ -1,0 +1,8 @@
+type: object
+properties:
+  languages:
+    type: array
+    items:
+      $ref: 'Language.yaml'
+  pagination:
+    $ref: '../Pagination.yaml'

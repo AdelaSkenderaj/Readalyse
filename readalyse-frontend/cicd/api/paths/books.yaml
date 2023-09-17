@@ -9,4 +9,4 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../components/schemas/BookList.yaml'
+            $ref: '../components/schemas/Book/BookList.yaml'

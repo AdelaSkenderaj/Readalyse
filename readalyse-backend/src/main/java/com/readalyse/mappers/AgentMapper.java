@@ -12,7 +12,7 @@ public interface AgentMapper {
 
   AgentEntity modelToEntity(AgentModel agent);
 
-  @Mapping(target = "agent.agentType", source = "agentEntity.type")
+  @Mapping(target = "agentType", source = "type")
   List<Agent> entitiesToModels(List<AgentEntity> agentEntities);
 
   Agent entityToModel(AgentEntity agentEntity);

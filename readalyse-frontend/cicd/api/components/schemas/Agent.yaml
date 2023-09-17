@@ -1,9 +1,0 @@
-type: object
-properties:
-  id:
-    type: number
-    format: int64
-  person:
-    $ref: '../schemas/Person.yaml'
-  agentType:
-    $ref: '../schemas/AgentType.yaml'

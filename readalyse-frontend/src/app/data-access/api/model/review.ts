@@ -9,15 +9,13 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { User } from './user';
 
 
-/**
- * Book model.
- */
-export interface BookApi { 
+export interface Review { 
     id?: number;
-    title?: string;
-    description?: string;
-    downloads?: string;
+    rating?: number;
+    comment?: string;
+    user?: User;
 }
 

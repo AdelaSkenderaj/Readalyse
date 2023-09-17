@@ -9,6 +9,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { Agent } from './agent';
+import { Language } from './language';
+import { Bookshelf } from './bookshelf';
+import { Resource } from './resource';
+import { Subject } from './subject';
 
 
 /**
@@ -19,10 +24,10 @@ export interface Book {
     title?: string;
     description?: string;
     downloads?: string;
-    agents?: Array<object>;
-    bookshelves?: Array<object>;
-    languages?: Array<object>;
-    resources?: Array<object>;
-    subjects?: Array<object>;
+    agents?: Array<Agent>;
+    bookshelves?: Array<Bookshelf>;
+    languages?: Array<Language>;
+    resources?: Array<Resource>;
+    subjects?: Array<Subject>;
 }
 

@@ -20,4 +20,19 @@ public class DiscoverController implements DiscoverApi {
   public ResponseEntity<BookList> getRecommendedBooks(Pagination pagination) {
     return ResponseEntity.ok(discoverService.getRecommendedBooks(pagination));
   }
+
+  @Override
+  public ResponseEntity<BookList> getNewBooks(Pagination pagination) {
+    return ResponseEntity.ok(discoverService.getNewBooks(pagination));
+  }
+
+  @Override
+  public ResponseEntity<BookList> getTrendingBooks(Pagination pagination) {
+    return ResponseEntity.ok(discoverService.getTrendingBooks(pagination));
+  }
+
+  @Override
+  public ResponseEntity<BookList> getHighestRatedBooks(Pagination pagination) {
+    return ResponseEntity.ok(discoverService.getHighestRatedBooks(pagination));
+  }
 }

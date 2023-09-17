@@ -22,15 +22,15 @@ export class DiscoverComponent implements OnInit {
     this.recommendedList = response.books;
     })
 
-    this.discoverService.getRecommendedBooks({page: 20, size: 5}).subscribe((response) => {
+    this.discoverService.getNewBooks({page: 20, size: 5}).subscribe((response) => {
       this.newList = response.books;
     })
 
-    this.discoverService.getRecommendedBooks({page: 687, size: 5}).subscribe((response) => {
+    this.discoverService.getTrendingBooks({page: 687, size: 5}).subscribe((response) => {
       this.trendingList = response.books;
     })
 
-    this.discoverService.getRecommendedBooks({page: 1984, size: 5}).subscribe((response) => {
+    this.discoverService.getHighestRatedBooks({page: 1984, size: 5}).subscribe((response) => {
       this.highestRatedList = response.books;
     })
   }

@@ -1,0 +1,9 @@
+type: object
+properties:
+  id:
+    type: integer
+    format: int64
+  person:
+    $ref: '../Person/Person.yaml'
+  type:
+    $ref: '../AgentType/AgentType.yaml'

@@ -17,6 +17,7 @@ public class DiscoverService {
   private final BookRepository bookRepository;
   private final BookMapper bookMapper;
 
+  //TODO Change logic for each discover method
   public BookList getRecommendedBooks(Pagination pageRequest) {
     Page<BookEntity> books =
         bookRepository.findAll(PageRequest.of(pageRequest.getPage(), pageRequest.getSize()));
@@ -29,5 +30,47 @@ public class DiscoverService {
     return new BookList()
         .books(bookMapper.entitiesToModels(books.getContent()))
         .pagination(pagination);
+  }
+
+  public BookList getNewBooks(Pagination pageRequest) {
+    Page<BookEntity> books =
+            bookRepository.findAll(PageRequest.of(pageRequest.getPage(), pageRequest.getSize()));
+    Pagination pagination =
+            new Pagination()
+                    .page(books.getNumber())
+                    .totalPages(books.getTotalPages())
+                    .totalElements(books.getTotalElements())
+                    .size(books.getSize());
+    return new BookList()
+            .books(bookMapper.entitiesToModels(books.getContent()))
+            .pagination(pagination);
+  }
+
+  public BookList getTrendingBooks(Pagination pageRequest) {
+    Page<BookEntity> books =
+            bookRepository.findAll(PageRequest.of(pageRequest.getPage(), pageRequest.getSize()));
+    Pagination pagination =
+            new Pagination()
+                    .page(books.getNumber())
+                    .totalPages(books.getTotalPages())
+                    .totalElements(books.getTotalElements())
+                    .size(books.getSize());
+    return new BookList()
+            .books(bookMapper.entitiesToModels(books.getContent()))
+            .pagination(pagination);
+  }
+
+  public BookList getHighestRatedBooks(Pagination pageRequest) {
+    Page<BookEntity> books =
+            bookRepository.findAll(PageRequest.of(pageRequest.getPage(), pageRequest.getSize()));
+    Pagination pagination =
+            new Pagination()
+                    .page(books.getNumber())
+                    .totalPages(books.getTotalPages())
+                    .totalElements(books.getTotalElements())
+                    .size(books.getSize());
+    return new BookList()
+            .books(bookMapper.entitiesToModels(books.getContent()))
+            .pagination(pagination);
   }
 }

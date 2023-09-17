@@ -12,9 +12,21 @@ paths:
   /agents:
     $ref: './paths/agents.yaml'
   /discover/recommended:
-    $ref: './paths/recommended.yaml'
+    $ref: './paths/discover/recommended.yaml'
+  /discover/new-additions:
+    $ref: './paths/discover/new-additions.yaml'
+  /discover/trending:
+    $ref: './paths/discover/trending.yaml'
+  /discover/highest-rated:
+    $ref: './paths/discover/highest-rated.yaml'
+  /review/{reviewId}:
+    $ref: './paths/review/review.yaml'
 components:
   schemas:
+    BookList:
+      $ref: './components/schemas/Book/BookList.yaml'
+    Book:
+      $ref: './components/schemas/Book/Book.yaml'
     AgentType:
       $ref: './components/schemas/AgentType/AgentType.yaml'
     AgentList:
@@ -39,9 +51,11 @@ components:
       $ref: './components/schemas/Subject/SubjectList.yaml'
     Subject:
       $ref: './components/schemas/Subject/Subject.yaml'
-    Book:
-      $ref: './components/schemas/Book/Book.yaml'
-    BookList:
-      $ref: './components/schemas/Book/BookList.yaml'
     Pagination:
       $ref: './components/schemas/Pagination.yaml'
+    ReviewList:
+      $ref: './components/schemas/Review/ReviewList.yaml'
+    Review:
+      $ref: './components/schemas/Review/Review.yaml'
+    User:
+      $ref: './components/schemas/User.yaml'

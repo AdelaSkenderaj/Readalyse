@@ -1,0 +1,8 @@
+type: object
+properties:
+  agents:
+    type: array
+    items:
+      $ref: 'Agent.yaml'
+  pagination:
+    $ref: '../Pagination.yaml'

@@ -1,0 +1,12 @@
+type: object
+properties:
+  id:
+    type: integer
+    format: int64
+  rating:
+    type: integer
+    format: int32
+  comment:
+    type: string
+  user:
+    $ref: '../User.yaml'

@@ -1,6 +1,7 @@
 package com.readalyse.mappers;
 
 import com.readalyse.entities.AgentTypeEntity;
+import com.readalyse.model.AgentType;
 import com.readalyse.model.AgentTypeModel;
 import org.mapstruct.Mapper;
 
@@ -8,4 +9,6 @@ import org.mapstruct.Mapper;
 public interface AgentTypeMapper {
 
   AgentTypeEntity modelToEntity(AgentTypeModel agentType);
+
+  AgentType entityToModel(AgentTypeEntity agentTypeEntity);
 }

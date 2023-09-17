@@ -1,0 +1,8 @@
+type: object
+properties:
+  reviews:
+    type: array
+    items:
+      $ref: 'Review.yaml'
+  pagination:
+    $ref: '../Pagination.yaml'

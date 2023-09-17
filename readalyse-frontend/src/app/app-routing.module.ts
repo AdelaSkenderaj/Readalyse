@@ -25,6 +25,13 @@ const routes: Routes = [
           import('./category/category.module').then(
             (m) => m.CategoryModule
           )
+      },
+      {
+        path: 'library',
+        loadChildren: () =>
+          import('./my-library/my-library.module').then(
+            (m) => m.MyLibraryModule
+          )
       }
     ]
   },

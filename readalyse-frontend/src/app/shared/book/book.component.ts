@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Book} from "../../data-access/api";
+import {Agent, Book, Resource} from "../../data-access/api";
 
 
 @Component({
@@ -16,24 +16,27 @@ export class BookComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getImageResource(resources: object[] | undefined): string {
+  getImageResource(resources: Resource[] | undefined): string {
     let mediumImage = '';
     let smallImage = '';
-    if (resources) {
-      resources?.forEach((resource) => {
-        // @ts-ignore
-        if (resource.type === "image/jpeg" && resource.url.endsWith("cover.medium.jpg")) {
-          // @ts-ignore
-          mediumImage = resource.url;
-        }
-        // @ts-ignore
-        if (resource.type === "image/jpeg" && resource.url.endsWith("cover.small.jpg")) {
-          // @ts-ignore
-          smallImage = resource.url;
-        }
-      })
-    }
+    resources?.forEach((resource) => {
+      if (resource?.type === "image/jpeg" && resource.url?.endsWith("cover.medium.jpg")) {
+        mediumImage = resource.url;
+      }
+      if (resource.type === "image/jpeg" && resource.url?.endsWith("cover.small.jpg")) {
+        smallImage = resource.url;
+      }
+    })
     return mediumImage.length > 0 ? mediumImage : smallImage;
   }
 
+  getCreator(agents: Array<Agent> | undefined): string {
+    let creators = '';
+    agents?.forEach((agent) => {
+      if (agent.type?.name === "Creator") {
+        creators = creators + agent.person?.name + ", "
+      }
+    })
+    return creators.substr(0, creators.lastIndexOf(","));
+  }
 }

@@ -9,4 +9,4 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../components/schemas/Agent/AgentList.yaml'
+            $ref: '../components/schemas/Agent/Agent.yaml'

@@ -16,6 +16,6 @@ import { Person } from './person';
 export interface Agent { 
     id?: number;
     person?: Person;
-    agentType?: AgentType;
+    type?: AgentType;
 }
 

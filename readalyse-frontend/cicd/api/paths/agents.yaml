@@ -1,0 +1,12 @@
+get:
+  tags:
+    - Agent
+  description: Get all agents
+  operationId: findAll
+  responses:
+    "200":
+      description: Successful operation.
+      content:
+        application/json:
+          schema:
+            $ref: '../components/schemas/Agent/AgentList.yaml'

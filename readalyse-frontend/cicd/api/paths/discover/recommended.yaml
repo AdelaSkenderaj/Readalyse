@@ -7,11 +7,11 @@ post:
     content:
       application/json:
         schema:
-          $ref: '../components/schemas/Pagination.yaml'
+          $ref: '../../components/schemas/Pagination.yaml'
   responses:
     "200":
       description: Successful operation
       content:
         application/json:
           schema:
-            $ref: '../components/schemas/BookList.yaml'
+            $ref: '../../components/schemas/Book/BookList.yaml'

@@ -1,0 +1,23 @@
+get:
+  tags:
+    - Review
+  description: Get reviews of a book
+  operationId: getReviewByBookId
+  parameters:
+    in: path
+    required: true
+    name: bookId
+    type: integer
+    format: int64
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/Pagination.yaml'
+  responses:
+    "200":
+      description: Successful operation.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Review/ReviewList.yaml'

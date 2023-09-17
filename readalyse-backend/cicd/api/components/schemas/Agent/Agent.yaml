@@ -5,5 +5,5 @@ properties:
     format: int64
   person:
     $ref: '../Person/Person.yaml'
-  agentType:
+  type:
     $ref: '../AgentType/AgentType.yaml'
