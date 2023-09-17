@@ -11,7 +11,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class ReadabilityScoresEntity {
+public class ReadabilityScoresEntity extends AuditedEntity{
 
   @Id
   @Column(name = "BOOK_ID")

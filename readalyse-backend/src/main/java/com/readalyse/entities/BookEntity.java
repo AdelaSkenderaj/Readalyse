@@ -11,7 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 @Getter
 @Setter
-public class BookEntity {
+public class BookEntity extends AuditedEntity{
 
   @Id private Long id;
   private String title;

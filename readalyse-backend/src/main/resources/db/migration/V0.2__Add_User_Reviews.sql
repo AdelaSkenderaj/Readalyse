@@ -1,5 +1,5 @@
 CREATE TABLE USER (
-    ID bigint not null,
+    ID bigint not null auto_increment,
     FIRST_NAME varchar(255),
     LAST_NAME varchar(255),
     USERNAME varchar(255) not null unique,
@@ -11,7 +11,7 @@ CREATE TABLE USER (
 );
 
 CREATE TABLE REVIEW (
-    ID bigint not null,
+    ID bigint not null auto_increment,
     RATING int not null,
     COMMENT varchar(500),
     USER bigint not null,
@@ -32,4 +32,10 @@ CREATE TABLE FAVORITE_BOOKS (
     BOOK_ID bigint not null,
     constraint FK_FAVORITE_BOOKS_USER_BOOK foreign key (USER_ID) references USER(ID),
     constraint FK_FAVORITE_BOOKS_BOOK_USER foreign key (BOOK_ID) references BOOK(ID),
+);
+
+CREATE TABLE ROLE (
+    ID bigint not null auto_increment,
+    NAME varchar(255) not null,
+    primary key (ID)
 );
