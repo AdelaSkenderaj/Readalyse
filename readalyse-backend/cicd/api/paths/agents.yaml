@@ -1,7 +1,7 @@
 get:
   tags:
-    - Book
-  description: Get all books
+    - Agent
+  description: Get all agents
   operationId: findAll
   responses:
     "200":
@@ -9,4 +9,4 @@ get:
       content:
         application/json:
           schema:
-            $ref: '../components/schemas/Book/BookList.yaml'
+            $ref: '../components/schemas/Agent/AgentList.yaml'

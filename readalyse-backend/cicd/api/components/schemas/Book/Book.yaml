@@ -12,21 +12,21 @@ properties:
   agents:
     type: array
     items:
-      $ref: '../schemas/Agent.yaml'
+      $ref: '../Agent/Agent.yaml'
   bookshelves:
     type: array
     items:
-      $ref: '../schemas/Bookshelf.yaml'
+      $ref: '../Bookshelf/Bookshelf.yaml'
   languages:
     type: array
     items:
-      $ref: '../schemas/Language.yaml'
+      $ref: '../Language/Language.yaml'
   resources:
     type: array
     items:
-      $ref: '../schemas/Resource.yaml'
+      $ref: '../Resource/Resource.yaml'
   subjects:
     type: array
     items:
-      $ref: '../schemas/Subject.yaml'
+      $ref: '../Subject/Subject.yaml'
 description: Book model.

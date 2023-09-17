@@ -3,6 +3,6 @@ properties:
   books:
     type: array
     items:
-      $ref: '../schemas/Book.yaml'
+      $ref: 'Book.yaml'
   pagination:
-    $ref: '../schemas/Pagination.yaml'
+    $ref: '../Pagination.yaml'

@@ -1,0 +1,8 @@
+type: object
+properties:
+  resources:
+    type: array
+    items:
+      $ref: 'Resource.yaml'
+  pagination:
+    $ref: '../Pagination.yaml'

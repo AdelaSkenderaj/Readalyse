@@ -1,0 +1,8 @@
+type: object
+properties:
+  bookshelves:
+    type: array
+    items:
+      $ref: 'Bookshelf.yaml'
+  pagination:
+    $ref: '../Pagination.yaml'

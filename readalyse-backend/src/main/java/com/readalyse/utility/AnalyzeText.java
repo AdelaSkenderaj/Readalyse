@@ -76,7 +76,7 @@ public class AnalyzeText {
   }
 
   private Double lixFormula(BookData data) {
-    return (((double)data.getLongWords() * 100 / data.getWords())
+    return (((double) data.getLongWords() * 100 / data.getWords())
         + ((double) data.getWords() / data.getSentences()));
   }
 

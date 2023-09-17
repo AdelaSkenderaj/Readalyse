@@ -7,7 +7,7 @@ import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = AgentMapper.class)
 public interface BookMapper {
 
   @Mapping(target = "readabilityScores", ignore = true)
