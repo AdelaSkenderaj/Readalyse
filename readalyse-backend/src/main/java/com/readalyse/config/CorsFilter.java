@@ -1,4 +1,3 @@
-/*
 package com.readalyse.config;
 
 import jakarta.servlet.*;
@@ -38,4 +37,3 @@ public class CorsFilter implements Filter {
     }
   }
 }
-*/

@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {NavigationComponent} from "./navigation/navigation.component";
+import {LoginComponent} from "./login/login.component";
+import {AuthenticationGuard} from "./guards/authentication.guard";
 
 const routes: Routes = [
   {
     path: '',
     component: NavigationComponent,
+    canActivate: [AuthenticationGuard],
     children: [
       {
         path: '',
@@ -40,8 +43,12 @@ const routes: Routes = [
             (m) => m.AnalyseModule
           )
       }
-    ]
+    ],
   },
+  {
+    path: 'login',
+    component: LoginComponent
+  }
 ];
 
 @NgModule({

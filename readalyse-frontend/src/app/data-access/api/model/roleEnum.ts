@@ -9,20 +9,12 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { RoleEnum } from './roleEnum';
 
 
-export interface User { 
-    id?: number;
-    firstName?: string;
-    lastName?: string;
-    username?: string;
-    age?: number;
-    email?: string;
-    photo?: string;
-    role?: RoleEnum;
-}
-export namespace User {
-}
+export type RoleEnum = 'USER' | 'ADMIN';
 
+export const RoleEnum = {
+    User: 'USER' as RoleEnum,
+    Admin: 'ADMIN' as RoleEnum
+};
 

@@ -9,20 +9,10 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { RoleEnum } from './roleEnum';
 
 
-export interface User { 
-    id?: number;
-    firstName?: string;
-    lastName?: string;
+export interface AuthenticationRequest { 
     username?: string;
-    age?: number;
-    email?: string;
-    photo?: string;
-    role?: RoleEnum;
+    password?: string;
 }
-export namespace User {
-}
-
 

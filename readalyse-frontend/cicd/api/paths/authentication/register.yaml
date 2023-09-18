@@ -1,0 +1,17 @@
+post:
+  tags:
+    - Authentication
+  description: Register
+  operationId: register
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/authentication/RegisterRequest.yaml'
+  responses:
+    "200":
+      description: Successful operation.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/authentication/AuthenticationResponse.yaml'

@@ -1,10 +1,9 @@
 package com.readalyse.entities;
 
 import jakarta.persistence.Column;
-import java.util.Date;
-
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
+import java.util.Date;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
@@ -18,10 +17,14 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 public class AuditedEntity {
 
   @CreatedDate
-  @Column(name = "INSERT_TIME", columnDefinition="TIMESTAMP default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP")
+  @Column(
+      name = "INSERT_TIME",
+      columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP")
   private Date insertTime;
 
   @LastModifiedDate
-  @Column(name = "UPDATE_TIME", columnDefinition="TIMESTAMP default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP")
+  @Column(
+      name = "UPDATE_TIME",
+      columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP")
   private Date updateTime;
 }

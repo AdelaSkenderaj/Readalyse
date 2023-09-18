@@ -15,3 +15,5 @@ properties:
     type: string
   photo:
     type: string
+  role:
+    $ref: 'RoleEnum.yaml'

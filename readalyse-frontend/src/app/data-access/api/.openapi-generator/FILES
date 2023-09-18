@@ -3,6 +3,7 @@ README.md
 api.module.ts
 api/agent.service.ts
 api/api.ts
+api/authentication.service.ts
 api/book.service.ts
 api/discover.service.ts
 api/library.service.ts
@@ -14,6 +15,8 @@ index.ts
 model/agent.ts
 model/agentList.ts
 model/agentType.ts
+model/authenticationRequest.ts
+model/authenticationResponse.ts
 model/book.ts
 model/bookList.ts
 model/bookshelf.ts
@@ -23,10 +26,12 @@ model/languageList.ts
 model/models.ts
 model/pagination.ts
 model/person.ts
+model/registerRequest.ts
 model/resource.ts
 model/resourceList.ts
 model/review.ts
 model/reviewList.ts
+model/roleEnum.ts
 model/subject.ts
 model/subjectList.ts
 model/user.ts

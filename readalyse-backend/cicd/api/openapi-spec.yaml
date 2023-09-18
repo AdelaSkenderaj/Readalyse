@@ -73,3 +73,5 @@ components:
       $ref: './components/schemas/Review/Review.yaml'
     User:
       $ref: './components/schemas/User.yaml'
+    RoleEnum:
+      $ref: './components/schemas/RoleEnum.yaml'
