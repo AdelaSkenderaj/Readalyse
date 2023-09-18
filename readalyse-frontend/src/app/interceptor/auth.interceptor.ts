@@ -19,7 +19,7 @@ export class AuthInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    if (request.url.includes('login')) {
+    if (request.url.includes('login') || request.url.includes('register')) {
       console.log("intercepting call")
       return next.handle(request);
     }

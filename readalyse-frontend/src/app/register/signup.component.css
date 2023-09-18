@@ -1,0 +1,31 @@
+mat-form-field {
+  width: 100%;
+}
+.modal-container {
+  font-size:15px;
+}
+
+.title{
+  font-size: 30px;
+  color: black;
+}
+
+.submit-button {
+  color:black;
+}
+
+
+
+.gradient-custom{
+  background-color: #243657;
+  margin-left: -9%;
+  margin-right: -9%;
+}
+
+input:focus {
+  outline:none;
+  border: none;
+}
+
+
+

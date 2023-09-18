@@ -1,0 +1,81 @@
+<section class="vh-100 gradient-custom">
+  <div class="container modal-container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-90">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-purple text-black" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+
+              <h3 class="title">Register</h3>
+
+  <div class="pt-4" [formGroup]="form">
+      <div class="form-control-lg">
+        <input
+          type="text"
+          formControlName="firstname"
+          placeholder="First Name"
+          class="border-0 border-bottom"
+        />
+      </div>
+      <br />
+
+      <div class="form-control-lg">
+        <input
+          type="text"
+          formControlName="lastname"
+          placeholder="Last Name"
+          class="border-0 border-bottom"
+        />
+      </div>
+      <br />
+
+
+      <div class="form-control-lg">
+        <input
+          type="text"
+          formControlName="username"
+          placeholder="Username"
+          class="border-0 border-bottom"
+        />
+      </div>
+      <br />
+
+
+        <div class="form-control-lg">
+          <input
+            type="text"
+            formControlName="age"
+            placeholder="Age"
+            class="border-0 border-bottom"
+          />
+        </div>
+        <br />
+
+
+          <div class="form-control-lg">
+            <input
+              type="text"
+              formControlName="email"
+              placeholder="Email"
+              class="border-0 border-bottom"
+            />
+          </div>
+          <br />
+
+          <div class="form-control-lg">
+            <input
+              type="text"
+              formControlName="password"
+              placeholder="Password"
+              class="border-0 border-bottom"
+            />
+          </div>
+          <br />
+      <button class="submit-button" (click)="onSubmit()">  Submit </button>
+            </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
