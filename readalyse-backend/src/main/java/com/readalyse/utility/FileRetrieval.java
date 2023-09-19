@@ -12,6 +12,7 @@ import org.apache.commons.compress.compressors.CompressorException;
 import org.apache.commons.compress.compressors.CompressorInputStream;
 import org.apache.commons.compress.compressors.CompressorStreamFactory;
 import org.apache.commons.compress.utils.IOUtils;
+import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -112,6 +113,14 @@ public class FileRetrieval {
     }
     if (tarFile.exists()) {
       tarFile.delete();
+    }
+  }
+
+  public void deleteFiles() {
+    try {
+      FileUtils.cleanDirectory(new File(BASE_PATH));
+    }catch (IOException e) {
+      System.out.println("Could not delete files in directory " + BASE_PATH);
     }
   }
 }

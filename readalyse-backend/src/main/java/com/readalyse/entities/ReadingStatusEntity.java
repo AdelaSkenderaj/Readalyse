@@ -16,14 +16,14 @@ public class ReadingStatusEntity {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "BOOK_ID", referencedColumnName = "ID")
   private BookEntity book;
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn(name = "USER_ID", referencedColumnName = "ID")
   private UserEntity user;
 
   @Column(name = "STATUS")
-  private Status status;
+  private String status;
 }

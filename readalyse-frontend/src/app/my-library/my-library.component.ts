@@ -13,7 +13,7 @@ export class MyLibraryComponent implements OnInit {
   favorites: Book[] | undefined;
 
   constructor(private libraryService: LibraryService) {
-    this.libraryService.getCurrentlyReadingBooksForUser({page: 7, size: 5}).subscribe((response) => {
+    this.libraryService.getCurrentlyReadingBooksForUser({page: 0, size: 5}).subscribe((response) => {
       this.currentlyReading = response.books;
     })
     this.libraryService.getWantToReadBooksForUser({page: 700, size: 5}).subscribe((response) => {

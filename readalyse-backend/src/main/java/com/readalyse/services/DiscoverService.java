@@ -41,7 +41,7 @@ public class DiscoverService {
         .forEach(
             (readingStatusEntity -> {
               preferredBooks.add(readingStatusEntity.getBook());
-              if (readingStatusEntity.getStatus() == Status.READ) {
+              if (readingStatusEntity.getStatus() == "READ") {
                 readBooks.add(readingStatusEntity.getBook());
               }
             }));

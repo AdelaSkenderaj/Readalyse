@@ -2,6 +2,7 @@ package com.readalyse.services;
 
 import com.readalyse.entities.BookEntity;
 import com.readalyse.entities.ReadingStatusEntity;
+import com.readalyse.entities.Status;
 import com.readalyse.entities.UserEntity;
 import com.readalyse.mappers.BookMapper;
 import com.readalyse.mappers.ReadingStatusMapper;
@@ -13,7 +14,11 @@ import com.readalyse.repositories.BookRepository;
 import com.readalyse.repositories.ReadingStatusRepository;
 import com.readalyse.repositories.UserRepository;
 import com.readalyse.utility.Utility;
+
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -25,7 +30,6 @@ public class UserInformationService {
 
   private final BookRepository bookRepository;
   private final BookMapper bookMapper;
-
   private final ReadingStatusRepository readingStatusRepository;
   private final StatusMapper statusMapper;
   private final ReadingStatusMapper readingStatusMapper;
@@ -33,59 +37,80 @@ public class UserInformationService {
   private final UserRepository userRepository;
 
   public BookList getCurrentlyReadingBooksForUser(Pagination pageRequest) {
-    Page<BookEntity> books =
-        bookRepository.findAll(PageRequest.of(pageRequest.getPage(), pageRequest.getSize()));
+    UserEntity user = Utility.getUser();
+    List<BookEntity> books = readingStatusRepository.findByStatusAndUser(
+                    Status.CURRENTLY_READING.toString(),
+                    user,
+                    PageRequest.of(pageRequest.getPage(), pageRequest.getSize())
+            )
+            .stream()
+            .map(ReadingStatusEntity::getBook)
+            .collect(Collectors.toList());
     Pagination pagination =
         new Pagination()
-            .page(books.getNumber())
-            .totalPages(books.getTotalPages())
-            .totalElements(books.getTotalElements())
-            .size(books.getSize());
+            .page(pageRequest.getPage())
+            .totalPages(books.size() / pageRequest.getSize() )
+            .totalElements((long) books.size())
+            .size(books.size());
     return new BookList()
-        .books(bookMapper.entitiesToModels(books.getContent()))
+        .books(bookMapper.entitiesToModels(books))
         .pagination(pagination);
   }
 
   public BookList getFavoriteBooksForUser(Pagination pageRequest) {
-    Page<BookEntity> books =
-        bookRepository.findAll(PageRequest.of(pageRequest.getPage(), pageRequest.getSize()));
+    UserEntity user = Utility.getUser();
+    List<BookEntity> books = bookRepository.findFavorites(user.getId(),PageRequest.of(pageRequest.getPage(), pageRequest.getSize())).getContent();
     Pagination pagination =
-        new Pagination()
-            .page(books.getNumber())
-            .totalPages(books.getTotalPages())
-            .totalElements(books.getTotalElements())
-            .size(books.getSize());
+            new Pagination()
+                    .page(pageRequest.getPage())
+                    .totalPages(books.size() / pageRequest.getSize() )
+                    .totalElements((long) books.size())
+                    .size(books.size());
     return new BookList()
-        .books(bookMapper.entitiesToModels(books.getContent()))
-        .pagination(pagination);
+            .books(bookMapper.entitiesToModels(books))
+            .pagination(pagination);
   }
 
   public BookList getWantToReadBooksForUser(Pagination pageRequest) {
-    Page<BookEntity> books =
-        bookRepository.findAll(PageRequest.of(pageRequest.getPage(), pageRequest.getSize()));
+    UserEntity user = Utility.getUser();
+    List<BookEntity> books = readingStatusRepository.findByStatusAndUser(
+                    Status.WANT_TO_READ.toString(),
+                    user,
+                    PageRequest.of(pageRequest.getPage(), pageRequest.getSize())
+            )
+            .stream()
+            .map(ReadingStatusEntity::getBook)
+            .collect(Collectors.toList());
     Pagination pagination =
-        new Pagination()
-            .page(books.getNumber())
-            .totalPages(books.getTotalPages())
-            .totalElements(books.getTotalElements())
-            .size(books.getSize());
+            new Pagination()
+                    .page(pageRequest.getPage())
+                    .totalPages(books.size() / pageRequest.getSize() )
+                    .totalElements((long) books.size())
+                    .size(books.size());
     return new BookList()
-        .books(bookMapper.entitiesToModels(books.getContent()))
-        .pagination(pagination);
+            .books(bookMapper.entitiesToModels(books))
+            .pagination(pagination);
   }
 
   public BookList getFinishedReadingBooksForUser(Pagination pageRequest) {
-    Page<BookEntity> books =
-        bookRepository.findAll(PageRequest.of(pageRequest.getPage(), pageRequest.getSize()));
+    UserEntity user = Utility.getUser();
+    List<BookEntity> books = readingStatusRepository.findByStatusAndUser(
+                    Status.READ.toString(),
+                    user,
+                    PageRequest.of(pageRequest.getPage(), pageRequest.getSize())
+            )
+            .stream()
+            .map(ReadingStatusEntity::getBook)
+            .collect(Collectors.toList());
     Pagination pagination =
-        new Pagination()
-            .page(books.getNumber())
-            .totalPages(books.getTotalPages())
-            .totalElements(books.getTotalElements())
-            .size(books.getSize());
+            new Pagination()
+                    .page(pageRequest.getPage())
+                    .totalPages(books.size() / pageRequest.getSize() )
+                    .totalElements((long) books.size())
+                    .size(books.size());
     return new BookList()
-        .books(bookMapper.entitiesToModels(books.getContent()))
-        .pagination(pagination);
+            .books(bookMapper.entitiesToModels(books))
+            .pagination(pagination);
   }
 
   public ReadingStatus updateStatus(Long bookId, String status) {
@@ -99,10 +124,10 @@ public class UserInformationService {
               ReadingStatusEntity.builder()
                   .user(user)
                   .book(book)
-                  .status(statusMapper.fromModel(status))
+                  .status(status)
                   .build()));
     } else {
-      readingStatus.setStatus(statusMapper.fromModel(status));
+      readingStatus.setStatus(status);
       return readingStatusMapper.entityToModel(readingStatusRepository.save(readingStatus));
     }
   }

@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.riot.RiotException;
+import org.apache.jena.sparql.algebra.Op;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -42,8 +43,6 @@ public class InformationExtraction {
   Logger logger = Logger.getLogger(InformationExtraction.class.getName());
   FileHandler fileHandler;
 
-  private static String basePath = "C:/Users/Dela/test";
-
   public void extractInformation(File dirPath) {
     try {
       // This block configures the logger with handler and formatter
@@ -51,9 +50,6 @@ public class InformationExtraction {
       logger.addHandler(fileHandler);
       SimpleFormatter formatter = new SimpleFormatter();
       fileHandler.setFormatter(formatter);
-
-      // the following statement is used to log any messages
-      logger.info("My first log");
 
     } catch (SecurityException | IOException e) {
       e.printStackTrace();
@@ -66,14 +62,13 @@ public class InformationExtraction {
       Long end = System.currentTimeMillis();
       if (book != null) {
         bookService.saveScores(book);
-        logger.info("Book " + book.getId() + " took " + (end - start));
+          logger.info("Book " + book.getId() + " took " + (end - start));
       }
       logger.info("\n\n\n**********************END OF BOOK *************************\n\n\n");
     }
   }
 
   public BookEntity getBook(String path) {
-    //        String filePath = "C:/Users/Dela/test/pg" + path + ".rdf";
     Model model = ModelFactory.createDefaultModel();
     try {
       model.read(path);
@@ -82,53 +77,54 @@ public class InformationExtraction {
       return null;
     }
     BookEntity book = getBaseBookInformation(model);
-    List<BookshelfEntity> bookshelves = getBookshelves(model);
-    List<LanguageEntity> languages = getLanguages(model);
-    List<SubjectEntity> subjects = getSubjects(model);
-    List<ResourceEntity> resources = getResources(model);
-    List<AgentEntity> agents = getAgents(model);
-    book.setBookshelves(bookshelves);
-    book.setLanguages(languages);
-    book.setSubjects(subjects);
-    book.setResources(resources);
-    book.setAgents(agents);
-    return bookRepository.save(book);
-  }
+    Optional<BookEntity> bookEntity = bookRepository.findById(book.getId());
+    if (bookEntity.isEmpty()) {
+        List<BookshelfEntity> bookshelves = getBookshelves(model);
+        List<LanguageEntity> languages = getLanguages(model);
+        Long start = System.currentTimeMillis();
+        List<SubjectEntity> subjects = getSubjects(model);
+        Long end = System.currentTimeMillis();
+        logger.info("Get subjects took " + (end - start));
+        List<ResourceEntity> resources = getResources(model);
+        List<AgentEntity> agents = getAgents(model);
+        book.setBookshelves(bookshelves);
+        book.setLanguages(languages);
+        book.setSubjects(subjects);
+        book.setResources(resources);
 
-  private BookEntity getBaseBookInformation(Model model) {
-    Long start = System.currentTimeMillis();
-    BookEntity book = bookMapper.modelToEntity(parseBookData.getBaseBookInformation(model));
-    Long end = System.currentTimeMillis();
-    logger.info("Get base book " + " took " + (end - start));
+        boolean hasAudioResource = book.getResources().stream()
+                .anyMatch(resourceEntity -> resourceEntity.getType().contains("audio"));
+        book.setType(hasAudioResource ? "audio" : "text");
+
+        book.setAgents(agents);
+        return bookRepository.save(book);
+    }
     return book;
   }
 
+  private BookEntity getBaseBookInformation(Model model) {
+      return bookMapper.modelToEntity(parseBookData.getBaseBookInformation(model));
+  }
+
   private List<BookshelfEntity> getBookshelves(Model model) {
-    Long start = System.currentTimeMillis();
-    List<BookshelfEntity> bookshelfEntities =
-        parseBookData.getBookshelves(model).stream()
-            .map(
-                b -> {
-                  BookshelfEntity bookshelf = bookshelfMapper.modelToEntity(b);
-                  Optional<BookshelfEntity> existingBookshelf =
-                      bookshelfRepository.findByName(bookshelf.getName());
+      return parseBookData.getBookshelves(model).stream()
+          .map(
+              b -> {
+                BookshelfEntity bookshelf = bookshelfMapper.modelToEntity(b);
+                Optional<BookshelfEntity> existingBookshelf =
+                    bookshelfRepository.findByName(bookshelf.getName());
 
-                  if (existingBookshelf.isEmpty()) {
-                    return bookshelf;
-                  }
+                if (existingBookshelf.isEmpty()) {
+                  return bookshelf;
+                }
 
-                  return existingBookshelf.get(); // Return the existing bookshelf
-                })
-            .toList();
-    Long end = System.currentTimeMillis();
-    logger.info("Get bookshelves " + " took " + (end - start));
-    return bookshelfEntities;
+                return existingBookshelf.get(); // Return the existing bookshelf
+              })
+          .toList();
   }
 
   private List<LanguageEntity> getLanguages(Model model) {
-    Long start = System.currentTimeMillis();
-    List<LanguageEntity> languages =
-        parseBookData.getLanguages(model).stream()
+      return parseBookData.getLanguages(model).stream()
             .map(
                 l -> {
                   LanguageEntity language = languageMapper.modelToEntity(l);
@@ -141,46 +137,22 @@ public class InformationExtraction {
                   return existingLanguage.get();
                 })
             .toList();
-    Long end = System.currentTimeMillis();
-    logger.info("Get languages " + " took " + (end - start));
-    return languages;
   }
 
   private List<SubjectEntity> getSubjects(Model model) {
-    Long start = System.currentTimeMillis();
-    List<SubjectEntity> subjects =
-        parseBookData.getSubjects(model).stream()
-            .map(
-                s -> {
-                  SubjectEntity subject = subjectMapper.modelToEntity(s);
-                  Optional<SubjectEntity> existingSubject =
-                      subjectRepository.findByName(subject.getName());
-
-                  if (existingSubject.isEmpty()) {
-                    return subject;
-                  }
-                  return existingSubject.get();
-                })
-            .toList();
-
-    Long end = System.currentTimeMillis();
-    logger.info("Get subjects  " + " took " + (end - start));
-    return subjects;
+      return parseBookData.getSubjects(model).stream()
+              .map(s -> subjectRepository
+                      .findByName(s.getName())
+                      .orElseGet(() -> subjectMapper.modelToEntity(s)))
+              .toList();
   }
 
   private List<ResourceEntity> getResources(Model model) {
-    Long start = System.currentTimeMillis();
-    List<ResourceEntity> resources =
-        resourceMapper.modelsToEntities(parseBookData.getResources(model));
-    Long end = System.currentTimeMillis();
-    logger.info("Get resources " + " took " + (end - start));
-    return resources;
+      return resourceMapper.modelsToEntities(parseBookData.getResources(model));
   }
 
   private List<AgentEntity> getAgents(Model model) {
-    Long start = System.currentTimeMillis();
-    List<AgentEntity> agents =
-        parseBookData.getAgents(model).stream()
+      return parseBookData.getAgents(model).stream()
             .map(
                 a -> {
                   AgentEntity agent = agentMapper.modelToEntity(a);
@@ -202,8 +174,5 @@ public class InformationExtraction {
                   return existingAgent.get();
                 })
             .toList();
-    Long end = System.currentTimeMillis();
-    logger.info("Get agents " + " took " + (end - start));
-    return agents;
   }
 }

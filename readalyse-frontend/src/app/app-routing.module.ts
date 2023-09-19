@@ -4,6 +4,7 @@ import {NavigationComponent} from "./navigation/navigation.component";
 import {LoginComponent} from "./login/login.component";
 import {AuthenticationGuard} from "./guards/authentication.guard";
 import {SignupComponent} from "./register/signup.component";
+import {BookInformationComponent} from "./shared/book-information/book-information.component";
 
 const routes: Routes = [
   {
@@ -43,7 +44,10 @@ const routes: Routes = [
           import('./analyse/analyse.module').then(
             (m) => m.AnalyseModule
           )
-      }
+      },
+      {
+        path: ':bookId', component: BookInformationComponent
+      },
     ],
   },
   {

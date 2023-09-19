@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: ${DB_JDBC_URL:jdbc:mariadb://localhost:3306/test}
+    url: ${DB_JDBC_URL:jdbc:mariadb://localhost:3306/readalyse}
     username: ${DB_USERNAME:readalyse}
     password: ${DB_PASSWORD:readalyse}
     driver-class-name: org.mariadb.jdbc.Driver
@@ -12,7 +12,7 @@ spring:
     baseline-on-migrate: true
     baseline-version: 0
     table: flyway_schema_history
-    default-schema: test
+    default-schema: readalyse
     enabled: true
 
 cors:
@@ -42,3 +42,6 @@ server:
 logging:
   level:
     root: info
+  file:
+      informationExtraction: C:/Users/Dela/log/InformationExtraction.log
+      readabilityScores: C:/Users/Dela/log/ReadabilityScoresAnalysis.log

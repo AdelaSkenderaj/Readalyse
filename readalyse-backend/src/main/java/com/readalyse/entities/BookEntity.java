@@ -17,6 +17,7 @@ public class BookEntity extends AuditedEntity {
   private String title;
   private String description;
   private Long downloads;
+  private String type;
 
   @OneToOne(cascade = CascadeType.MERGE)
   @PrimaryKeyJoinColumn

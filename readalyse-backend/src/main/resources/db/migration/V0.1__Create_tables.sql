@@ -5,6 +5,7 @@ CREATE TABLE BOOK (
     DOWNLOADS bigint,
     INSERT_TIME datetime not null,
     UPDATE_TIME datetime not null,
+    type varchar(255),
     primary key (ID)
 );
 
