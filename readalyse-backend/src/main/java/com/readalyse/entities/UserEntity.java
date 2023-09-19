@@ -45,6 +45,13 @@ public class UserEntity extends AuditedEntity implements UserDetails {
   @Enumerated(EnumType.STRING)
   private Role role;
 
+  @ManyToMany
+  @JoinTable(
+      name = "FAVORITE_BOOKS",
+      joinColumns = @JoinColumn(name = "USER_ID"),
+      inverseJoinColumns = @JoinColumn(name = "BOOK_ID"))
+  private List<BookEntity> favoriteBooks;
+
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
     return List.of(new SimpleGrantedAuthority(role.name()));

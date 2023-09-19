@@ -19,4 +19,6 @@ public interface BookMapper {
   BookEntity modelToEntity(BookModel book);
 
   List<Book> entitiesToModels(List<BookEntity> bookEntityList);
+
+  Book entityToModel(BookEntity book);
 }

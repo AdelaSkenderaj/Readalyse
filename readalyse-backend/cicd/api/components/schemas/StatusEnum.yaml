@@ -1,0 +1,5 @@
+type: string
+enum:
+  - WANT_TO_READ
+  - CURRENTLY_READING
+  - READ

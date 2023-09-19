@@ -25,9 +25,11 @@ CREATE TABLE REVIEW (
 );
 
 CREATE TABLE READING_STATUS (
+    ID bigint not null,
     USER_ID bigint not null,
     BOOK_ID bigint not null,
     STATUS varchar(255) not null,
+    primary key (ID),
     constraint FK_READING_STATUS_USER_BOOK foreign key (USER_ID) references USER(ID),
     constraint FK_READING_STATUS_BOOK_USER foreign key (BOOK_ID) references BOOK(ID)
 );

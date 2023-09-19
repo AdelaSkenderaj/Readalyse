@@ -3,6 +3,7 @@ package com.readalyse.controllers;
 import com.readalyse.api.LibraryApi;
 import com.readalyse.model.BookList;
 import com.readalyse.model.Pagination;
+import com.readalyse.model.ReadingStatus;
 import com.readalyse.services.UserInformationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -32,5 +33,15 @@ public class LibraryController implements LibraryApi {
   @Override
   public ResponseEntity<BookList> getFinishedReadingBooksForUser(Pagination pagination) {
     return ResponseEntity.ok(userInformationService.getFinishedReadingBooksForUser(pagination));
+  }
+
+  @Override
+  public ResponseEntity<ReadingStatus> updateStatus(Long bookId, String status) {
+    return ResponseEntity.ok(userInformationService.updateStatus(bookId, status));
+  }
+
+  @Override
+  public ResponseEntity<BookList> updateFavorite(Long bookId) {
+    return ResponseEntity.ok(userInformationService.updateFavorite(bookId));
   }
 }
