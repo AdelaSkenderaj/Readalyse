@@ -18,6 +18,10 @@ const routes: Routes = [
         redirectTo: 'discover'
       },
       {
+        path: 'book/:bookId',
+        component: BookInformationComponent
+      },
+      {
         path: 'discover',
         loadChildren: () =>
           import('./discover/discover.module').then(
@@ -44,10 +48,7 @@ const routes: Routes = [
           import('./analyse/analyse.module').then(
             (m) => m.AnalyseModule
           )
-      },
-      {
-        path: ':bookId', component: BookInformationComponent
-      },
+      }
     ],
   },
   {

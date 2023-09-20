@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Agent, Book, Resource} from "../../data-access/api";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -11,7 +12,7 @@ export class BookComponent implements OnInit {
 
   @Input() book: Book = {};
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -38,5 +39,9 @@ export class BookComponent implements OnInit {
       }
     })
     return creators.substr(0, creators.lastIndexOf(","));
+  }
+
+  navigate(bookId: number | undefined) {
+    this.router.navigate(['/book', bookId]);
   }
 }

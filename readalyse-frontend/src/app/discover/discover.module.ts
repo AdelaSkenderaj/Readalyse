@@ -4,7 +4,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {SharedComponentsModule} from "../shared/shared-components.module";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import { DiscoverFullComponent } from './discover-full/discover-full.component';
-import {BookInformationComponent} from "../shared/book-information/book-information.component";
+import { DiscoverFullInformationComponent } from './discover-full-information/discover-full-information.component';
 
 const routes: Routes = [
   {
@@ -12,15 +12,19 @@ const routes: Routes = [
   },
   {
     path: ':listName', component: DiscoverFullComponent,
-
+    /*children: [
+      {
+        path: 'book/:bookId', component: DiscoverFullInformationComponent
+      }
+    ]*/
   },
-  {
-    path: ':listName/:bookId', component: BookInformationComponent
-  }
+  /*{
+    path: 'book/:bookId', component: DiscoverFullInformationComponent
+  }*/
   ];
 @NgModule({
   imports: [RouterModule.forChild(routes), SharedComponentsModule, FontAwesomeModule],
-  declarations: [DiscoverComponent, DiscoverFullComponent],
+  declarations: [DiscoverComponent, DiscoverFullComponent, DiscoverFullInformationComponent],
   exports: [],
   providers: []
 })

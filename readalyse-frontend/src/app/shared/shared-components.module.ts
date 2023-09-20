@@ -4,8 +4,8 @@ import {BookListComponent} from "./book-list/book-list.component";
 import {NgForOf, NgIf} from "@angular/common";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import { BookFullListComponent } from './book-full-list/book-full-list.component';
-import { BookInformationComponent } from './book-information/book-information.component';
 import {RouterLink} from "@angular/router";
+import {BookInformationComponent} from "./book-information/book-information.component";
 
 @NgModule({
     imports: [
@@ -15,7 +15,7 @@ import {RouterLink} from "@angular/router";
         RouterLink
     ],
   declarations: [BookComponent, BookListComponent, BookFullListComponent, BookInformationComponent],
-  exports: [BookComponent, BookListComponent],
+  exports: [BookComponent, BookListComponent, BookInformationComponent],
   providers: []
 })
 

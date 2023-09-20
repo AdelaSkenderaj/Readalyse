@@ -1,0 +1,19 @@
+put:
+  tags:
+    - Library
+  description: Add or remove from favorites
+  operationId: updateFavorite
+  parameters:
+    - name: bookId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    "200":
+      description: Successful operation.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Book/BookList.yaml'

@@ -1,4 +1,4 @@
-<div class="col shadow py-2 mb-2" *ngIf="book" routerLink="{{book.id}}">
+<div class="col shadow py-2 mb-2" *ngIf="book" (click)="navigate(book.id)">
   <img style="width: 100%; height: 17em" [src]="getImageResource(book.resources)" alt="">
   <div class="px-2 pt-2">
     <p class="m-0 fs-6 fw-bold">{{book.title}}</p>

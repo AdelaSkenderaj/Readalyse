@@ -1,21 +1,51 @@
 
-<!--<div class="container-fluid vh-100">-->
-<!--  <div class="row">-->
-<!--    <nav class="col-md-3 col-lg-2 d-md-block vh-100 sidebar">-->
-<!--      &lt;!&ndash; Sidebar content goes here &ndash;&gt;-->
-<!--      left-->
-<!--    </nav>-->
+<div class="container-fluid vh-100">
+  <div class="row">
+    <div class="container-fluid m-4 rounded-4 col-md-12 ml-sm-auto col-lg-9 p-4" style="background-color: white">
+      <div class="">
+        <!-- Basic Book Information -->
+        <div class="col">
+          <h1 class="fw-semibold">{{book.title}}</h1>
+          <h4 class="fw-medium">{{getCreator(book.agents)}}</h4>
+          <hr style="color: #000055">
+          <div class="row col-lg-12"><p style="width: max-content">Average Rating</p> <p style="width: max-content">Nr of ratings</p> <p style="width: max-content;">Nr Reviews</p></div>
+          <p>{{book.description}}</p>
+          <div class="row col-lg-12"><p style="width: max-content">Languages</p><p style="width: max-content;" *ngFor="let language of book.languages">{{language.language}}</p> </div>
+          <div class="row col-lg-12"><p class="" style="width: max-content">Bookshelves</p> <p style="width: max-content" *ngFor="let bookshelf of book.bookshelves">{{bookshelf.name}}</p></div>
+        </div>
 
-<!--    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 p-0" style="background-color: #E6E9EF">-->
+        <div class="col mt-4">
+          <h3>Ratings and Reviews</h3>
+        </div>
 
+      </div>
+    </div>
 
-<!--      &lt;!&ndash; All information &ndash;&gt;-->
-<!--      <div class="">-->
-<!--        right-->
-<!--      </div>-->
-<!--      &lt;!&ndash; All information &ndash;&gt;-->
+    <div role="main" class="col-md-12 col-lg-3 d-md-block vh-100 sidebar" style="background-color: #000055" >
+      <div class="p-2 m-2">
+        <div class="col text-center">
+          <img class="text-center" style="width: 95%; height: 17em" [src]="getImageResource(book.resources)" alt="">
+          <button class="my-4 mx-5 border-0 rounded-4 fw-semibold px-3 py-2" style="background-color: #E6EFFE; color: #000055">Currently Reading</button>
+          <div>
+            <h5 class=" mx-4" style="color: #E6EFFE">Readability Scores</h5>
+          </div>
+          <div class="pt-3 text-start">
+            <p style="color: #E6EFFE; line-height: 0.5">Flesch-Kincaid Grade Level</p>
+            <p style="color: #E6EFFE; line-height: 0.5">Flesch Reading Ease</p>
+            <p style="color: #E6EFFE; line-height: 0.5">Coleman Liau Index</p>
+            <p style="color: #E6EFFE; line-height: 0.5">SMOG Index</p>
+            <p style="color: #E6EFFE; line-height: 0.5">Automated Readability Index</p>
+            <p style="color: #E6EFFE; line-height: 0.5">FORCAST Index</p>
+            <p style="color: #E6EFFE; line-height: 0.5">Lix Formula</p>
+            <p style="color: #E6EFFE; line-height: 0.5">Rix Formula</p>
+          </div>
 
-<!--    </main>-->
-<!--  </div>-->
-<!--</div>-->
+        </div>
+
+      </div>
+      <!-- All information -->
+
+    </div>
+  </div>
+</div>
 

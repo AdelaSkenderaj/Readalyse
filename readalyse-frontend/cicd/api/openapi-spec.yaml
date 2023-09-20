@@ -31,6 +31,10 @@ paths:
     $ref: './paths/user/favorites.yaml'
   /library/finished-reading:
     $ref: './paths/user/finished.yaml'
+  /library/status/{bookId}:
+    $ref: './paths/user/update-status.yaml'
+  /library/favorites/{bookId}/switch:
+    $ref: './paths/user/add-remove-favorite.yaml'
   /auth/register:
     $ref: './paths/authentication/register.yaml'
   /auth/login:
@@ -75,3 +79,7 @@ components:
       $ref: './components/schemas/User.yaml'
     RoleEnum:
       $ref: './components/schemas/RoleEnum.yaml'
+    StatusEnum:
+      $ref: './components/schemas/StatusEnum.yaml'
+    ReadingStatus:
+      $ref: './components/schemas/ReadingStatus/ReadingStatus.yaml'

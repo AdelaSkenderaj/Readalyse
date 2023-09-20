@@ -26,12 +26,14 @@ model/languageList.ts
 model/models.ts
 model/pagination.ts
 model/person.ts
+model/readingStatus.ts
 model/registerRequest.ts
 model/resource.ts
 model/resourceList.ts
 model/review.ts
 model/reviewList.ts
 model/roleEnum.ts
+model/statusEnum.ts
 model/subject.ts
 model/subjectList.ts
 model/user.ts

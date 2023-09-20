@@ -1,0 +1,24 @@
+put:
+  tags:
+    - Library
+  description: Update Book Status
+  operationId: updateStatus
+  parameters:
+    - name: bookId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int64
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/StatusEnum.yaml'
+  responses:
+    "200":
+      description: Successful operation.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/ReadingStatus/ReadingStatus.yaml'

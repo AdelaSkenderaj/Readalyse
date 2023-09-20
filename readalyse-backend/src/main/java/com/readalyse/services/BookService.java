@@ -103,4 +103,8 @@ public class BookService {
       readabilityScoresRepository.save(scores);
     }
   }
+
+  public BookEntity getBookById(Long bookId) {
+    return bookRepository.findById(bookId).orElseThrow(() -> new RuntimeException("Book not found"));
+  }
 }
