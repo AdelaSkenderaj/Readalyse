@@ -10,3 +10,6 @@ properties:
     type: string
   user:
     $ref: '../User.yaml'
+  bookId:
+    type: integer
+    format: int64

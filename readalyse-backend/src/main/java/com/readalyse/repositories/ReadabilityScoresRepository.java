@@ -4,7 +4,6 @@ import com.readalyse.entities.BookEntity;
 import com.readalyse.entities.ReadabilityScoresEntity;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -29,5 +28,5 @@ public interface ReadabilityScoresRepository extends JpaRepository<ReadabilitySc
       Double lixIndex,
       Double rixIndex);
 
-    Optional<ReadabilityScoresEntity> findByBookId(Long id);
+  Optional<ReadabilityScoresEntity> findByBookId(Long id);
 }

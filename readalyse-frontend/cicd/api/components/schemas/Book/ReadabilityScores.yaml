@@ -1,0 +1,29 @@
+type: object
+properties:
+  bookId:
+    type: integer
+    format: int64
+  fleschKincaidGradeLevel:
+    type: number
+    format: double
+  fleschReadingEase:
+    type: number
+    format: double
+  colemanLiauIndex:
+    type: number
+    format: double
+  smogIndex:
+    type: number
+    format: double
+  automatedReadabilityIndex:
+    type: number
+    format: double
+  forcastIndex:
+    type: number
+    format: double
+  lixIndex: 
+    type: number
+    format: double
+  rixIndex: 
+    type: number
+    format: double

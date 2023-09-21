@@ -20,8 +20,10 @@ CREATE TABLE REVIEW (
     USER bigint not null,
     INSERT_TIME datetime not null,
     UPDATE_TIME datetime not null,
+    BOOK_ID bigint not null,
     primary key (ID),
-    constraint FK_REVIEW_USER foreign key (USER) references USER(ID)
+    constraint FK_REVIEW_USER foreign key (USER) references USER(ID),
+    constraint FK_REVIEW_BOOK foreign key (BOOK_ID) references BOOK(ID)
 );
 
 CREATE TABLE READING_STATUS (

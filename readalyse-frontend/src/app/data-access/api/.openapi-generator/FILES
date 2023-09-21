@@ -26,6 +26,7 @@ model/languageList.ts
 model/models.ts
 model/pagination.ts
 model/person.ts
+model/readabilityScores.ts
 model/readingStatus.ts
 model/registerRequest.ts
 model/resource.ts

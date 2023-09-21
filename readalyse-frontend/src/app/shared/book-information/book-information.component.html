@@ -5,17 +5,34 @@
       <div class="">
         <!-- Basic Book Information -->
         <div class="col">
-          <h1 class="fw-semibold">{{book.title}}</h1>
-          <h4 class="fw-medium">{{getCreator(book.agents)}}</h4>
+          <div class="row justify-content-between">
+            <h1 class="fw-semibold col-lg-9" style="color: #000055">{{book.title}}</h1>
+            <button class="col-lg-3 mx-5 border-0 rounded-4 fw-semibold px-3 py-2" style="width: max-content; height: 4rem;background-color: #000055; color: #E6EFFE" (click)="navigateToReadingPage()">Start Reading</button>
+          </div>
+          <h4 class="fw-medium" style="color: lightslategray">{{getCreator(book.agents)}}</h4>
           <hr style="color: #000055">
-          <div class="row col-lg-12"><p style="width: max-content">Average Rating</p> <p style="width: max-content">Nr of ratings</p> <p style="width: max-content;">Nr Reviews</p></div>
+          <div class="row col-lg-12"><p style="width: max-content" class="pt-2"><app-rating [rating]="4" [size]="'xl'"></app-rating></p><p style="width: max-content" class="fs-4 fw-bold">4</p><p style="width: max-content; color: lightslategray" class="pt-2"> 47228 ratings</p> <p style="width: max-content; color: lightslategray" class="pt-2">2372 reviews</p></div>
           <p>{{book.description}}</p>
-          <div class="row col-lg-12"><p style="width: max-content">Languages</p><p style="width: max-content;" *ngFor="let language of book.languages">{{language.language}}</p> </div>
-          <div class="row col-lg-12"><p class="" style="width: max-content">Bookshelves</p> <p style="width: max-content" *ngFor="let bookshelf of book.bookshelves">{{bookshelf.name}}</p></div>
+          <div class="row col-lg-12"><p style="width: max-content; color: slateblue" class="fw-medium">Languages</p><p style="width: max-content;" *ngFor="let language of book.languages">{{language.language}}</p> </div>
+          <div class="row col-lg-12"><p style="width: max-content; color: mediumslateblue" class="fw-medium">Bookshelves</p> <p style="width: max-content" *ngFor="let bookshelf of book.bookshelves">{{bookshelf.name}}</p></div>
         </div>
 
         <div class="col mt-4">
-          <h3>Ratings and Reviews</h3>
+          <h3 class="mb-5 text-center" style="color: lightslategray">Ratings and Reviews</h3>
+
+          <h3 style="color: #720915">My Review</h3>
+          <div *ngIf="userReview !== null" class="mt-4">
+
+            <app-review [review]="userReview"></app-review>
+          </div>
+          <div *ngIf="userReview == null">
+            <button class="my-4 mx-5 border-0 rounded-4 fw-semibold px-3 py-2" style="background-color: #E6EFFE; color: #000055" (click)="openModal()">Add a Review</button>
+          </div>
+
+          <div *ngIf="bookReviews !== null" class="mt-5">
+            <h3 style="color: #720915">Community Reviews</h3>
+            <app-review *ngFor="let review of bookReviews" [review]="review"></app-review>
+          </div>
         </div>
 
       </div>
@@ -29,15 +46,15 @@
           <div>
             <h5 class=" mx-4" style="color: #E6EFFE">Readability Scores</h5>
           </div>
-          <div class="pt-3 text-start">
-            <p style="color: #E6EFFE; line-height: 0.5">Flesch-Kincaid Grade Level</p>
-            <p style="color: #E6EFFE; line-height: 0.5">Flesch Reading Ease</p>
-            <p style="color: #E6EFFE; line-height: 0.5">Coleman Liau Index</p>
-            <p style="color: #E6EFFE; line-height: 0.5">SMOG Index</p>
-            <p style="color: #E6EFFE; line-height: 0.5">Automated Readability Index</p>
-            <p style="color: #E6EFFE; line-height: 0.5">FORCAST Index</p>
-            <p style="color: #E6EFFE; line-height: 0.5">Lix Formula</p>
-            <p style="color: #E6EFFE; line-height: 0.5">Rix Formula</p>
+          <div class="pt-3 text-center">
+            <div class="row justify-content-between" style="color: #E6EFFE; "><p class="col-6">Flesch-Kincaid Grade Level</p><p class="col-6"> {{book.readabilityScores?.fleschKincaidGradeLevel}}</p></div>
+            <div class="row justify-content-between" style="color: #E6EFFE; "><p class="col-6">Flesch Reading Ease </p><p class="col-6">{{book.readabilityScores?.fleschReadingEase}}</p></div>
+            <div class="row justify-content-between" style="color: #E6EFFE; "><p class="col-6">Coleman Liau Index </p><p class="col-6">{{book.readabilityScores?.colemanLiauIndex}}</p></div>
+            <div class="row justify-content-between" style="color: #E6EFFE; "><p class="col-6">SMOG Index </p><p class="col-6">{{book.readabilityScores?.smogIndex}}</p></div>
+            <div class="row justify-content-between" style="color: #E6EFFE; "><p class="col-6">Automated Readability Index </p><p class="col-6">{{book.readabilityScores?.automatedReadabilityIndex}}</p></div>
+            <div class="row justify-content-between" style="color: #E6EFFE; "><p class="col-6">FORCAST Index </p><p class="col-6">{{book.readabilityScores?.forcastIndex}}</p></div>
+            <div class="row justify-content-between" style="color: #E6EFFE; "><p class="col-6">Lix Formula </p><p class="col-6">{{book.readabilityScores?.lixIndex}}</p></div>
+            <div class="row justify-content-between" style="color: #E6EFFE; "><p class="col-6">Rix Formula </p><p class="col-6">{{book.readabilityScores?.rixIndex}}</p></div>
           </div>
 
         </div>

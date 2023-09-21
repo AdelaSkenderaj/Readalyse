@@ -1,0 +1,25 @@
+<div>
+  <div class="modal-header">
+    <h4 class="text-center" style="width: 100%; color: #000055">Add Review</h4>
+  </div>
+  <div class="modal-body">
+    <div class="row justify-content-between">
+      <h5 style="width: max-content;" class="mx-5">Rate </h5>
+      <div style="width: max-content" class="mx-5">
+        <fa-icon [icon]="rating > 0 ? fullStar : emptyStar" (click)="addRating(1)" style="width: max-content;"></fa-icon>
+        <fa-icon [icon]="rating > 1 ? fullStar : emptyStar" (click)="addRating(2)" style="width: max-content;"></fa-icon>
+        <fa-icon [icon]="rating > 2 ? fullStar : emptyStar" (click)="addRating(3)" style="width: max-content;"></fa-icon>
+        <fa-icon [icon]="rating > 3 ? fullStar : emptyStar" (click)="addRating(4)" style="width: max-content;"></fa-icon>
+        <fa-icon [icon]="rating > 4 ? fullStar : emptyStar" (click)="addRating(5)" style="width: max-content;"></fa-icon>
+      </div>
+    </div>
+    <div>
+      <textarea class="form-control mt-3 mb-2" placeholder="Add a comment" [(ngModel)]="comment"></textarea>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary px-3" (click)="onSave()"> Save </button>
+    <button class="btn btn-outline-primary px-3" (click)="onClose()"> Close </button>
+  </div>
+</div>

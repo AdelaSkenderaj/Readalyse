@@ -9,6 +9,8 @@ properties:
     type: string
   downloads:
     type: string
+  readabilityScores:
+    $ref: 'ReadabilityScores.yaml'
   agents:
     type: array
     items:

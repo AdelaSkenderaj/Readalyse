@@ -119,7 +119,7 @@ public class FileRetrieval {
   public void deleteFiles() {
     try {
       FileUtils.cleanDirectory(new File(BASE_PATH));
-    }catch (IOException e) {
+    } catch (IOException e) {
       System.out.println("Could not delete files in directory " + BASE_PATH);
     }
   }

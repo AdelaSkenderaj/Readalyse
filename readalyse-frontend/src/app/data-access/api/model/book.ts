@@ -11,6 +11,7 @@
  */
 import { Agent } from './agent';
 import { Language } from './language';
+import { ReadabilityScores } from './readabilityScores';
 import { Bookshelf } from './bookshelf';
 import { Resource } from './resource';
 import { Subject } from './subject';
@@ -24,6 +25,7 @@ export interface Book {
     title?: string;
     description?: string;
     downloads?: string;
+    readabilityScores?: ReadabilityScores;
     agents?: Array<Agent>;
     bookshelves?: Array<Bookshelf>;
     languages?: Array<Language>;

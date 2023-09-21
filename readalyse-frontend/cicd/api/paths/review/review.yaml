@@ -17,23 +17,6 @@ get:
         application/json:
           schema:
             $ref: '../../components/schemas/Review/Review.yaml'
-post:
-  tags:
-    - Review
-  description: Post a review
-  operationId: createReview
-  requestBody:
-    content:
-      application/json:
-        schema:
-          $ref: '../../components/schemas/Review/Review.yaml'
-  responses:
-    "200":
-      description: Successful operation.
-      content:
-        application/json:
-          schema:
-            $ref: '../../components/schemas/Review/Review.yaml'
 delete:
   tags:
     - Review

@@ -1,15 +1,17 @@
-get:
+post:
   tags:
     - Review
   description: Get reviews of a book
-  operationId: getReviewByBookId
+  operationId: getReviewsByBookId
   parameters:
-    in: path
-    required: true
-    name: bookId
-    type: integer
-    format: int64
+    - name: bookId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int64
   requestBody:
+    required: true
     content:
       application/json:
         schema:

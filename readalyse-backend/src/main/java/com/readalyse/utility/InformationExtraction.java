@@ -15,7 +15,6 @@ import lombok.RequiredArgsConstructor;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.riot.RiotException;
-import org.apache.jena.sparql.algebra.Op;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -62,7 +61,7 @@ public class InformationExtraction {
       Long end = System.currentTimeMillis();
       if (book != null) {
         bookService.saveScores(book);
-          logger.info("Book " + book.getId() + " took " + (end - start));
+        logger.info("Book " + book.getId() + " took " + (end - start));
       }
       logger.info("\n\n\n**********************END OF BOOK *************************\n\n\n");
     }
@@ -79,100 +78,103 @@ public class InformationExtraction {
     BookEntity book = getBaseBookInformation(model);
     Optional<BookEntity> bookEntity = bookRepository.findById(book.getId());
     if (bookEntity.isEmpty()) {
-        List<BookshelfEntity> bookshelves = getBookshelves(model);
-        List<LanguageEntity> languages = getLanguages(model);
-        Long start = System.currentTimeMillis();
-        List<SubjectEntity> subjects = getSubjects(model);
-        Long end = System.currentTimeMillis();
-        logger.info("Get subjects took " + (end - start));
-        List<ResourceEntity> resources = getResources(model);
-        List<AgentEntity> agents = getAgents(model);
-        book.setBookshelves(bookshelves);
-        book.setLanguages(languages);
-        book.setSubjects(subjects);
-        book.setResources(resources);
+      List<BookshelfEntity> bookshelves = getBookshelves(model);
+      List<LanguageEntity> languages = getLanguages(model);
+      Long start = System.currentTimeMillis();
+      List<SubjectEntity> subjects = getSubjects(model);
+      Long end = System.currentTimeMillis();
+      logger.info("Get subjects took " + (end - start));
+      List<ResourceEntity> resources = getResources(model);
+      List<AgentEntity> agents = getAgents(model);
+      book.setBookshelves(bookshelves);
+      book.setLanguages(languages);
+      book.setSubjects(subjects);
+      book.setResources(resources);
 
-        boolean hasAudioResource = book.getResources().stream()
-                .anyMatch(resourceEntity -> resourceEntity.getType().contains("audio"));
-        book.setType(hasAudioResource ? "audio" : "text");
+      boolean hasAudioResource =
+          book.getResources().stream()
+              .anyMatch(resourceEntity -> resourceEntity.getType().contains("audio"));
+      book.setType(hasAudioResource ? "audio" : "text");
 
-        book.setAgents(agents);
-        return bookRepository.save(book);
+      book.setAgents(agents);
+      return bookRepository.save(book);
     }
     return book;
   }
 
   private BookEntity getBaseBookInformation(Model model) {
-      return bookMapper.modelToEntity(parseBookData.getBaseBookInformation(model));
+    return bookMapper.modelToEntity(parseBookData.getBaseBookInformation(model));
   }
 
   private List<BookshelfEntity> getBookshelves(Model model) {
-      return parseBookData.getBookshelves(model).stream()
-          .map(
-              b -> {
-                BookshelfEntity bookshelf = bookshelfMapper.modelToEntity(b);
-                Optional<BookshelfEntity> existingBookshelf =
-                    bookshelfRepository.findByName(bookshelf.getName());
+    return parseBookData.getBookshelves(model).stream()
+        .map(
+            b -> {
+              BookshelfEntity bookshelf = bookshelfMapper.modelToEntity(b);
+              Optional<BookshelfEntity> existingBookshelf =
+                  bookshelfRepository.findByName(bookshelf.getName());
 
-                if (existingBookshelf.isEmpty()) {
-                  return bookshelf;
-                }
+              if (existingBookshelf.isEmpty()) {
+                return bookshelf;
+              }
 
-                return existingBookshelf.get(); // Return the existing bookshelf
-              })
-          .toList();
+              return existingBookshelf.get(); // Return the existing bookshelf
+            })
+        .toList();
   }
 
   private List<LanguageEntity> getLanguages(Model model) {
-      return parseBookData.getLanguages(model).stream()
-            .map(
-                l -> {
-                  LanguageEntity language = languageMapper.modelToEntity(l);
-                  Optional<LanguageEntity> existingLanguage =
-                      languageRepository.findByLanguage(language.getLanguage());
+    return parseBookData.getLanguages(model).stream()
+        .map(
+            l -> {
+              LanguageEntity language = languageMapper.modelToEntity(l);
+              Optional<LanguageEntity> existingLanguage =
+                  languageRepository.findByLanguage(language.getLanguage());
 
-                  if (existingLanguage.isEmpty()) {
-                    return language;
-                  }
-                  return existingLanguage.get();
-                })
-            .toList();
+              if (existingLanguage.isEmpty()) {
+                return language;
+              }
+              return existingLanguage.get();
+            })
+        .toList();
   }
 
   private List<SubjectEntity> getSubjects(Model model) {
-      return parseBookData.getSubjects(model).stream()
-              .map(s -> subjectRepository
-                      .findByName(s.getName())
-                      .orElseGet(() -> subjectMapper.modelToEntity(s)))
-              .toList();
+    return parseBookData.getSubjects(model).stream()
+        .map(
+            s ->
+                subjectRepository
+                    .findByName(s.getName())
+                    .orElseGet(() -> subjectMapper.modelToEntity(s)))
+        .toList();
   }
 
   private List<ResourceEntity> getResources(Model model) {
-      return resourceMapper.modelsToEntities(parseBookData.getResources(model));
+    return resourceMapper.modelsToEntities(parseBookData.getResources(model));
   }
 
   private List<AgentEntity> getAgents(Model model) {
-      return parseBookData.getAgents(model).stream()
-            .map(
-                a -> {
-                  AgentEntity agent = agentMapper.modelToEntity(a);
-                  PersonEntity person =
-                      personRepository
-                          .findById(agent.getPerson().getId())
-                          .orElseGet(() -> personRepository.save(agent.getPerson()));
-                  AgentTypeEntity agentType =
-                      agentTypeRepository
-                          .findByName(agent.getType().getName())
-                          .orElseGet(() -> agentTypeRepository.save(agent.getType()));
-                  agent.setPerson(person);
-                  agent.setType(agentType);
-                  Optional<AgentEntity> existingAgent =
-                      agentRepository.findByPersonAndType(person, agentType);
-                  if (existingAgent.isEmpty()) {
-                    return agent;
-                  }
-                  return existingAgent.get();
-                })
-            .toList();
+    return parseBookData.getAgents(model).stream()
+        .map(
+            a -> {
+              AgentEntity agent = agentMapper.modelToEntity(a);
+              PersonEntity person =
+                  personRepository
+                      .findById(agent.getPerson().getId())
+                      .orElseGet(() -> personRepository.save(agent.getPerson()));
+              AgentTypeEntity agentType =
+                  agentTypeRepository
+                      .findByName(agent.getType().getName())
+                      .orElseGet(() -> agentTypeRepository.save(agent.getType()));
+              agent.setPerson(person);
+              agent.setType(agentType);
+              Optional<AgentEntity> existingAgent =
+                  agentRepository.findByPersonAndType(person, agentType);
+              if (existingAgent.isEmpty()) {
+                return agent;
+              }
+              return existingAgent.get();
+            })
+        .toList();
   }
 }

@@ -1,0 +1,19 @@
+get:
+  tags:
+    - Review
+  description: Get a user review
+  operationId: getReviewOfUser
+  parameters:
+    - name: bookId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    "200":
+      description: Successful operation.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Review/Review.yaml'

@@ -11,6 +11,7 @@ export * from './language';
 export * from './languageList';
 export * from './pagination';
 export * from './person';
+export * from './readabilityScores';
 export * from './readingStatus';
 export * from './registerRequest';
 export * from './resource';

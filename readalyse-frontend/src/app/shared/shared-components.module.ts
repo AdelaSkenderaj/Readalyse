@@ -6,15 +6,20 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import { BookFullListComponent } from './book-full-list/book-full-list.component';
 import {RouterLink} from "@angular/router";
 import {BookInformationComponent} from "./book-information/book-information.component";
+import { ReviewComponent } from './review/review.component';
+import { RatingComponent } from './rating/rating.component';
+import { ReviewModalComponent } from './review-modal/review-modal.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
     imports: [
         NgForOf,
         FontAwesomeModule,
         NgIf,
-        RouterLink
+        RouterLink,
+        FormsModule
     ],
-  declarations: [BookComponent, BookListComponent, BookFullListComponent, BookInformationComponent],
+  declarations: [BookComponent, BookListComponent, BookFullListComponent, BookInformationComponent, ReviewComponent, RatingComponent, ReviewModalComponent],
   exports: [BookComponent, BookListComponent, BookInformationComponent],
   providers: []
 })

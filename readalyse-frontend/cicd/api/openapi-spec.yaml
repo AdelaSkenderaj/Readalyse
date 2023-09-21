@@ -21,8 +21,6 @@ paths:
     $ref: './paths/discover/trending.yaml'
   /discover/highest-rated:
     $ref: './paths/discover/highest-rated.yaml'
-  /review/{reviewId}:
-    $ref: './paths/review/review.yaml'
   /library/currently-reading:
     $ref: './paths/user/currently-reading.yaml'
   /library/want-to-read:
@@ -39,6 +37,14 @@ paths:
     $ref: './paths/authentication/register.yaml'
   /auth/login:
     $ref: './paths/authentication/login.yaml'
+  /review:
+    $ref: './paths/review/reviews.yaml'
+  /review/{reviewId}:
+    $ref: './paths/review/review.yaml'
+  /review/book/{bookId}:
+    $ref: './paths/review/reviews-by-book.yaml'
+  /review/user/{bookId}:
+    $ref: './paths/review/review-of-user.yaml'
 components:
   schemas:
     BookList:
@@ -83,3 +89,5 @@ components:
       $ref: './components/schemas/StatusEnum.yaml'
     ReadingStatus:
       $ref: './components/schemas/ReadingStatus/ReadingStatus.yaml'
+    ReadabilityScores:
+      $ref: './components/schemas/Book/ReadabilityScores.yaml'

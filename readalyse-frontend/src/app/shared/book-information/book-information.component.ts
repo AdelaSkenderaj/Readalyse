@@ -1,6 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Agent, Book, BookService, Resource} from "../../data-access/api";
-import {ActivatedRoute} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {Agent, Book, BookService, Pagination, Resource, Review, ReviewService} from "../../data-access/api";
+import {ActivatedRoute, Router} from "@angular/router";
+import {NgbModal, NgbModalRef} from "@ng-bootstrap/ng-bootstrap";
+import {ReviewModalComponent} from "../review-modal/review-modal.component";
 
 @Component({
   selector: 'app-book-information',
@@ -10,10 +12,19 @@ import {ActivatedRoute} from "@angular/router";
 export class BookInformationComponent implements OnInit {
 
   book: Book = {};
-  private bookId: number | undefined;
-  private title: string | undefined;
+  bookId: number | undefined;
+  title: string | undefined;
+  userReview: Review | undefined;
+  bookReviews: Review[] | undefined;
 
-  constructor(private route: ActivatedRoute, private bookService: BookService) { }
+  reviewPagination: Pagination | undefined;
+  modalRef: NgbModalRef | undefined;
+
+  constructor(private route: ActivatedRoute,
+              private bookService: BookService,
+              private router: Router,
+              private reviewService: ReviewService,
+              private ngbModal: NgbModal) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -21,6 +32,21 @@ export class BookInformationComponent implements OnInit {
       if(this.bookId !== undefined)
       this.bookService.getBookById(this.bookId).subscribe((response) => {
         this.book = response;
+        if (this.book.id != null) {
+          this.reviewService.getReviewOfUser(this.book.id).subscribe((response) => {
+            this.userReview = response;
+          })
+
+          let pagination : Pagination = {
+            page: 0,
+            size: 5
+          }
+
+          this.reviewService.getReviewsByBookId(this.book.id, pagination).subscribe((response) => {
+            this.bookReviews = response.reviews;
+            this.reviewPagination = response.pagination;
+          })
+        }
       })
     })
   }
@@ -47,5 +73,24 @@ export class BookInformationComponent implements OnInit {
       }
     })
     return creators.substr(0, creators.lastIndexOf(","));
+  }
+
+  navigateToReadingPage() {
+    let resourceUrl: string | undefined;
+    this.book.resources?.forEach(resource => {
+      if (resource.url?.endsWith(".html") || resource.url?.endsWith(".html.images")) {
+        resourceUrl = resource.url;
+      }
+    })
+    if (resourceUrl !== undefined) {
+      window.location.href = resourceUrl;
+    }
+  }
+
+  openModal() {
+    this.modalRef = this.ngbModal.open(ReviewModalComponent, {
+      centered: true
+    })
+    this.modalRef.componentInstance.bookId = this.bookId;
   }
 }

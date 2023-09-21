@@ -9,14 +9,17 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { User } from './user';
 
 
-export interface Review { 
-    id?: number;
-    rating?: number;
-    comment?: string;
-    user?: User;
+export interface ReadabilityScores { 
     bookId?: number;
+    fleschKincaidGradeLevel?: number;
+    fleschReadingEase?: number;
+    colemanLiauIndex?: number;
+    smogIndex?: number;
+    automatedReadabilityIndex?: number;
+    forcastIndex?: number;
+    lixIndex?: number;
+    rixIndex?: number;
 }
 

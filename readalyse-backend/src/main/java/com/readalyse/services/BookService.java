@@ -9,10 +9,6 @@ import com.readalyse.utility.AnalyzeText;
 import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 import java.util.logging.Logger;
-
-import com.readalyse.utility.InformationExtraction;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.converter.StringHttpMessageConverter;
@@ -32,9 +28,12 @@ public class BookService {
 
   private final Logger logger;
 
-
   @Autowired
-  public BookService(@Qualifier("ReadabilityScoresAnalysisLogger") Logger logger, BookRepository bookRepository, AnalyzeText analyzeText, ReadabilityScoresRepository readabilityScoresRepository) {
+  public BookService(
+      @Qualifier("ReadabilityScoresAnalysisLogger") Logger logger,
+      BookRepository bookRepository,
+      AnalyzeText analyzeText,
+      ReadabilityScoresRepository readabilityScoresRepository) {
     this.logger = logger;
     this.bookRepository = bookRepository;
     this.analyzeText = analyzeText;
@@ -52,7 +51,8 @@ public class BookService {
                     .findFirst()
                     .orElse(null));
     if (plaintextResource == null) {
-      logger.info("Cannot find a resource for the book you are requesting. BookId: " + book.getId());
+      logger.info(
+          "Cannot find a resource for the book you are requesting. BookId: " + book.getId());
     }
 
     RestTemplate restTemplate = new RestTemplate();
@@ -93,7 +93,8 @@ public class BookService {
   @Async
   @Transactional(propagation = Propagation.REQUIRES_NEW)
   public void saveScores(BookEntity book) {
-    Optional<ReadabilityScoresEntity> readabilityScores = readabilityScoresRepository.findByBookId(book.getId());
+    Optional<ReadabilityScoresEntity> readabilityScores =
+        readabilityScoresRepository.findByBookId(book.getId());
     if (readabilityScores.isEmpty() && book.getType().equals("text")) {
       logger.info("Reading score analysis for book " + book.getId());
       String text = getText(book);
@@ -105,6 +106,8 @@ public class BookService {
   }
 
   public BookEntity getBookById(Long bookId) {
-    return bookRepository.findById(bookId).orElseThrow(() -> new RuntimeException("Book not found"));
+    return bookRepository
+        .findById(bookId)
+        .orElseThrow(() -> new RuntimeException("Book not found"));
   }
 }
