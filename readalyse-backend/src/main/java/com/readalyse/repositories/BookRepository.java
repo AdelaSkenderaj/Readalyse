@@ -1,6 +1,7 @@
 package com.readalyse.repositories;
 
 import com.readalyse.entities.BookEntity;
+import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,6 +15,15 @@ public interface BookRepository extends JpaRepository<BookEntity, Long> {
   @Query(
       nativeQuery = true,
       value =
-          "Select  from FAVORITE_BOOKS fb inner join BOOK book on fb.BOOK_ID=book.ID where fb.USER_ID=:id")
+          "Select ID, TITLE, DESCRIPTION, DOWNLOADS, TYPE, INSERT_TIME, UPDATE_TIME from FAVORITE_BOOKS fb inner join BOOK book on fb.BOOK_ID=book.ID where fb.USER_ID=:id")
   Page<BookEntity> findFavorites(Long id, Pageable pageable);
+
+  @Query(
+      nativeQuery = true,
+      value =
+          "Select ID, TITLE, DESCRIPTION, DOWNLOADS, TYPE, INSERT_TIME, UPDATE_TIME from FAVORITE_BOOKS fb inner join BOOK book on fb.BOOK_ID=book.ID where fb.USER_ID=:id")
+  List<BookEntity> findFavorites(Long id);
+
+  @Query(nativeQuery = true, value = "Delete from FAVORITE_BOOKS where USER_ID=:userId and BOOK_ID=:bookId")
+  void removeFromFavorites(Long userId, Long bookId);
 }

@@ -1,1 +1,40 @@
-<p>analyse works!</p>
+
+<div class="container-fluid vh-100">
+  <div class="row">
+    <div class="container-fluid m-4 rounded-4 col-md-12 ml-sm-auto col-lg-9 p-4" style="background-color: white">
+      <div class="text-center">
+        <!-- Basic Book Information -->
+
+        <h1 class="fw-semibold text-center" style="color: #000055">Analyse your text</h1>
+        <textarea class="form-control mt-5 mb-2" placeholder="Add a text to analyse" rows="20" [(ngModel)]="inputText"></textarea>
+        <button class="col-lg-3 mx-5 border-0 rounded-4 fw-semibold px-3 py-2 mt-3 fs-5" style="width: max-content; background-color: #000055; color: #E6EFFE" (click)="analyse()" >Analyse</button>
+
+      </div>
+    </div>
+
+    <div role="main" class="col-md-12 col-lg-3 d-md-block vh-100 sidebar" style="background-color: #000055" >
+      <div class="p-2 m-2">
+        <div class="col text-center">
+          <div>
+            <h5 class=" mx-4" style="color: #E6EFFE">Readability Scores</h5>
+          </div>
+          <div class="pt-3 text-center">
+            <div class="row justify-content-between" style="color: #E6EFFE; "><p class="col-6">Flesch-Kincaid Grade Level</p><p class="col-6"> {{readabilityScores.fleschKincaidGradeLevel}}</p></div>
+            <div class="row justify-content-between" style="color: #E6EFFE; "><p class="col-6">Flesch Reading Ease </p><p class="col-6">{{readabilityScores.fleschReadingEase}}</p></div>
+            <div class="row justify-content-between" style="color: #E6EFFE; "><p class="col-6">Coleman Liau Index </p><p class="col-6">{{readabilityScores.colemanLiauIndex}}</p></div>
+            <div class="row justify-content-between" style="color: #E6EFFE; "><p class="col-6">SMOG Index </p><p class="col-6">{{readabilityScores.smogIndex}}</p></div>
+            <div class="row justify-content-between" style="color: #E6EFFE; "><p class="col-6">Automated Readability Index </p><p class="col-6">{{readabilityScores.automatedReadabilityIndex}}</p></div>
+            <div class="row justify-content-between" style="color: #E6EFFE; "><p class="col-6">FORCAST Index </p><p class="col-6">{{readabilityScores.forcastIndex}}</p></div>
+            <div class="row justify-content-between" style="color: #E6EFFE; "><p class="col-6">Lix Formula </p><p class="col-6">{{readabilityScores.lixIndex}}</p></div>
+            <div class="row justify-content-between" style="color: #E6EFFE; "><p class="col-6">Rix Formula </p><p class="col-6">{{readabilityScores.rixIndex}}</p></div>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- All information -->
+
+    </div>
+  </div>
+</div>
+

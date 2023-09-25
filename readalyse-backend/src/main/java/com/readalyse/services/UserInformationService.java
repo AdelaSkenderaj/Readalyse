@@ -128,13 +128,23 @@ public class UserInformationService {
     UserEntity user = Utility.getUser();
     BookEntity book =
         bookRepository.findById(bookId).orElseThrow(() -> new RuntimeException("Book not found"));
-    if (user.getFavoriteBooks().contains(book)) {
-      user.getFavoriteBooks().remove(book);
+    List<BookEntity> favoriteBooks = bookRepository.findFavorites(user.getId());
+    if (favoriteBooks.contains(book)) {
+      bookRepository.removeFromFavorites(user.getId(), bookId);
       return new BookList()
-          .books(bookMapper.entitiesToModels(userRepository.save(user).getFavoriteBooks()));
+          .books(bookMapper.entitiesToModels(bookRepository.findFavorites(user.getId())));
     }
     user.getFavoriteBooks().add(book);
     return new BookList()
         .books(bookMapper.entitiesToModels(userRepository.save(user).getFavoriteBooks()));
+  }
+
+  public Boolean isFavoriteBook(Long bookId) {
+    UserEntity user = Utility.getUser();
+    BookEntity book =
+        bookRepository.findById(bookId).orElseThrow(() -> new RuntimeException("Book not found"));
+
+    List<BookEntity> favoriteBooks = bookRepository.findFavorites(user.getId());
+    return favoriteBooks.contains(book);
   }
 }

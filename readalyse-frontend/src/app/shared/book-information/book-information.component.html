@@ -6,12 +6,13 @@
         <!-- Basic Book Information -->
         <div class="col">
           <div class="row justify-content-between">
-            <h1 class="fw-semibold col-lg-9" style="color: #000055">{{book.title}}</h1>
+            <h1 class="fw-semibold col-lg-8" style="color: #000055">{{book.title}}</h1>
+            <fa-icon class="col-lg-1 pt-3" role="button" [icon]="isFavoriteBook ? fullHeart : emptyHeart" size="2xl" (click)="changeFavoriteStatus()"></fa-icon>
             <button class="col-lg-3 mx-5 border-0 rounded-4 fw-semibold px-3 py-2" style="width: max-content; height: 4rem;background-color: #000055; color: #E6EFFE" (click)="navigateToReadingPage()">Start Reading</button>
           </div>
           <h4 class="fw-medium" style="color: lightslategray">{{getCreator(book.agents)}}</h4>
           <hr style="color: #000055">
-          <div class="row col-lg-12"><p style="width: max-content" class="pt-2"><app-rating [rating]="4" [size]="'xl'"></app-rating></p><p style="width: max-content" class="fs-4 fw-bold">4</p><p style="width: max-content; color: lightslategray" class="pt-2"> 47228 ratings</p> <p style="width: max-content; color: lightslategray" class="pt-2">2372 reviews</p></div>
+          <div class="row col-lg-12"><p style="width: max-content" class="pt-2"><app-rating [rating]="avgRating" [size]="'xl'"></app-rating></p><p style="width: max-content" class="fs-4 fw-bold">{{getAvgRatings()}}</p><p style="width: max-content; color: lightslategray" class="pt-2"> {{getNrRatings()}} ratings</p> <p style="width: max-content; color: lightslategray" class="pt-2">{{getNrReviews()}} reviews</p></div>
           <p>{{book.description}}</p>
           <div class="row col-lg-12"><p style="width: max-content; color: slateblue" class="fw-medium">Languages</p><p style="width: max-content;" *ngFor="let language of book.languages">{{language.language}}</p> </div>
           <div class="row col-lg-12"><p style="width: max-content; color: mediumslateblue" class="fw-medium">Bookshelves</p> <p style="width: max-content" *ngFor="let bookshelf of book.bookshelves">{{bookshelf.name}}</p></div>
@@ -42,7 +43,11 @@
       <div class="p-2 m-2">
         <div class="col text-center">
           <img class="text-center" style="width: 95%; height: 17em" [src]="getImageResource(book.resources)" alt="">
-          <button class="my-4 mx-5 border-0 rounded-4 fw-semibold px-3 py-2" style="background-color: #E6EFFE; color: #000055">Currently Reading</button>
+          <button class="my-4 mx-5 border-0 rounded-4 fw-semibold px-3 py-2" style="background-color: #E6EFFE; color: #000055">
+           <form [formGroup]="form">
+             <select formControlName="bookStatus" class="border-0 rounded-4 fw-semibold px-3 py-2"  style="background-color: #E6EFFE; color: #000055" (change)="updateStatus()">
+             <option *ngFor="let option of options" [value]="option">{{option}}</option>
+           </select></form> </button>
           <div>
             <h5 class=" mx-4" style="color: #E6EFFE">Readability Scores</h5>
           </div>

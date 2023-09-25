@@ -16,13 +16,13 @@ export class MyLibraryComponent implements OnInit {
     this.libraryService.getCurrentlyReadingBooksForUser({page: 0, size: 5}).subscribe((response) => {
       this.currentlyReading = response.books;
     })
-    this.libraryService.getWantToReadBooksForUser({page: 700, size: 5}).subscribe((response) => {
+    this.libraryService.getWantToReadBooksForUser({page: 0, size: 5}).subscribe((response) => {
       this.wantToRead = response.books;
     })
-    this.libraryService.getFinishedReadingBooksForUser({page: 1637, size: 5}).subscribe((response) => {
+    this.libraryService.getFinishedReadingBooksForUser({page: 0, size: 5}).subscribe((response) => {
       this.finished = response.books;
     })
-    this.libraryService.getFavoriteBooksForUser({page: 13827, size: 5}).subscribe((response) => {
+    this.libraryService.getFavoriteBooksForUser({page: 0, size: 5}).subscribe((response) => {
       this.favorites = response.books;
     })
   }

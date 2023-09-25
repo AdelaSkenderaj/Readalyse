@@ -25,17 +25,17 @@ export class DiscoverFullComponent implements OnInit {
       })
     }
     else if (this.pathParam == 'new-additions') {
-      this.discoverService.getNewBooks({page: 20, size: 20}).subscribe((response) => {
+      this.discoverService.getNewBooks({page: 0, size: 20}).subscribe((response) => {
         this.bookList = response.books;
       })
     }
     else if(this.pathParam == 'trending') {
-      this.discoverService.getTrendingBooks({page: 687, size: 20}).subscribe((response) => {
+      this.discoverService.getTrendingBooks({page: 0, size: 20}).subscribe((response) => {
         this.bookList = response.books;
       })
     }
     else if (this.pathParam == 'highest-rated') {
-      this.discoverService.getHighestRatedBooks({page: 1984, size: 20}).subscribe((response) => {
+      this.discoverService.getHighestRatedBooks({page: 0, size: 20}).subscribe((response) => {
         this.bookList = response.books;
       })
     }

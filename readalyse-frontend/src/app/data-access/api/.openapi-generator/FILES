@@ -2,6 +2,7 @@
 README.md
 api.module.ts
 api/agent.service.ts
+api/analyse.service.ts
 api/api.ts
 api/authentication.service.ts
 api/book.service.ts
@@ -21,6 +22,7 @@ model/book.ts
 model/bookList.ts
 model/bookshelf.ts
 model/bookshelfList.ts
+model/isFavorite.ts
 model/language.ts
 model/languageList.ts
 model/models.ts
@@ -37,6 +39,7 @@ model/roleEnum.ts
 model/statusEnum.ts
 model/subject.ts
 model/subjectList.ts
+model/text.ts
 model/user.ts
 param.ts
 variables.ts

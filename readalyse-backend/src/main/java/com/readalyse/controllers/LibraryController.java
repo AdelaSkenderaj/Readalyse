@@ -2,6 +2,7 @@ package com.readalyse.controllers;
 
 import com.readalyse.api.LibraryApi;
 import com.readalyse.model.BookList;
+import com.readalyse.model.IsFavorite;
 import com.readalyse.model.Pagination;
 import com.readalyse.model.ReadingStatus;
 import com.readalyse.services.UserInformationService;
@@ -43,5 +44,11 @@ public class LibraryController implements LibraryApi {
   @Override
   public ResponseEntity<BookList> updateFavorite(Long bookId) {
     return ResponseEntity.ok(userInformationService.updateFavorite(bookId));
+  }
+
+  @Override
+  public ResponseEntity<IsFavorite> checkIfFavorite(Long bookId) {
+    return ResponseEntity.ok(
+        new IsFavorite().favorite(userInformationService.isFavoriteBook(bookId)));
   }
 }

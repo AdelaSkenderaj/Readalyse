@@ -1,0 +1,17 @@
+post:
+  tags:
+    - Analyse
+  description: Get Readability Scores
+  operationId: analyseText
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/Text.yaml'
+  responses:
+    "200":
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Book/ReadabilityScores.yaml'

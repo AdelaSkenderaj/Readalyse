@@ -33,6 +33,8 @@ paths:
     $ref: './paths/user/update-status.yaml'
   /library/favorites/{bookId}/switch:
     $ref: './paths/user/add-remove-favorite.yaml'
+  /library/is-favorite/{bookId}:
+    $ref: './paths/user/is-favorite-book.yaml'
   /auth/register:
     $ref: './paths/authentication/register.yaml'
   /auth/login:
@@ -45,6 +47,8 @@ paths:
     $ref: './paths/review/reviews-by-book.yaml'
   /review/user/{bookId}:
     $ref: './paths/review/review-of-user.yaml'
+  /analyse/text:
+    $ref: './paths/analyse/text-analysis.yaml'
 components:
   schemas:
     BookList:
@@ -91,3 +95,7 @@ components:
       $ref: './components/schemas/ReadingStatus/ReadingStatus.yaml'
     ReadabilityScores:
       $ref: './components/schemas/Book/ReadabilityScores.yaml'
+    Text:
+      $ref: './components/schemas/Text.yaml'
+    IsFavorite:
+      $ref: './components/schemas/Book/IsFavorite.yaml'

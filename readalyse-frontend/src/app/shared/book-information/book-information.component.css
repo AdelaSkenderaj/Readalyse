@@ -1,3 +1,7 @@
 .col-lg-9 {
   width: 71%;
 }
+
+select:focus {
+  outline: none;
+}

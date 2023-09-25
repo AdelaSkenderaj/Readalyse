@@ -12,15 +12,7 @@ const routes: Routes = [
   },
   {
     path: ':listName', component: DiscoverFullComponent,
-    /*children: [
-      {
-        path: 'book/:bookId', component: DiscoverFullInformationComponent
-      }
-    ]*/
   },
-  /*{
-    path: 'book/:bookId', component: DiscoverFullInformationComponent
-  }*/
   ];
 @NgModule({
   imports: [RouterModule.forChild(routes), SharedComponentsModule, FontAwesomeModule],

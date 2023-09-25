@@ -1,0 +1,6 @@
+required:
+  - favorite
+type: object
+properties:
+  favorite:
+    type: boolean

@@ -24,3 +24,7 @@
   background-color: #000055;
   color: #E6E9EF;
 }
+
+textarea:focus {
+  outline: none;
+}

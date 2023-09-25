@@ -1,5 +1,7 @@
 export * from './agent.service';
 import { AgentService } from './agent.service';
+export * from './analyse.service';
+import { AnalyseService } from './analyse.service';
 export * from './authentication.service';
 import { AuthenticationService } from './authentication.service';
 export * from './book.service';
@@ -10,4 +12,4 @@ export * from './library.service';
 import { LibraryService } from './library.service';
 export * from './review.service';
 import { ReviewService } from './review.service';
-export const APIS = [AgentService, AuthenticationService, BookService, DiscoverService, LibraryService, ReviewService];
+export const APIS = [AgentService, AnalyseService, AuthenticationService, BookService, DiscoverService, LibraryService, ReviewService];

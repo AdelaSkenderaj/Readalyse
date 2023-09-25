@@ -27,7 +27,7 @@ CREATE TABLE REVIEW (
 );
 
 CREATE TABLE READING_STATUS (
-    ID bigint not null,
+    ID bigint not null auto_increment,
     USER_ID bigint not null,
     BOOK_ID bigint not null,
     STATUS varchar(255) not null,

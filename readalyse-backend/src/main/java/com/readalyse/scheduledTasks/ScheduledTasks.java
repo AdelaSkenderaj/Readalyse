@@ -15,7 +15,7 @@ public class ScheduledTasks {
   private final InformationExtraction informationExtraction;
   private final FileRetrieval fileRetrieval;
 
-  @Scheduled(cron = "0 57 13 * * *")
+  /*@Scheduled(cron = "0 57 13 * * *")
   public void getLatestBooks() {
     System.out.println("daily task started");
     try {
@@ -29,5 +29,5 @@ public class ScheduledTasks {
     } catch (IOException e) {
       e.printStackTrace();
     }
-  }
+  }*/
 }

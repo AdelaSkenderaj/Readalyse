@@ -9,7 +9,7 @@ import {BookInformationComponent} from "./book-information/book-information.comp
 import { ReviewComponent } from './review/review.component';
 import { RatingComponent } from './rating/rating.component';
 import { ReviewModalComponent } from './review-modal/review-modal.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
     imports: [
@@ -17,7 +17,8 @@ import {FormsModule} from "@angular/forms";
         FontAwesomeModule,
         NgIf,
         RouterLink,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
     ],
   declarations: [BookComponent, BookListComponent, BookFullListComponent, BookInformationComponent, ReviewComponent, RatingComponent, ReviewModalComponent],
   exports: [BookComponent, BookListComponent, BookInformationComponent],

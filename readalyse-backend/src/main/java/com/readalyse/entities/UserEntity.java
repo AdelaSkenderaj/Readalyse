@@ -45,7 +45,7 @@ public class UserEntity extends AuditedEntity implements UserDetails {
   @Enumerated(EnumType.STRING)
   private Role role;
 
-  @ManyToMany
+  @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
   @JoinTable(
       name = "FAVORITE_BOOKS",
       joinColumns = @JoinColumn(name = "USER_ID"),

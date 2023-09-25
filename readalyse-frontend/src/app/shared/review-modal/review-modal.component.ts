@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Review, ReviewService} from "../../data-access/api";
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
 import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons';
@@ -12,6 +12,7 @@ import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 export class ReviewModalComponent implements OnInit {
 
   @Input() bookId: number | undefined;
+  @Output() reviewSaved: EventEmitter<void> = new EventEmitter<void>();
   rating: number = 0;
   comment: string | undefined;
 
@@ -38,7 +39,7 @@ export class ReviewModalComponent implements OnInit {
       bookId: this.bookId
     }
     this.reviewService.createReview(review).subscribe((response) => {
-      console.log(response)
+      this.reviewSaved.emit();
       this.activeModal.close();
     })
   }

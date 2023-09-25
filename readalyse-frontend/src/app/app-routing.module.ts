@@ -48,6 +48,13 @@ const routes: Routes = [
           import('./analyse/analyse.module').then(
             (m) => m.AnalyseModule
           )
+      },
+      {
+        path: 'favorite',
+        loadChildren: () =>
+          import('./favorite/favorite.module').then(
+            (m) => m.FavoriteModule
+          )
       }
     ],
   },

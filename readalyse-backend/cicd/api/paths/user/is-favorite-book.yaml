@@ -1,0 +1,19 @@
+get:
+  tags:
+    - Library
+  description: Check if book is favorite
+  operationId: checkIfFavorite
+  parameters:
+    - name: bookId
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int64
+  responses:
+    "200":
+      description: Successful operation.
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Book/IsFavorite.yaml'
