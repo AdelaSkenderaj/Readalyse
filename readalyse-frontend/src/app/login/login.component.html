@@ -1,6 +1,6 @@
-<div class="container-fluid vh-100">
+<div class="container-fluid vh-100" style="background-image: url('../../assets/3Z_2006.w020.n001.389B.p15.389.jpg'); background-size: cover">
   <div class="text-center" style="display: flex; justify-content: center">
-    <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+    <div class="col-lg-4 mb-5 mb-lg-0 position-relative">
 
       <div class="card bg-glass">
         <div class="card-body px-4 py-5 px-md-5">
@@ -10,6 +10,8 @@
               type="text"
               placeholder="Username"
               [(ngModel)]="username"
+              class="bg-light border-0 rounded-2 ms-2 p-3 m-2"
+              style="width: 90%; background-color: #E6E9EF"
               #title
             />
           </div>
@@ -18,22 +20,21 @@
               [type]="hide ? 'password' : 'text'"
               placeholder="Password"
               [(ngModel)]="password"
+              class="bg-light border-0  rounded-2 ms-2 p-3 m-2"
+              style="width: 90%; background-color: #E6E9EF"
               #title
             />
           </div>
 
           <div class="form-check d-flex justify-content-center mb-4">
-            <button class="login-button" (click)="handleLogin()">
+            <button class="col-lg-3 mx-1 border-0 rounded-3 fw-semibold px-3 py-2" style="background-color: #000055; color: #E6EFFE" (click)="handleLogin()">
               Login
             </button>
-            <button class="login-button" routerLink="/register">
+            <button class="col-lg-3 mx-1 border-0 rounded-3 fw-semibold px-3 py-2" style="background-color: lightsteelblue; color: #E6EFFE" routerLink="/register">
               SignUp
             </button>
           </div>
 
-          <!--<div class="form-check d-flex justify-content-center mb-4">
-            <a class="forgot-password" routerLink="/forgot-password" style="text-decoration: none" >Forgot Password</a>
-          </div>-->
         </div>
       </div>
     </div>

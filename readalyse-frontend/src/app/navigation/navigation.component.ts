@@ -9,6 +9,8 @@ import {
   faGear,
   faRightFromBracket, faSearch
 } from "@fortawesome/free-solid-svg-icons";
+import {AuthService} from "../service/auth.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-navigation',
@@ -25,12 +27,17 @@ export class NavigationComponent implements OnInit {
   settingsIcon = faGear;
   logoutIcon = faRightFromBracket;
   searchIcon = faSearch;
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   toggleSidenav() {
     this.isSidenavOpen = !this.isSidenavOpen;
+  }
+
+  handleLogout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }

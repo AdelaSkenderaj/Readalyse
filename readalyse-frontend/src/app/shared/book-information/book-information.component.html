@@ -12,7 +12,7 @@
           </div>
           <h4 class="fw-medium" style="color: lightslategray">{{getCreator(book.agents)}}</h4>
           <hr style="color: #000055">
-          <div class="row col-lg-12"><p style="width: max-content" class="pt-2"><app-rating [rating]="avgRating" [size]="'xl'"></app-rating></p><p style="width: max-content" class="fs-4 fw-bold">{{getAvgRatings()}}</p><p style="width: max-content; color: lightslategray" class="pt-2"> {{getNrRatings()}} ratings</p> <p style="width: max-content; color: lightslategray" class="pt-2">{{getNrReviews()}} reviews</p></div>
+          <div class="row col-lg-12"><p style="width: max-content" class="pt-2"><app-rating [rating]="4" [size]="'xl'"></app-rating></p><p style="width: max-content" class="fs-4 fw-bold">{{4}}</p><p style="width: max-content; color: lightslategray" class="pt-2"> 4 ratings</p> <p style="width: max-content; color: lightslategray" class="pt-2">4 reviews</p></div>
           <p>{{book.description}}</p>
           <div class="row col-lg-12"><p style="width: max-content; color: slateblue" class="fw-medium">Languages</p><p style="width: max-content;" *ngFor="let language of book.languages">{{language.language}}</p> </div>
           <div class="row col-lg-12"><p style="width: max-content; color: mediumslateblue" class="fw-medium">Bookshelves</p> <p style="width: max-content" *ngFor="let bookshelf of book.bookshelves">{{bookshelf.name}}</p></div>
