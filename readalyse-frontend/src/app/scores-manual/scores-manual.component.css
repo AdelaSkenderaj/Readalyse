@@ -1,0 +1,11 @@
+.red-round {
+  border: 1px solid #4B0A19;
+}
+
+h3 {
+  color: #4B0A19;
+}
+
+thead > tr > td {
+  font-weight: bold;
+}

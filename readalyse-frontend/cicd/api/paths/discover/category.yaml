@@ -1,0 +1,23 @@
+post:
+  tags:
+    - Discover
+  description: Get book by category
+  operationId: getBooksByCategory
+  parameters:
+    - name: category
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/schemas/Pagination.yaml'
+  responses:
+    "200":
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/schemas/Book/BookList.yaml'

@@ -55,4 +55,11 @@ export class SignupComponent implements OnInit {
 
   }
 
+  check() {
+    if (this.form.get('password')) {
+      return !this.form.get('password')!.toString().match('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$')
+    }
+    return false;
+  }
+
 }

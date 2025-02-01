@@ -22,7 +22,7 @@ export class DiscoverComponent implements OnInit {
     this.recommendedList = response.books;
     })
 
-    this.discoverService.getNewBooks({page: 6, size: 5}).subscribe((response) => {
+    this.discoverService.getNewBooks({page: 0, size: 5}).subscribe((response) => {
       this.newList = response.books;
     })
 

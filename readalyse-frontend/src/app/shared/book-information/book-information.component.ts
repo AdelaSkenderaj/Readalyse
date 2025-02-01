@@ -15,6 +15,7 @@ import {ReviewModalComponent} from "../review-modal/review-modal.component";
 import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {faHeart as fullHeart} from "@fortawesome/free-solid-svg-icons";
 import {faHeart as emptyHeart} from "@fortawesome/free-regular-svg-icons"
+import {angularFontawesomeVersion} from "@fortawesome/angular-fontawesome/schematics/ng-add/versions";
 
 @Component({
   selector: 'app-book-information',
@@ -141,9 +142,9 @@ export class BookInformationComponent implements OnInit {
 
   private calculate() {
     let allReviews: Review[] = [];
-    if (this.userReview) {
       // @ts-ignore
-      allReviews.push(this.bookReviews)
+    allReviews.push(...this.bookReviews)
+    if (this.userReview) {
       allReviews.push(this.userReview)
     }
     let rating: number = 0;

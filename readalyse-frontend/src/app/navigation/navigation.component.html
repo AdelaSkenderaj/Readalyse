@@ -32,15 +32,15 @@
             <p class="px-2 fs-6 fw-semibold"> Analyse </p>
           </div>
         </li>
-        <li class="nav-item p-2">
-          <div class="d-flex flex-row" role="button">
-            <fa-icon style="color: #000055" size="xl" [icon]="favoriteIcon" routerLink="favorite"></fa-icon>
+        <li class="nav-item p-2" routerLink="favorite" role="button">
+          <div class="d-flex flex-row">
+            <fa-icon style="color: #000055" size="xl" [icon]="favoriteIcon"></fa-icon>
             <p class="px-2 fs-6 fw-semibold"> Favourite </p>
           </div>
         </li>
-        <li class="nav-item p-2">
-          <div class="d-flex flex-row" role="button">
-            <fa-icon style="color: #000055" size="xl" [icon]="categoryIcon" routerLink="favorite"></fa-icon>
+        <li class="nav-item p-2" routerLink="scores-manual" role="button">
+          <div class="d-flex flex-row" >
+            <fa-icon style="color: #000055" size="xl" [icon]="categoryIcon" ></fa-icon>
             <p class="px-2 fs-6 fw-semibold"> Scores Manual </p>
           </div>
         </li>

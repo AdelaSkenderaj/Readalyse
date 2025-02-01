@@ -55,6 +55,13 @@ const routes: Routes = [
           import('./favorite/favorite.module').then(
             (m) => m.FavoriteModule
           )
+      },
+      {
+        path: 'scores-manual',
+        loadChildren: () =>
+          import('./scores-manual/scores-manual.module').then(
+            (m) => m.ScoresManualModule
+          )
       }
     ],
   },

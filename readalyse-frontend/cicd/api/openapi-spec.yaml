@@ -21,6 +21,8 @@ paths:
     $ref: './paths/discover/trending.yaml'
   /discover/highest-rated:
     $ref: './paths/discover/highest-rated.yaml'
+  /discover/{category}:
+    $ref: './paths/discover/category.yaml'
   /library/currently-reading:
     $ref: './paths/user/currently-reading.yaml'
   /library/want-to-read:

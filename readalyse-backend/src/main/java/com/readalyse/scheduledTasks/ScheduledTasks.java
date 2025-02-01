@@ -2,10 +2,7 @@ package com.readalyse.scheduledTasks;
 
 import com.readalyse.utility.FileRetrieval;
 import com.readalyse.utility.InformationExtraction;
-import java.io.File;
-import java.io.IOException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 @Component

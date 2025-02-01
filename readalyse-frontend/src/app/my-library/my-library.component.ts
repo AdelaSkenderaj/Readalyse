@@ -22,9 +22,6 @@ export class MyLibraryComponent implements OnInit {
     this.libraryService.getFinishedReadingBooksForUser({page: 0, size: 5}).subscribe((response) => {
       this.finished = response.books;
     })
-    this.libraryService.getFavoriteBooksForUser({page: 0, size: 5}).subscribe((response) => {
-      this.favorites = response.books;
-    })
   }
 
   ngOnInit(): void {

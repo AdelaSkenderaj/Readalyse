@@ -10,4 +10,5 @@ public class BookModel {
   private String title;
   private String description;
   private Long downloads;
+  private String type;
 }

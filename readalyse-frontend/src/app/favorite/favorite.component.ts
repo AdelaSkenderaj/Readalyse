@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Book, LibraryService} from "../data-access/api";
 
 @Component({
   selector: 'app-favorite',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavoriteComponent implements OnInit {
 
-  constructor() { }
+  bookList: Book[] | undefined;
+  constructor(private libraryService: LibraryService) { }
 
   ngOnInit(): void {
+    this.libraryService.getFavoriteBooksForUser({page: 0, size: 20}).subscribe((response) => {
+      this.bookList = response.books;
+      console.log(this.bookList)
+    })
   }
 
 }

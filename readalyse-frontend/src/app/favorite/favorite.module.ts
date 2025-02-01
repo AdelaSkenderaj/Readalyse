@@ -1,6 +1,7 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
 import {FavoriteComponent} from "./favorite.component";
+import {SharedComponentsModule} from "../shared/shared-components.module";
 
 const routes: Routes = [
   {
@@ -8,7 +9,7 @@ const routes: Routes = [
   }
 ]
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+    imports: [RouterModule.forChild(routes), SharedComponentsModule],
   declarations: [FavoriteComponent],
   exports: [],
   providers: []

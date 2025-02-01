@@ -35,4 +35,9 @@ public class DiscoverController implements DiscoverApi {
   public ResponseEntity<BookList> getHighestRatedBooks(Pagination pagination) {
     return ResponseEntity.ok(discoverService.getHighestRatedBooks(pagination));
   }
+
+  @Override
+  public ResponseEntity<BookList> getBooksByCategory(String category, Pagination pagination) {
+    return ResponseEntity.ok(discoverService.getBooksByCategory(category, pagination));
+  }
 }
