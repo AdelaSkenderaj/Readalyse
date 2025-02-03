@@ -2,9 +2,8 @@ package com.readalyse.repositories;
 
 import com.readalyse.entities.BookEntity;
 import com.readalyse.entities.BookshelfEntity;
-import java.util.List;
-
 import com.readalyse.entities.SubjectEntity;
+import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

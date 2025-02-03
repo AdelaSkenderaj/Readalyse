@@ -45,3 +45,16 @@ logging:
   file:
       informationExtraction: C:/Users/Dela/log/InformationExtraction.log
       readabilityScores: C:/Users/Dela/log/ReadabilityScoresAnalysis.log
+
+
+projectGutenberg:
+  url: ${PROJECT_GUTENBERG_URL:https://gutenberg.org/cache/epub/feeds/rdf-files.tar.bz2}
+  downloadBaseDirectory: ${DOWNLOAD_BASE_DIRECTORY:C:/Users/Dela/background-workers/all-time-data}
+  downloadedFilesPath: ${DOWNLOADED_FILES_PATH:C:/Users/Dela/background-workers/all-time-data/rdf-files.tar.bz2}
+
+
+
+
+
+
+

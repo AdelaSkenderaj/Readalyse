@@ -10,13 +10,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-
-import static java.util.Optional.ofNullable;
 
 @Service
 @RequiredArgsConstructor
@@ -47,10 +44,10 @@ public class DiscoverService {
               }
             }));
     List<BookEntity> favoriteBooks =
-            bookRepository
-                    .findFavorites(
-                            user.getId(), PageRequest.of(pageRequest.getPage(), pageRequest.getSize()))
-                    .getContent();
+        bookRepository
+            .findFavorites(
+                user.getId(), PageRequest.of(pageRequest.getPage(), pageRequest.getSize()))
+            .getContent();
     preferredBooks.addAll(favoriteBooks);
     List<BookshelfEntity> preferredBookshelves =
         preferredBooks.stream()
@@ -109,25 +106,45 @@ public class DiscoverService {
         new ReadabilityScoresEntity(null, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
 
     List<ReadabilityScoresEntity> readabilityScoresEntities = new ArrayList<>();
-    readBooks.forEach(book -> readabilityScoresRepository.findByBookId(book.getId()).ifPresent(readabilityScoresEntities::add));
+    readBooks.forEach(
+        book ->
+            readabilityScoresRepository
+                .findByBookId(book.getId())
+                .ifPresent(readabilityScoresEntities::add));
 
     for (ReadabilityScoresEntity readabilityScore : readabilityScoresEntities) {
-      readabilityScores.setFleschKincaidGradeLevel(readabilityScores.getFleschKincaidGradeLevel() + readabilityScore.getFleschKincaidGradeLevel());
-      readabilityScores.setFleschReadingEase(readabilityScores.getFleschReadingEase() + readabilityScore.getFleschReadingEase());
-      readabilityScores.setColemanLiauIndex(readabilityScores.getColemanLiauIndex() + readabilityScore.getColemanLiauIndex());
-      readabilityScores.setSmogIndex(readabilityScores.getSmogIndex() + readabilityScore.getSmogIndex());
-      readabilityScores.setAutomatedReadabilityIndex(readabilityScores.getAutomatedReadabilityIndex() + readabilityScore.getAutomatedReadabilityIndex());
-      readabilityScores.setLixIndex(readabilityScores.getLixIndex() + readabilityScore.getLixIndex());
-      readabilityScores.setRixIndex(readabilityScores.getRixIndex() + readabilityScore.getRixIndex());
+      readabilityScores.setFleschKincaidGradeLevel(
+          readabilityScores.getFleschKincaidGradeLevel()
+              + readabilityScore.getFleschKincaidGradeLevel());
+      readabilityScores.setFleschReadingEase(
+          readabilityScores.getFleschReadingEase() + readabilityScore.getFleschReadingEase());
+      readabilityScores.setColemanLiauIndex(
+          readabilityScores.getColemanLiauIndex() + readabilityScore.getColemanLiauIndex());
+      readabilityScores.setSmogIndex(
+          readabilityScores.getSmogIndex() + readabilityScore.getSmogIndex());
+      readabilityScores.setAutomatedReadabilityIndex(
+          readabilityScores.getAutomatedReadabilityIndex()
+              + readabilityScore.getAutomatedReadabilityIndex());
+      readabilityScores.setLixIndex(
+          readabilityScores.getLixIndex() + readabilityScore.getLixIndex());
+      readabilityScores.setRixIndex(
+          readabilityScores.getRixIndex() + readabilityScore.getRixIndex());
     }
 
-    readabilityScores.setFleschKincaidGradeLevel(readabilityScores.getFleschKincaidGradeLevel() / readabilityScoresEntities.size());
-    readabilityScores.setFleschReadingEase(readabilityScores.getFleschReadingEase() / readabilityScoresEntities.size());
-    readabilityScores.setColemanLiauIndex(readabilityScores.getColemanLiauIndex()  / readabilityScoresEntities.size());
-    readabilityScores.setSmogIndex(readabilityScores.getSmogIndex() / readabilityScoresEntities.size());
-    readabilityScores.setAutomatedReadabilityIndex(readabilityScores.getAutomatedReadabilityIndex()  / readabilityScoresEntities.size());
-    readabilityScores.setLixIndex(readabilityScores.getLixIndex()  / readabilityScoresEntities.size());
-    readabilityScores.setRixIndex(readabilityScores.getRixIndex()  / readabilityScoresEntities.size());
+    readabilityScores.setFleschKincaidGradeLevel(
+        readabilityScores.getFleschKincaidGradeLevel() / readabilityScoresEntities.size());
+    readabilityScores.setFleschReadingEase(
+        readabilityScores.getFleschReadingEase() / readabilityScoresEntities.size());
+    readabilityScores.setColemanLiauIndex(
+        readabilityScores.getColemanLiauIndex() / readabilityScoresEntities.size());
+    readabilityScores.setSmogIndex(
+        readabilityScores.getSmogIndex() / readabilityScoresEntities.size());
+    readabilityScores.setAutomatedReadabilityIndex(
+        readabilityScores.getAutomatedReadabilityIndex() / readabilityScoresEntities.size());
+    readabilityScores.setLixIndex(
+        readabilityScores.getLixIndex() / readabilityScoresEntities.size());
+    readabilityScores.setRixIndex(
+        readabilityScores.getRixIndex() / readabilityScoresEntities.size());
 
     return readabilityScores;
   }

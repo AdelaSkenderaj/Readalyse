@@ -1,4 +1,4 @@
-package com.readalyse.utility;
+package com.readalyse.dataImport;
 
 import java.io.*;
 import java.net.URL;

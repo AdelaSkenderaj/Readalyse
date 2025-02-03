@@ -51,6 +51,8 @@ paths:
     $ref: './paths/review/review-of-user.yaml'
   /analyse/text:
     $ref: './paths/analyse/text-analysis.yaml'
+  /data-import:
+    $ref: './paths/data-import/data-import.yaml'
 components:
   schemas:
     BookList:

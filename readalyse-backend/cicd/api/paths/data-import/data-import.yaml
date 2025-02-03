@@ -1,0 +1,10 @@
+post:
+  tags:
+    - Data Import
+  description: Endpoint to retrieve information from Project Gutenberg
+  operationId: triggerInformationRetrieval
+  responses:
+    "200":
+      description: Successful operation
+    "422":
+      description: No data was retrieved
