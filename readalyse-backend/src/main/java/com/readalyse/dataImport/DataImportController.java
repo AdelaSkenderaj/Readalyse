@@ -12,7 +12,7 @@ public class DataImportController implements DataImportApi {
 
   @Override
   public ResponseEntity<Void> triggerInformationRetrieval() {
-    dataImportService.retrieveGutebergInformation();
+    dataImportService.retrieveGutenbergInformation();
     return ResponseEntity.ok().build();
   }
 }

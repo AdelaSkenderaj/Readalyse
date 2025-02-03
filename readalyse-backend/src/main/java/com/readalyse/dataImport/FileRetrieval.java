@@ -123,4 +123,66 @@ public class FileRetrieval {
       System.out.println("Could not delete files in directory " + BASE_PATH);
     }
   }
+
+  /*private void extractFiles() {
+      try {
+          File inputFile = new File(TEMPORARY_FILE);
+          String outputFile = getFileName(inputFile, TEMPORARY_DIRECTORY);
+          File tarFile = new File(outputFile);
+          tarFile = deCompressGZipFile(inputFile, tarFile);
+          File destFile = new File(TEMPORARY_DIRECTORY);
+          if (!destFile.exists()) {
+              destFile.mkdir();
+          }
+          unTarFile(tarFile, destFile);
+      } catch (IOException e) {
+          System.out.println("Error unzipping the downloaded file");
+      }
+  }
+
+  private String getFileName(File inputFile, String outputFolder) {
+      return outputFolder
+              + File.separator
+              + inputFile.getName().substring(0, inputFile.getName().lastIndexOf('.'));
+  }
+
+  private File deCompressGZipFile(File gZippedFile, File tarFile) throws IOException {
+      try (FileInputStream fin = new FileInputStream(gZippedFile);
+           BufferedInputStream bis = new BufferedInputStream(fin);
+           CompressorInputStream input =
+                   new CompressorStreamFactory().createCompressorInputStream(bis);
+           FileOutputStream fileOutputStream = new FileOutputStream(tarFile); ) {
+          byte[] buffer = new byte[1024];
+          int len;
+          while ((len = input.read(buffer)) > 0) {
+              fileOutputStream.write(buffer, 0, len);
+          }
+      } catch (IOException | CompressorException e) {
+          e.printStackTrace();
+      }
+      return tarFile;
+  }
+
+  private void unTarFile(File tarFile, File destFile) throws IOException {
+      FileInputStream fileInputStream = new FileInputStream(tarFile);
+      TarArchiveInputStream tarArchiveInputStream = new TarArchiveInputStream(fileInputStream);
+      TarArchiveEntry tarArchiveEntry = null;
+
+      while ((tarArchiveEntry = tarArchiveInputStream.getNextTarEntry()) != null) {
+          File outputFile =
+                  new File(
+                          destFile
+                                  + File.separator
+                                  + tarArchiveEntry
+                                  .getName()
+                                  .substring(tarArchiveEntry.getName().lastIndexOf('/') + 1));
+          if (tarArchiveEntry.isDirectory()) {
+          } else {
+              FileOutputStream fileOutputStream = new FileOutputStream(outputFile);
+              IOUtils.copy(tarArchiveInputStream, fileOutputStream);
+              fileOutputStream.close();
+          }
+      }
+      tarArchiveInputStream.close();
+  }*/
 }

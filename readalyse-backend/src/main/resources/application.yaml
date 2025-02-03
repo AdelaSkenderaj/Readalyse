@@ -49,8 +49,8 @@ logging:
 
 projectGutenberg:
   url: ${PROJECT_GUTENBERG_URL:https://gutenberg.org/cache/epub/feeds/rdf-files.tar.bz2}
-  downloadBaseDirectory: ${DOWNLOAD_BASE_DIRECTORY:C:/Users/Dela/background-workers/all-time-data}
-  downloadedFilesPath: ${DOWNLOADED_FILES_PATH:C:/Users/Dela/background-workers/all-time-data/rdf-files.tar.bz2}
+  temporaryDirectory: ${TEMP_DIR:temp_directory}
+  temporaryFile: ${TEMP_FILE:temp_directory/temp_file.tar.bz2}
 
 
 

@@ -4,6 +4,8 @@ import com.readalyse.entities.*;
 import com.readalyse.mappers.*;
 import com.readalyse.repositories.*;
 import com.readalyse.services.BookService;
+import com.readalyse.utility.AnalyzeText;
+import com.readalyse.utility.ParseBookData;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -11,9 +13,6 @@ import java.util.Optional;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
-
-import com.readalyse.utility.AnalyzeText;
-import com.readalyse.utility.ParseBookData;
 import lombok.RequiredArgsConstructor;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
