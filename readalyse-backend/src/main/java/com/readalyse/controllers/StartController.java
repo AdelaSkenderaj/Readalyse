@@ -1,10 +1,10 @@
 package com.readalyse.controllers;
 
+import com.readalyse.book.BookEntity;
+import com.readalyse.book.BookRepository;
 import com.readalyse.dataImport.FileRetrieval;
 import com.readalyse.dataImport.InformationExtraction;
-import com.readalyse.entities.BookEntity;
 import com.readalyse.entities.ReadabilityScoresEntity;
-import com.readalyse.repositories.BookRepository;
 import com.readalyse.services.BookService;
 import java.io.File;
 import java.io.IOException;

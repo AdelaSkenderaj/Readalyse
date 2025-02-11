@@ -1,5 +1,7 @@
 package com.readalyse.entities;
 
+import com.readalyse.book.BookEntity;
+import com.readalyse.user.UserEntity;
 import jakarta.persistence.*;
 import lombok.*;
 

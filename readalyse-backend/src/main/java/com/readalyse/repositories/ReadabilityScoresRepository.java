@@ -1,6 +1,6 @@
 package com.readalyse.repositories;
 
-import com.readalyse.entities.BookEntity;
+import com.readalyse.book.BookEntity;
 import com.readalyse.entities.ReadabilityScoresEntity;
 import java.util.List;
 import java.util.Optional;

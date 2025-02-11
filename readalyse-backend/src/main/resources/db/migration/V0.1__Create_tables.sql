@@ -2,6 +2,7 @@ CREATE TABLE BOOK (
     ID bigint not null,
     TITLE longtext,
     DESCRIPTION longtext,
+    SUMMARY longtext,
     DOWNLOADS bigint,
     INSERT_TIME datetime not null,
     UPDATE_TIME datetime not null,
@@ -39,13 +40,15 @@ CREATE TABLE PERSON (
 
 CREATE TABLE RESOURCE (
     ID bigint not null auto_increment,
+    BOOK_ID bigint not null,
     URL varchar(255),
     SIZE bigint,
-    MODIFIED timestamp,
+    MODIFIED varchar(255),
     TYPE varchar(255),
     INSERT_TIME datetime not null,
     UPDATE_TIME datetime not null,
-    primary key (ID)
+    primary key (ID),
+    constraint FK_BOOK_RESOURCE_BOOK foreign key (BOOK_ID) references BOOK(ID)
 );
 
 CREATE TABLE SUBJECT (
@@ -117,13 +120,6 @@ CREATE TABLE BOOK_LANGUAGE (
     LANGUAGE bigint not null,
     constraint FK_BOOK_LANGUAGE_BOOK foreign key (BOOK) references BOOK(ID),
     constraint FK_BOOK_LANGUAGE_LANGUAGE foreign key (LANGUAGE) references LANGUAGE(ID)
-);
-
-CREATE TABLE BOOK_RESOURCE (
-   BOOK bigint not null,
-   RESOURCE bigint not null,
-   constraint FK_BOOK_RESOURCE_BOOK foreign key (BOOK) references BOOK(ID),
-   constraint FK_BOOK_RESOURCE_RESOURCE foreign key (RESOURCE) references RESOURCE(ID)
 );
 
 CREATE TABLE BOOK_SUBJECT (

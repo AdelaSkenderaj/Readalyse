@@ -1,8 +1,6 @@
 package com.readalyse.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 import java.util.Date;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,7 +17,8 @@ public class AuditedEntity {
   @CreatedDate
   @Column(
       name = "INSERT_TIME",
-      columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP")
+      columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP",
+      updatable = false)
   private Date insertTime;
 
   @LastModifiedDate

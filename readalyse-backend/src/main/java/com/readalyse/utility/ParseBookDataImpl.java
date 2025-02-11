@@ -2,8 +2,14 @@ package com.readalyse.utility;
 
 import static com.readalyse.utility.Constants.*;
 
-import com.readalyse.model.*;
-import java.time.LocalDateTime;
+import com.readalyse.agent.AgentModel;
+import com.readalyse.agentType.AgentTypeModel;
+import com.readalyse.book.BookModel;
+import com.readalyse.bookshelf.BookshelfModel;
+import com.readalyse.language.LanguageModel;
+import com.readalyse.person.PersonModel;
+import com.readalyse.resource.ResourceModel;
+import com.readalyse.subject.SubjectModel;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -112,7 +118,7 @@ public class ParseBookDataImpl implements ParseBookData {
                         .map(org.apache.jena.rdf.model.Resource::toString)
                         .orElse(null))
                 .size(Long.valueOf(formatValue(extent)))
-                .modified(LocalDateTime.parse(formatValue(modified)))
+                .modified((formatValue(modified)))
                 .type(
                     type != null && type.contains("^")
                         ? type.substring(0, type.indexOf('^'))

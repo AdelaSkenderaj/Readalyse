@@ -7,14 +7,18 @@ import java.nio.file.Paths;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import lombok.RequiredArgsConstructor;
 import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
 import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStream;
 import org.apache.commons.compress.utils.IOUtils;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.ModelFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class ZipProcessingService {
 
   @Value("${projectGutenberg.url}")
@@ -25,6 +29,8 @@ public class ZipProcessingService {
 
   @Value("${projectGutenberg.temporaryFile}")
   private String TEMPORARY_FILE;
+
+  private final ExtractFileInformationService extractFileInformationService;
 
   private static final Logger logger = Logger.getLogger(ZipProcessingService.class.getName());
 
@@ -106,15 +112,28 @@ public class ZipProcessingService {
    * @throws IOException If there is an error processing the file.
    */
   private void processTarEntry(TarArchiveInputStream tarInputStream) throws IOException {
-    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
-    try {
+    try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream()) {
       IOUtils.copy(tarInputStream, byteArrayOutputStream);
       byte[] fileContent = byteArrayOutputStream.toByteArray();
-      // TODO Process the file content with Jena model
-    } finally {
-      byteArrayOutputStream.close();
+      Model fileModel = loadRDFToModel(fileContent);
+      extractFileInformationService.extractFileInformation(fileModel);
+      fileModel.close();
     }
+  }
+
+  private Model loadRDFToModel(byte[] fileContent) {
+    Model model = ModelFactory.createDefaultModel();
+
+    ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(fileContent);
+
+    try {
+      model.read(byteArrayInputStream, null);
+    } catch (Exception e) {
+      logger.severe("Error parsing RDF data: " + e.getMessage());
+    }
+
+    return model;
   }
 
   private void deleteZipFile() {

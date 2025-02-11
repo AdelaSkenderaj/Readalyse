@@ -1,6 +1,11 @@
 package com.readalyse.utility;
 
-import com.readalyse.model.*;
+import com.readalyse.agent.AgentModel;
+import com.readalyse.book.BookModel;
+import com.readalyse.bookshelf.BookshelfModel;
+import com.readalyse.language.LanguageModel;
+import com.readalyse.resource.ResourceModel;
+import com.readalyse.subject.SubjectModel;
 import java.util.List;
 import org.apache.jena.rdf.model.Model;
 

@@ -1,5 +1,6 @@
 package com.readalyse.entities;
 
+import com.readalyse.user.UserEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;

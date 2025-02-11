@@ -1,12 +1,12 @@
 package com.readalyse.services;
 
 import com.readalyse.config.JwtService;
-import com.readalyse.entities.Role;
-import com.readalyse.entities.UserEntity;
+import com.readalyse.enums.Role;
 import com.readalyse.model.AuthenticationRequest;
 import com.readalyse.model.AuthenticationResponse;
 import com.readalyse.model.RegisterRequest;
-import com.readalyse.repositories.UserRepository;
+import com.readalyse.user.UserEntity;
+import com.readalyse.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

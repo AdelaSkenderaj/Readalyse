@@ -1,10 +1,16 @@
 package com.readalyse.services;
 
+import com.readalyse.book.BookEntity;
+import com.readalyse.book.BookMapper;
+import com.readalyse.book.BookRepository;
+import com.readalyse.bookshelf.BookshelfEntity;
+import com.readalyse.bookshelf.BookshelfRepository;
 import com.readalyse.entities.*;
-import com.readalyse.mappers.BookMapper;
 import com.readalyse.model.BookList;
 import com.readalyse.model.Pagination;
 import com.readalyse.repositories.*;
+import com.readalyse.user.UserEntity;
+import com.readalyse.user.UserRepository;
 import com.readalyse.utility.Utility;
 import java.util.ArrayList;
 import java.util.Collection;

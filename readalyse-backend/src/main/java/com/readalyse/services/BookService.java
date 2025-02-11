@@ -1,10 +1,10 @@
 package com.readalyse.services;
 
-import com.readalyse.entities.BookEntity;
+import com.readalyse.book.BookEntity;
+import com.readalyse.book.BookRepository;
 import com.readalyse.entities.ReadabilityScoresEntity;
-import com.readalyse.entities.ResourceEntity;
-import com.readalyse.repositories.BookRepository;
 import com.readalyse.repositories.ReadabilityScoresRepository;
+import com.readalyse.resource.ResourceEntity;
 import com.readalyse.utility.AnalyzeText;
 import java.nio.charset.StandardCharsets;
 import java.util.Optional;

@@ -1,18 +1,18 @@
 package com.readalyse.services;
 
-import com.readalyse.entities.BookEntity;
+import com.readalyse.book.BookEntity;
+import com.readalyse.book.BookMapper;
+import com.readalyse.book.BookRepository;
 import com.readalyse.entities.ReadingStatusEntity;
-import com.readalyse.entities.Status;
-import com.readalyse.entities.UserEntity;
-import com.readalyse.mappers.BookMapper;
+import com.readalyse.enums.Status;
+import com.readalyse.enums.mapper.StatusMapper;
 import com.readalyse.mappers.ReadingStatusMapper;
-import com.readalyse.mappers.StatusMapper;
 import com.readalyse.model.BookList;
 import com.readalyse.model.Pagination;
 import com.readalyse.model.ReadingStatus;
-import com.readalyse.repositories.BookRepository;
 import com.readalyse.repositories.ReadingStatusRepository;
-import com.readalyse.repositories.UserRepository;
+import com.readalyse.user.UserEntity;
+import com.readalyse.user.UserRepository;
 import com.readalyse.utility.Utility;
 import java.util.List;
 import java.util.Objects;

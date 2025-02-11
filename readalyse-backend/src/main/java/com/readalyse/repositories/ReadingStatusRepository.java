@@ -1,8 +1,8 @@
 package com.readalyse.repositories;
 
-import com.readalyse.entities.BookEntity;
+import com.readalyse.book.BookEntity;
 import com.readalyse.entities.ReadingStatusEntity;
-import com.readalyse.entities.UserEntity;
+import com.readalyse.user.UserEntity;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.data.domain.Page;

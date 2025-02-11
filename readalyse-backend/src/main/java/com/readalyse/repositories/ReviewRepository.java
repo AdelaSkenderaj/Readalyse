@@ -1,7 +1,7 @@
 package com.readalyse.repositories;
 
 import com.readalyse.entities.ReviewEntity;
-import com.readalyse.entities.UserEntity;
+import com.readalyse.user.UserEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;

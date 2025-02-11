@@ -1,6 +1,6 @@
 package com.readalyse.config;
 
-import com.readalyse.repositories.UserRepository;
+import com.readalyse.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

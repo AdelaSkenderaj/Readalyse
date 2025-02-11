@@ -1,7 +1,7 @@
 package com.readalyse.controllers;
 
 import com.readalyse.api.BooksApi;
-import com.readalyse.mappers.BookMapper;
+import com.readalyse.book.BookMapper;
 import com.readalyse.model.Book;
 import com.readalyse.services.BookService;
 import lombok.RequiredArgsConstructor;

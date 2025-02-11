@@ -1,6 +1,6 @@
 package com.readalyse.utility;
 
-import com.readalyse.entities.UserEntity;
+import com.readalyse.user.UserEntity;
 import lombok.experimental.UtilityClass;
 import org.springframework.security.core.context.SecurityContextHolder;
 
